@@ -32,7 +32,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnEmitir1 = new Components.btnRounded();
+        btnEmitir = new Components.btnRounded();
         btnCancelarNfe = new Components.btnRounded();
         btnEmissaoBoleto = new Components.btnRounded();
         btnCadastroProd = new Components.btnRounded();
@@ -87,18 +87,18 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selecione a operação desejada");
 
-        btnEmitir1.setBorder(null);
-        btnEmitir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emissaoLogo.png"))); // NOI18N
-        btnEmitir1.setColorClick(new java.awt.Color(153, 153, 255));
-        btnEmitir1.setColorOver(new java.awt.Color(204, 204, 255));
-        btnEmitir1.addActionListener(new java.awt.event.ActionListener() {
+        btnEmitir.setBorder(null);
+        btnEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/EmissaoNfe.png"))); // NOI18N
+        btnEmitir.setColorClick(new java.awt.Color(153, 153, 255));
+        btnEmitir.setColorOver(new java.awt.Color(204, 204, 255));
+        btnEmitir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmitir1ActionPerformed(evt);
+                btnEmitirActionPerformed(evt);
             }
         });
 
         btnCancelarNfe.setBorder(null);
-        btnCancelarNfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
+        btnCancelarNfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CancelarNfe.png"))); // NOI18N
         btnCancelarNfe.setColorClick(new java.awt.Color(153, 153, 255));
         btnCancelarNfe.setColorOver(new java.awt.Color(204, 204, 255));
         btnCancelarNfe.setPreferredSize(new java.awt.Dimension(169, 169));
@@ -109,7 +109,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         });
 
         btnEmissaoBoleto.setBorder(null);
-        btnEmissaoBoleto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emissaoBoletoLogo.png"))); // NOI18N
+        btnEmissaoBoleto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/EmissaoBoleto.png"))); // NOI18N
         btnEmissaoBoleto.setColorClick(new java.awt.Color(153, 153, 255));
         btnEmissaoBoleto.setColorOver(new java.awt.Color(204, 204, 255));
         btnEmissaoBoleto.setPreferredSize(new java.awt.Dimension(169, 169));
@@ -120,7 +120,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         });
 
         btnCadastroProd.setBorder(null);
-        btnCadastroProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrarProdutoLogo.png"))); // NOI18N
+        btnCadastroProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CadastroProd.png"))); // NOI18N
         btnCadastroProd.setToolTipText("");
         btnCadastroProd.setColorClick(new java.awt.Color(153, 153, 255));
         btnCadastroProd.setColorOver(new java.awt.Color(204, 204, 255));
@@ -132,7 +132,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         });
 
         btnCadastroCliente.setBorder(null);
-        btnCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrarClienteLogo.png"))); // NOI18N
+        btnCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CadastroClientes.png"))); // NOI18N
         btnCadastroCliente.setColorClick(new java.awt.Color(153, 153, 255));
         btnCadastroCliente.setColorOver(new java.awt.Color(204, 204, 255));
         btnCadastroCliente.setPreferredSize(new java.awt.Dimension(169, 169));
@@ -143,7 +143,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         });
 
         btnCadastroTransp.setBorder(null);
-        btnCadastroTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrarTransLogo.png"))); // NOI18N
+        btnCadastroTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CadastroTransp.png"))); // NOI18N
         btnCadastroTransp.setColorClick(new java.awt.Color(153, 153, 255));
         btnCadastroTransp.setColorOver(new java.awt.Color(204, 204, 255));
         btnCadastroTransp.setPreferredSize(new java.awt.Dimension(169, 169));
@@ -165,7 +165,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEmitir1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmitir, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +188,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEmitir1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmitir, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCancelarNfe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEmissaoBoleto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,9 +233,9 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastroProdActionPerformed
 
-    private void btnEmitir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitir1ActionPerformed
+    private void btnEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmitir1ActionPerformed
+    }//GEN-LAST:event_btnEmitirActionPerformed
 
     private void btnEmissaoBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoBoletoActionPerformed
         // TODO add your handling code here:
@@ -283,7 +283,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
     private Components.btnRounded btnCadastroTransp;
     private Components.btnRounded btnCancelarNfe;
     private Components.btnRounded btnEmissaoBoleto;
-    private Components.btnRounded btnEmitir1;
+    private Components.btnRounded btnEmitir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
