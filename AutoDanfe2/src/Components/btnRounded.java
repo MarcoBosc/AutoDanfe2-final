@@ -19,7 +19,7 @@ public class btnRounded extends JButton {
     private int radius = 10;
 
     public btnRounded() {
-        //  Init Color
+        //  Init Color teste
 
         setColor(Color.WHITE);
         colorOver = new Color(179, 250, 160);
