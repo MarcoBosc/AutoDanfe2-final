@@ -1,20 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package AutoDanfeMenu;
 
-/**
- *
- * @author marco
- */
+import Controller.Program;
+
 public class AutoDanfeMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AutoDanfeMenu2
-     */
+
     public AutoDanfeMenu() {
         initComponents();
+        dpPrincipal.add(Program.getMenu());
+        Program.getMenu().setVisible(true);
     }
 
     /**
@@ -26,25 +20,15 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpPrincipal = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btnEmitir1 = new Components.btnRounded();
-        btnCancelarNfe = new Components.btnRounded();
-        btnEmissaoBoleto = new Components.btnRounded();
-        btnCadastroProd = new Components.btnRounded();
-        btnCadastroCliente = new Components.btnRounded();
-        btnCadastroTransp = new Components.btnRounded();
+        dpPrincipal = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
-
-        jpPrincipal.setBackground(new java.awt.Color(222, 223, 223));
-        jpPrincipal.setPreferredSize(new java.awt.Dimension(1000, 650));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(1000, 65));
@@ -53,7 +37,21 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Aimê Uniformes");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/home/marco/Downloads/aimeLogotipo.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logoAime.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout dpPrincipalLayout = new javax.swing.GroupLayout(dpPrincipal);
+        dpPrincipal.setLayout(dpPrincipalLayout);
+        dpPrincipalLayout.setHorizontalGroup(
+            dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        dpPrincipalLayout.setVerticalGroup(
+            dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 583, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -61,185 +59,52 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(384, 384, 384)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(365, 365, 365))
+            .addComponent(dpPrincipal)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(497, 497, 497)
+                    .addComponent(jLabel1)
+                    .addContainerGap(497, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        jLabel2.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Selecione a operação desejada");
-
-        btnEmitir1.setBorder(null);
-        btnEmitir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emissaoLogo.png"))); // NOI18N
-        btnEmitir1.setColorClick(new java.awt.Color(153, 153, 255));
-        btnEmitir1.setColorOver(new java.awt.Color(204, 204, 255));
-        btnEmitir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmitir1ActionPerformed(evt);
-            }
-        });
-
-        btnCancelarNfe.setBorder(null);
-        btnCancelarNfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
-        btnCancelarNfe.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCancelarNfe.setColorOver(new java.awt.Color(204, 204, 255));
-        btnCancelarNfe.setPreferredSize(new java.awt.Dimension(169, 169));
-        btnCancelarNfe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarNfeActionPerformed(evt);
-            }
-        });
-
-        btnEmissaoBoleto.setBorder(null);
-        btnEmissaoBoleto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emissaoBoletoLogo.png"))); // NOI18N
-        btnEmissaoBoleto.setColorClick(new java.awt.Color(153, 153, 255));
-        btnEmissaoBoleto.setColorOver(new java.awt.Color(204, 204, 255));
-        btnEmissaoBoleto.setPreferredSize(new java.awt.Dimension(169, 169));
-        btnEmissaoBoleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmissaoBoletoActionPerformed(evt);
-            }
-        });
-
-        btnCadastroProd.setBorder(null);
-        btnCadastroProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrarProdutoLogo.png"))); // NOI18N
-        btnCadastroProd.setToolTipText("");
-        btnCadastroProd.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCadastroProd.setColorOver(new java.awt.Color(204, 204, 255));
-        btnCadastroProd.setPreferredSize(new java.awt.Dimension(169, 169));
-        btnCadastroProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroProdActionPerformed(evt);
-            }
-        });
-
-        btnCadastroCliente.setBorder(null);
-        btnCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrarClienteLogo.png"))); // NOI18N
-        btnCadastroCliente.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCadastroCliente.setColorOver(new java.awt.Color(204, 204, 255));
-        btnCadastroCliente.setPreferredSize(new java.awt.Dimension(169, 169));
-        btnCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroClienteActionPerformed(evt);
-            }
-        });
-
-        btnCadastroTransp.setBorder(null);
-        btnCadastroTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cadastrarTransLogo.png"))); // NOI18N
-        btnCadastroTransp.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCadastroTransp.setColorOver(new java.awt.Color(204, 204, 255));
-        btnCadastroTransp.setPreferredSize(new java.awt.Dimension(169, 169));
-        btnCadastroTransp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroTranspActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
-        jpPrincipal.setLayout(jpPrincipalLayout);
-        jpPrincipalLayout.setHorizontalGroup(
-            jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
-            .addGroup(jpPrincipalLayout.createSequentialGroup()
-                .addGap(359, 359, 359)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEmitir1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancelarNfe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastroTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(btnEmissaoBoleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(btnCadastroProd, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jpPrincipalLayout.setVerticalGroup(
-            jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addComponent(jPanel2, 64, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEmitir1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCancelarNfe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEmissaoBoleto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCadastroProd, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(64, 64, 64)
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastroTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addComponent(jLabel1)
+                    .addContainerGap(32, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, 64, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(582, 582, 582))
         );
-
-        jpPrincipal.getAccessibleContext().setAccessibleName("");
-        jpPrincipal.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarNfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNfeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarNfeActionPerformed
-
-    private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroClienteActionPerformed
-
-    private void btnCadastroTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroTranspActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroTranspActionPerformed
-
-    private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroProdActionPerformed
-
-    private void btnEmitir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmitir1ActionPerformed
-
-    private void btnEmissaoBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoBoletoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmissaoBoletoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,17 +143,10 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Components.btnRounded btnCadastroCliente;
-    private Components.btnRounded btnCadastroProd;
-    private Components.btnRounded btnCadastroTransp;
-    private Components.btnRounded btnCancelarNfe;
-    private Components.btnRounded btnEmissaoBoleto;
-    private Components.btnRounded btnEmitir1;
+    private javax.swing.JDesktopPane dpPrincipal;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jpPrincipal;
     // End of variables declaration//GEN-END:variables
 }
