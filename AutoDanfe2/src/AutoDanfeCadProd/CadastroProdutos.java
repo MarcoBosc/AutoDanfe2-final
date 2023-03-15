@@ -32,9 +32,9 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         tfNomeProd = new test.RoundedTextField();
         tfNCM = new test.RoundedTextField();
         tfCodProd = new test.RoundedTextField();
-        btnRounded1 = new Components.btnRounded();
-        btnRemover = new Components.btnRounded();
-        btnAtualizar = new Components.btnRounded();
+        btnAdicionarProd = new Components.btnRounded();
+        btnRemoverProd = new Components.btnRounded();
+        btnAtualizarProd = new Components.btnRounded();
 
         setMaximumSize(new java.awt.Dimension(1000, 596));
         setMinimumSize(new java.awt.Dimension(1000, 596));
@@ -68,36 +68,60 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         tfNomeProd.setText("Nome do Produto");
         tfNomeProd.setLineColor(new java.awt.Color(75, 110, 175));
         tfNomeProd.setMargin(new java.awt.Insets(1, 3, 1, 3));
+        tfNomeProd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNomeProdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNomeProdFocusLost(evt);
+            }
+        });
 
         tfNCM.setText("NCM do Produto");
+        tfNCM.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNCMFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNCMFocusLost(evt);
+            }
+        });
 
         tfCodProd.setText("Código do Produto");
+        tfCodProd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCodProdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCodProdFocusLost(evt);
+            }
+        });
 
-        btnRounded1.setBackground(new java.awt.Color(0, 153, 153));
-        btnRounded1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRounded1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
-        btnRounded1.setText("Adicionar");
-        btnRounded1.setBorderColor(new java.awt.Color(0, 153, 153));
-        btnRounded1.setColor(new java.awt.Color(0, 153, 153));
-        btnRounded1.setColorClick(new java.awt.Color(0, 134, 134));
-        btnRounded1.setColorOver(new java.awt.Color(0, 114, 114));
+        btnAdicionarProd.setBackground(new java.awt.Color(0, 153, 153));
+        btnAdicionarProd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdicionarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
+        btnAdicionarProd.setText("Adicionar");
+        btnAdicionarProd.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnAdicionarProd.setColor(new java.awt.Color(0, 153, 153));
+        btnAdicionarProd.setColorClick(new java.awt.Color(0, 134, 134));
+        btnAdicionarProd.setColorOver(new java.awt.Color(0, 114, 114));
 
-        btnRemover.setBackground(new java.awt.Color(153, 0, 0));
-        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
-        btnRemover.setText("Remover");
-        btnRemover.setBorderColor(new java.awt.Color(153, 0, 0));
-        btnRemover.setColor(new java.awt.Color(153, 0, 0));
-        btnRemover.setColorClick(new java.awt.Color(175, 0, 0));
-        btnRemover.setColorOver(new java.awt.Color(154, 0, 0));
+        btnRemoverProd.setBackground(new java.awt.Color(153, 0, 0));
+        btnRemoverProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
+        btnRemoverProd.setText("Remover");
+        btnRemoverProd.setBorderColor(new java.awt.Color(153, 0, 0));
+        btnRemoverProd.setColor(new java.awt.Color(153, 0, 0));
+        btnRemoverProd.setColorClick(new java.awt.Color(175, 0, 0));
+        btnRemoverProd.setColorOver(new java.awt.Color(154, 0, 0));
 
-        btnAtualizar.setBackground(new java.awt.Color(191, 189, 189));
-        btnAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/atualizarLogo.png"))); // NOI18N
-        btnAtualizar.setText("Atualizar");
-        btnAtualizar.setBorderColor(new java.awt.Color(191, 189, 189));
-        btnAtualizar.setColor(new java.awt.Color(191, 189, 189));
-        btnAtualizar.setColorClick(new java.awt.Color(159, 159, 159));
-        btnAtualizar.setColorOver(new java.awt.Color(180, 180, 180));
+        btnAtualizarProd.setBackground(new java.awt.Color(191, 189, 189));
+        btnAtualizarProd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/atualizarLogo.png"))); // NOI18N
+        btnAtualizarProd.setText("Atualizar");
+        btnAtualizarProd.setBorderColor(new java.awt.Color(191, 189, 189));
+        btnAtualizarProd.setColor(new java.awt.Color(191, 189, 189));
+        btnAtualizarProd.setColorClick(new java.awt.Color(159, 159, 159));
+        btnAtualizarProd.setColorOver(new java.awt.Color(180, 180, 180));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,11 +138,11 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                         .addGap(67, 67, 67)
                         .addComponent(tfCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRemoverProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAdicionarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,9 +157,9 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                 .addComponent(tfNCM, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdicionarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoverProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(233, 233, 233))
         );
 
@@ -147,17 +171,50 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfNomeProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNomeProdFocusGained
+        tfNomeProd.setText("");
+    }//GEN-LAST:event_tfNomeProdFocusGained
+
+    private void tfNomeProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNomeProdFocusLost
+        if (tfNomeProd.getText().isEmpty()){
+            tfNomeProd.setText("Nome do Produto");
+        }
+    }//GEN-LAST:event_tfNomeProdFocusLost
+
+    private void tfCodProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodProdFocusGained
+        tfCodProd.setText("");
+    }//GEN-LAST:event_tfCodProdFocusGained
+
+    private void tfCodProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodProdFocusLost
+        if (tfCodProd.getText().isEmpty()){
+            tfCodProd.setText("Código do Produto");
+        }
+    }//GEN-LAST:event_tfCodProdFocusLost
+
+    private void tfNCMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusGained
+        tfNCM.setText("NCM do Produto");
+    }//GEN-LAST:event_tfNCMFocusGained
+
+    private void tfNCMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusLost
+        if (tfNCM.getText().isEmpty()){
+            tfNCM.setText("NCM do Produto");
+        }
+    }//GEN-LAST:event_tfNCMFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Components.btnRounded btnAtualizar;
-    private Components.btnRounded btnRemover;
-    private Components.btnRounded btnRounded1;
+    private Components.btnRounded btnAdicionarProd;
+    private Components.btnRounded btnAtualizarProd;
+    private Components.btnRounded btnRemoverProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

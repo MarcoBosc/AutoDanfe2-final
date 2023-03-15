@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package AutoDanfeCadTransp;
 
-/**
- *
- * @author marco
- */
+
 public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     /**
@@ -29,15 +22,15 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tfRazaoSocial = new test.RoundedTextField();
+        tfRazaoSocialTransp = new test.RoundedTextField();
         tfCNPJ = new test.RoundedTextField();
-        tfLogradouro = new test.RoundedTextField();
+        tfLogradouroTransp = new test.RoundedTextField();
         tfMunicipio = new test.RoundedTextField();
         tfInscricaoEstadual = new test.RoundedTextField();
         tfUF = new test.RoundedTextField();
-        btnRounded1 = new Components.btnRounded();
-        btnRemover = new Components.btnRounded();
-        btnAtualizar = new Components.btnRounded();
+        btnAdicionarTransp = new Components.btnRounded();
+        btnRemoverTransp = new Components.btnRounded();
+        btnAtualizarTransp = new Components.btnRounded();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
 
@@ -66,12 +59,28 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        tfRazaoSocial.setBackground(new java.awt.Color(255, 255, 255));
-        tfRazaoSocial.setText("Razão Social");
+        tfRazaoSocialTransp.setBackground(new java.awt.Color(255, 255, 255));
+        tfRazaoSocialTransp.setText("Razão Social");
+        tfRazaoSocialTransp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfRazaoSocialTranspFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfRazaoSocialTranspFocusLost(evt);
+            }
+        });
 
         tfCNPJ.setText("CNPJ");
 
-        tfLogradouro.setText("Logradouro");
+        tfLogradouroTransp.setText("Logradouro");
+        tfLogradouroTransp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfLogradouroTranspFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfLogradouroTranspFocusLost(evt);
+            }
+        });
 
         tfMunicipio.setText("Município");
 
@@ -79,33 +88,32 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
         tfUF.setText("UF");
 
-        btnRounded1.setBackground(new java.awt.Color(0, 153, 153));
-        btnRounded1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRounded1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
-        btnRounded1.setText("Adicionar");
-        btnRounded1.setBorderColor(new java.awt.Color(0, 153, 153));
-        btnRounded1.setColor(new java.awt.Color(0, 153, 153));
-        btnRounded1.setColorClick(new java.awt.Color(0, 134, 134));
-        btnRounded1.setColorOver(new java.awt.Color(0, 114, 114));
+        btnAdicionarTransp.setBackground(new java.awt.Color(0, 153, 153));
+        btnAdicionarTransp.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdicionarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
+        btnAdicionarTransp.setText("Adicionar");
+        btnAdicionarTransp.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnAdicionarTransp.setColor(new java.awt.Color(0, 153, 153));
+        btnAdicionarTransp.setColorClick(new java.awt.Color(0, 134, 134));
+        btnAdicionarTransp.setColorOver(new java.awt.Color(0, 114, 114));
 
-        btnRemover.setBackground(new java.awt.Color(153, 0, 0));
-        btnRemover.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
-        btnRemover.setText("Remover");
-        btnRemover.setActionCommand("Remover");
-        btnRemover.setBorderColor(new java.awt.Color(153, 0, 0));
-        btnRemover.setColor(new java.awt.Color(153, 0, 0));
-        btnRemover.setColorClick(new java.awt.Color(175, 0, 0));
-        btnRemover.setColorOver(new java.awt.Color(154, 0, 0));
+        btnRemoverTransp.setBackground(new java.awt.Color(153, 0, 0));
+        btnRemoverTransp.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoverTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
+        btnRemoverTransp.setText("Remover");
+        btnRemoverTransp.setBorderColor(new java.awt.Color(153, 0, 0));
+        btnRemoverTransp.setColor(new java.awt.Color(153, 0, 0));
+        btnRemoverTransp.setColorClick(new java.awt.Color(175, 0, 0));
+        btnRemoverTransp.setColorOver(new java.awt.Color(154, 0, 0));
 
-        btnAtualizar.setBackground(new java.awt.Color(191, 189, 189));
-        btnAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/atualizarLogo.png"))); // NOI18N
-        btnAtualizar.setText("Atualizar");
-        btnAtualizar.setBorderColor(new java.awt.Color(191, 189, 189));
-        btnAtualizar.setColor(new java.awt.Color(191, 189, 189));
-        btnAtualizar.setColorClick(new java.awt.Color(159, 159, 159));
-        btnAtualizar.setColorOver(new java.awt.Color(180, 180, 180));
+        btnAtualizarTransp.setBackground(new java.awt.Color(191, 189, 189));
+        btnAtualizarTransp.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/atualizarLogo.png"))); // NOI18N
+        btnAtualizarTransp.setText("Atualizar");
+        btnAtualizarTransp.setBorderColor(new java.awt.Color(191, 189, 189));
+        btnAtualizarTransp.setColor(new java.awt.Color(191, 189, 189));
+        btnAtualizarTransp.setColorClick(new java.awt.Color(159, 159, 159));
+        btnAtualizarTransp.setColorOver(new java.awt.Color(180, 180, 180));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,17 +124,16 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(444, 444, 444)
-                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAdicionarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfRazaoSocial, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                            .addComponent(tfLogradouroTransp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfRazaoSocialTransp, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,21 +147,21 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfRazaoSocial, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(tfRazaoSocialTransp, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(tfCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfInscricaoEstadual, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(tfLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tfLogradouroTransp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(tfUF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdicionarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(272, 272, 272))
         );
 
@@ -172,19 +179,39 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfRazaoSocialTranspFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspFocusGained
+        tfRazaoSocialTransp.setText("");
+    }//GEN-LAST:event_tfRazaoSocialTranspFocusGained
+
+    private void tfRazaoSocialTranspFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspFocusLost
+        if (tfRazaoSocialTransp.getText().isEmpty()) {
+            tfRazaoSocialTransp.setText("Razão Social");
+        }
+    }//GEN-LAST:event_tfRazaoSocialTranspFocusLost
+
+    private void tfLogradouroTranspFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLogradouroTranspFocusGained
+        tfLogradouroTransp.setText("");
+    }//GEN-LAST:event_tfLogradouroTranspFocusGained
+
+    private void tfLogradouroTranspFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLogradouroTranspFocusLost
+        if(tfLogradouroTransp.getText().isEmpty()) {
+            tfLogradouroTransp.setText("Logradouro");
+        }
+    }//GEN-LAST:event_tfLogradouroTranspFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Components.btnRounded btnAtualizar;
-    private Components.btnRounded btnRemover;
-    private Components.btnRounded btnRounded1;
+    private Components.btnRounded btnAdicionarTransp;
+    private Components.btnRounded btnAtualizarTransp;
+    private Components.btnRounded btnRemoverTransp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private test.RoundedTextField tfCNPJ;
     private test.RoundedTextField tfInscricaoEstadual;
-    private test.RoundedTextField tfLogradouro;
+    private test.RoundedTextField tfLogradouroTransp;
     private test.RoundedTextField tfMunicipio;
-    private test.RoundedTextField tfRazaoSocial;
+    private test.RoundedTextField tfRazaoSocialTransp;
     private test.RoundedTextField tfUF;
     // End of variables declaration//GEN-END:variables
 }

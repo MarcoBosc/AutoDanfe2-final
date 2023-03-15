@@ -27,15 +27,15 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jpPrincipal = new javax.swing.JPanel();
-        tfRazaoSocial = new test.RoundedTextField();
-        tfCEP = new test.RoundedTextField();
-        tfMunicipio = new test.RoundedTextField();
-        tfCNPJ = new test.RoundedTextField();
-        roundedTextField1 = new test.RoundedTextField();
-        tfNumeroResi = new test.RoundedTextField();
-        btnAdicionar = new Components.btnRounded();
-        btnRemover = new Components.btnRounded();
-        btnRounded3 = new Components.btnRounded();
+        tfRazaoSocialCliente = new test.RoundedTextField();
+        tfCEPCliente = new test.RoundedTextField();
+        tfMunicipioCliente = new test.RoundedTextField();
+        tfCNPJCliente = new test.RoundedTextField();
+        tfInscricaoEstadualCliente = new test.RoundedTextField();
+        tfNumeroResiCliente = new test.RoundedTextField();
+        btnAdicionarCLientes = new Components.btnRounded();
+        btnRemoverCLientes = new Components.btnRounded();
+        btnAtualizarClientes = new Components.btnRounded();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -46,62 +46,62 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         jpPrincipal.setBackground(new java.awt.Color(223, 223, 223));
 
-        tfRazaoSocial.setText("Razão Social");
-        tfRazaoSocial.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfRazaoSocialCliente.setText("Razão Social");
+        tfRazaoSocialCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        tfCEP.setText("CEP");
-        tfCEP.setPreferredSize(new java.awt.Dimension(108, 22));
-        tfCEP.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfCEPCliente.setText("CEP");
+        tfCEPCliente.setPreferredSize(new java.awt.Dimension(108, 22));
+        tfCEPCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        tfMunicipio.setText("Município");
-        tfMunicipio.setPreferredSize(new java.awt.Dimension(108, 22));
-        tfMunicipio.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfMunicipioCliente.setText("Município");
+        tfMunicipioCliente.setPreferredSize(new java.awt.Dimension(108, 22));
+        tfMunicipioCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        tfCNPJ.setText("CNPJ");
-        tfCNPJ.setMinimumSize(new java.awt.Dimension(108, 22));
-        tfCNPJ.setPreferredSize(new java.awt.Dimension(108, 22));
-        tfCNPJ.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfCNPJCliente.setText("CNPJ");
+        tfCNPJCliente.setMinimumSize(new java.awt.Dimension(108, 22));
+        tfCNPJCliente.setPreferredSize(new java.awt.Dimension(108, 22));
+        tfCNPJCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        roundedTextField1.setText("Inscrição Estadual");
-        roundedTextField1.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfInscricaoEstadualCliente.setText("Inscrição Estadual");
+        tfInscricaoEstadualCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        tfNumeroResi.setText("Numero Residencial");
-        tfNumeroResi.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfNumeroResiCliente.setText("Numero Residencial");
+        tfNumeroResiCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
 
-        btnAdicionar.setBackground(new java.awt.Color(0, 153, 153));
-        btnAdicionar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
-        btnAdicionar.setText("Adicionar");
-        btnAdicionar.setBorderColor(new java.awt.Color(0, 153, 153));
-        btnAdicionar.setBorderPainted(false);
-        btnAdicionar.setColor(new java.awt.Color(0, 153, 153));
-        btnAdicionar.setColorClick(new java.awt.Color(0, 134, 134));
-        btnAdicionar.setColorOver(new java.awt.Color(0, 114, 114));
-        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionarCLientes.setBackground(new java.awt.Color(0, 153, 153));
+        btnAdicionarCLientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdicionarCLientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
+        btnAdicionarCLientes.setText("Adicionar");
+        btnAdicionarCLientes.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnAdicionarCLientes.setBorderPainted(false);
+        btnAdicionarCLientes.setColor(new java.awt.Color(0, 153, 153));
+        btnAdicionarCLientes.setColorClick(new java.awt.Color(0, 134, 134));
+        btnAdicionarCLientes.setColorOver(new java.awt.Color(0, 114, 114));
+        btnAdicionarCLientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarActionPerformed(evt);
+                btnAdicionarCLientesActionPerformed(evt);
             }
         });
 
-        btnRemover.setBackground(new java.awt.Color(153, 0, 0));
-        btnRemover.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
-        btnRemover.setText("Remover");
-        btnRemover.setBorderColor(new java.awt.Color(153, 0, 0));
-        btnRemover.setBorderPainted(false);
-        btnRemover.setColor(new java.awt.Color(153, 0, 0));
-        btnRemover.setColorClick(new java.awt.Color(175, 0, 0));
-        btnRemover.setColorOver(new java.awt.Color(154, 0, 0));
+        btnRemoverCLientes.setBackground(new java.awt.Color(153, 0, 0));
+        btnRemoverCLientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoverCLientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
+        btnRemoverCLientes.setText("Remover");
+        btnRemoverCLientes.setBorderColor(new java.awt.Color(153, 0, 0));
+        btnRemoverCLientes.setBorderPainted(false);
+        btnRemoverCLientes.setColor(new java.awt.Color(153, 0, 0));
+        btnRemoverCLientes.setColorClick(new java.awt.Color(175, 0, 0));
+        btnRemoverCLientes.setColorOver(new java.awt.Color(154, 0, 0));
 
-        btnRounded3.setBackground(new java.awt.Color(191, 189, 189));
-        btnRounded3.setForeground(new java.awt.Color(255, 255, 255));
-        btnRounded3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/atualizarLogo.png"))); // NOI18N
-        btnRounded3.setText("Atualizar");
-        btnRounded3.setBorderColor(new java.awt.Color(191, 189, 189));
-        btnRounded3.setBorderPainted(false);
-        btnRounded3.setColor(new java.awt.Color(191, 189, 189));
-        btnRounded3.setColorClick(new java.awt.Color(159, 159, 159));
-        btnRounded3.setColorOver(new java.awt.Color(184, 180, 180));
+        btnAtualizarClientes.setBackground(new java.awt.Color(191, 189, 189));
+        btnAtualizarClientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/atualizarLogo.png"))); // NOI18N
+        btnAtualizarClientes.setText("Atualizar");
+        btnAtualizarClientes.setBorderColor(new java.awt.Color(191, 189, 189));
+        btnAtualizarClientes.setBorderPainted(false);
+        btnAtualizarClientes.setColor(new java.awt.Color(191, 189, 189));
+        btnAtualizarClientes.setColorClick(new java.awt.Color(159, 159, 159));
+        btnAtualizarClientes.setColorOver(new java.awt.Color(184, 180, 180));
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
@@ -111,22 +111,21 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
-                        .addGap(441, 441, 441)
-                        .addComponent(btnRounded3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRemoverCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAdicionarCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
                         .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                            .addComponent(tfCEP, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                            .addComponent(tfRazaoSocial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(tfMunicipioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(tfCEPCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(tfRazaoSocialCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(67, 67, 67)
                         .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(roundedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfNumeroResi, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))))
+                            .addComponent(tfCNPJCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfInscricaoEstadualCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfNumeroResiCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))))
                 .addGap(30, 30, 30))
         );
         jpPrincipalLayout.setVerticalGroup(
@@ -134,21 +133,21 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfRazaoSocialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCNPJCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roundedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCEPCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfInscricaoEstadualCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfNumeroResi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfMunicipioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNumeroResiCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRounded3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdicionarCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoverCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(246, 246, 246))
         );
 
@@ -193,23 +192,23 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+    private void btnAdicionarCLientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCLientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarActionPerformed
+    }//GEN-LAST:event_btnAdicionarCLientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Components.btnRounded btnAdicionar;
-    private Components.btnRounded btnRemover;
-    private Components.btnRounded btnRounded3;
+    private Components.btnRounded btnAdicionarCLientes;
+    private Components.btnRounded btnAtualizarClientes;
+    private Components.btnRounded btnRemoverCLientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jpPrincipal;
-    private test.RoundedTextField roundedTextField1;
-    private test.RoundedTextField tfCEP;
-    private test.RoundedTextField tfCNPJ;
-    private test.RoundedTextField tfMunicipio;
-    private test.RoundedTextField tfNumeroResi;
-    private test.RoundedTextField tfRazaoSocial;
+    private test.RoundedTextField tfCEPCliente;
+    private test.RoundedTextField tfCNPJCliente;
+    private test.RoundedTextField tfInscricaoEstadualCliente;
+    private test.RoundedTextField tfMunicipioCliente;
+    private test.RoundedTextField tfNumeroResiCliente;
+    private test.RoundedTextField tfRazaoSocialCliente;
     // End of variables declaration//GEN-END:variables
 }

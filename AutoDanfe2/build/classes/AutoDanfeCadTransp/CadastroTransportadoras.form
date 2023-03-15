@@ -49,18 +49,17 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="444" max="-2" attributes="0"/>
-                          <Component id="btnAtualizar" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="btnAtualizarTransp" min="-2" pref="139" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="btnRemover" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="btnRemoverTransp" min="-2" pref="139" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="btnRounded1" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="btnAdicionarTransp" min="-2" pref="139" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="tfMunicipio" max="32767" attributes="0"/>
-                              <Component id="tfLogradouro" max="32767" attributes="0"/>
-                              <Component id="tfRazaoSocial" pref="430" max="32767" attributes="0"/>
+                              <Component id="tfLogradouroTransp" max="32767" attributes="0"/>
+                              <Component id="tfRazaoSocialTransp" pref="430" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -80,13 +79,13 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="tfRazaoSocial" pref="40" max="32767" attributes="0"/>
+                      <Component id="tfRazaoSocialTransp" pref="40" max="32767" attributes="0"/>
                       <Component id="tfCNPJ" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="tfInscricaoEstadual" pref="40" max="32767" attributes="0"/>
-                      <Component id="tfLogradouro" max="32767" attributes="0"/>
+                      <Component id="tfLogradouroTransp" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -95,9 +94,9 @@
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnRounded1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="btnRemover" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="btnAtualizar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="btnAdicionarTransp" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="btnRemoverTransp" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="btnAtualizarTransp" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
               </Group>
@@ -146,23 +145,31 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="test.RoundedTextField" name="tfRazaoSocial">
+        <Component class="test.RoundedTextField" name="tfRazaoSocialTransp">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Raz&#xe3;o Social"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfRazaoSocialTranspFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfRazaoSocialTranspFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfCNPJ">
           <Properties>
             <Property name="text" type="java.lang.String" value="CNPJ"/>
           </Properties>
         </Component>
-        <Component class="test.RoundedTextField" name="tfLogradouro">
+        <Component class="test.RoundedTextField" name="tfLogradouroTransp">
           <Properties>
             <Property name="text" type="java.lang.String" value="Logradouro"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfLogradouroTranspFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfLogradouroTranspFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfMunicipio">
           <Properties>
@@ -179,7 +186,7 @@
             <Property name="text" type="java.lang.String" value="UF"/>
           </Properties>
         </Component>
-        <Component class="Components.btnRounded" name="btnRounded1">
+        <Component class="Components.btnRounded" name="btnAdicionarTransp">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -205,7 +212,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="Components.btnRounded" name="btnRemover">
+        <Component class="Components.btnRounded" name="btnRemoverTransp">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
@@ -217,7 +224,6 @@
               <Image iconType="3" name="/icons/cancelarLogo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Remover"/>
-            <Property name="actionCommand" type="java.lang.String" value="Remover"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
@@ -232,7 +238,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="Components.btnRounded" name="btnAtualizar">
+        <Component class="Components.btnRounded" name="btnAtualizarTransp">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bd" green="bd" red="bf" type="rgb"/>
