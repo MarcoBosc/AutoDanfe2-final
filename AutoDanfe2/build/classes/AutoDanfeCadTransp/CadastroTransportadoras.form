@@ -161,6 +161,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="CNPJ"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfLogradouroTransp">
           <Properties>
@@ -175,16 +179,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Munic&#xed;pio"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfMunicipioFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfMunicipioFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfInscricaoEstadual">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inscri&#xe7;&#xe3;o Estadual"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfInscricaoEstadualFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfInscricaoEstadualFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfUF">
           <Properties>
             <Property name="text" type="java.lang.String" value="UF"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfUFFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfUFFocusLost"/>
+          </Events>
         </Component>
         <Component class="Components.btnRounded" name="btnAdicionarTransp">
           <Properties>

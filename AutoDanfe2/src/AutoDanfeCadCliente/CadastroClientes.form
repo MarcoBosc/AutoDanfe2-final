@@ -121,6 +121,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfRazaoSocialClienteFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfRazaoSocialClienteFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfCEPCliente">
           <Properties>
@@ -132,6 +136,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCEPClienteFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCEPClienteFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfMunicipioCliente">
           <Properties>
@@ -143,6 +151,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfMunicipioClienteFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfMunicipioClienteFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfCNPJCliente">
           <Properties>
@@ -157,6 +169,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJClienteFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJClienteFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfInscricaoEstadualCliente">
           <Properties>
@@ -165,6 +181,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfInscricaoEstadualClienteFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfInscricaoEstadualClienteFocusLost"/>
+          </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfNumeroResiCliente">
           <Properties>
@@ -173,6 +193,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfNumeroResiClienteFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfNumeroResiClienteFocusLost"/>
+          </Events>
         </Component>
         <Component class="Components.btnRounded" name="btnAdicionarCLientes">
           <Properties>

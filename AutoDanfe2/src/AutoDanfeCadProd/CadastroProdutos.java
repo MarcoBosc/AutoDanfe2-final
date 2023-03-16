@@ -179,7 +179,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -208,7 +208,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfCodProdFocusLost
 
     private void tfNCMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusGained
-        tfNCM.setText("NCM do Produto");
+        tfNCM.setText("");
     }//GEN-LAST:event_tfNCMFocusGained
 
     private void tfNCMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusLost

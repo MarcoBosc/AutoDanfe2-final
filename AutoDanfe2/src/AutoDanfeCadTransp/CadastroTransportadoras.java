@@ -77,6 +77,14 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         });
 
         tfCNPJ.setText("CNPJ");
+        tfCNPJ.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCNPJFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCNPJFocusLost(evt);
+            }
+        });
 
         tfLogradouroTransp.setText("Logradouro");
         tfLogradouroTransp.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -89,10 +97,34 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         });
 
         tfMunicipio.setText("Município");
+        tfMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfMunicipioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfMunicipioFocusLost(evt);
+            }
+        });
 
         tfInscricaoEstadual.setText("Inscrição Estadual");
+        tfInscricaoEstadual.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfInscricaoEstadualFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfInscricaoEstadualFocusLost(evt);
+            }
+        });
 
         tfUF.setText("UF");
+        tfUF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfUFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfUFFocusLost(evt);
+            }
+        });
 
         btnAdicionarTransp.setBackground(new java.awt.Color(0, 153, 153));
         btnAdicionarTransp.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,6 +236,46 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             tfLogradouroTransp.setText("Logradouro");
         }
     }//GEN-LAST:event_tfLogradouroTranspFocusLost
+
+    private void tfMunicipioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioFocusGained
+        tfMunicipio.setText("");
+    }//GEN-LAST:event_tfMunicipioFocusGained
+
+    private void tfMunicipioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioFocusLost
+        if (tfMunicipio.getText().isEmpty()){
+            tfMunicipio.setText("Município");
+        }
+    }//GEN-LAST:event_tfMunicipioFocusLost
+
+    private void tfCNPJFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJFocusGained
+        tfCNPJ.setText("");
+    }//GEN-LAST:event_tfCNPJFocusGained
+
+    private void tfCNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJFocusLost
+        if (tfCNPJ.getText().isEmpty()){
+            tfCNPJ.setText("CNPJ");
+        }
+    }//GEN-LAST:event_tfCNPJFocusLost
+
+    private void tfInscricaoEstadualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualFocusGained
+        tfInscricaoEstadual.setText("");
+    }//GEN-LAST:event_tfInscricaoEstadualFocusGained
+
+    private void tfInscricaoEstadualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualFocusLost
+        if(tfInscricaoEstadual.getText().isEmpty()) {
+            tfInscricaoEstadual.setText("Inscrição Estadual");
+        }
+    }//GEN-LAST:event_tfInscricaoEstadualFocusLost
+
+    private void tfUFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUFFocusGained
+        tfUF.setText("");
+    }//GEN-LAST:event_tfUFFocusGained
+
+    private void tfUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUFFocusLost
+        if (tfUF.getText().isEmpty()) {
+            tfUF.setText("UF");
+        }
+    }//GEN-LAST:event_tfUFFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -44,25 +44,73 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         tfRazaoSocialCliente.setText("Razão Social");
         tfRazaoSocialCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfRazaoSocialCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfRazaoSocialClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfRazaoSocialClienteFocusLost(evt);
+            }
+        });
 
         tfCEPCliente.setText("CEP");
         tfCEPCliente.setPreferredSize(new java.awt.Dimension(108, 22));
         tfCEPCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfCEPCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCEPClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCEPClienteFocusLost(evt);
+            }
+        });
 
         tfMunicipioCliente.setText("Município");
         tfMunicipioCliente.setPreferredSize(new java.awt.Dimension(108, 22));
         tfMunicipioCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfMunicipioCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfMunicipioClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfMunicipioClienteFocusLost(evt);
+            }
+        });
 
         tfCNPJCliente.setText("CNPJ");
         tfCNPJCliente.setMinimumSize(new java.awt.Dimension(108, 22));
         tfCNPJCliente.setPreferredSize(new java.awt.Dimension(108, 22));
         tfCNPJCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfCNPJCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCNPJClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCNPJClienteFocusLost(evt);
+            }
+        });
 
         tfInscricaoEstadualCliente.setText("Inscrição Estadual");
         tfInscricaoEstadualCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfInscricaoEstadualCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfInscricaoEstadualClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfInscricaoEstadualClienteFocusLost(evt);
+            }
+        });
 
         tfNumeroResiCliente.setText("Numero Residencial");
         tfNumeroResiCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        tfNumeroResiCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNumeroResiClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNumeroResiClienteFocusLost(evt);
+            }
+        });
 
         btnAdicionarCLientes.setBackground(new java.awt.Color(0, 153, 153));
         btnAdicionarCLientes.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,6 +239,66 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     private void btnAdicionarCLientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCLientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarCLientesActionPerformed
+
+    private void tfRazaoSocialClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialClienteFocusGained
+        tfRazaoSocialCliente.setText("");
+    }//GEN-LAST:event_tfRazaoSocialClienteFocusGained
+
+    private void tfRazaoSocialClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialClienteFocusLost
+        if (tfRazaoSocialCliente.getText().isEmpty()) {
+            tfRazaoSocialCliente.setText("Razão Social");
+        }
+    }//GEN-LAST:event_tfRazaoSocialClienteFocusLost
+
+    private void tfCEPClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCEPClienteFocusGained
+        tfCEPCliente.setText("");
+    }//GEN-LAST:event_tfCEPClienteFocusGained
+
+    private void tfCEPClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCEPClienteFocusLost
+        if(tfCEPCliente.getText().isEmpty()) {
+            tfCEPCliente.setText("CEP");
+        }
+    }//GEN-LAST:event_tfCEPClienteFocusLost
+
+    private void tfMunicipioClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusGained
+        tfMunicipioCliente.setText("");
+    }//GEN-LAST:event_tfMunicipioClienteFocusGained
+
+    private void tfMunicipioClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusLost
+        if (tfMunicipioCliente.getText().isEmpty()) {
+            tfMunicipioCliente.setText("Município");
+        }
+    }//GEN-LAST:event_tfMunicipioClienteFocusLost
+
+    private void tfCNPJClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJClienteFocusGained
+        tfCNPJCliente.setText("");
+    }//GEN-LAST:event_tfCNPJClienteFocusGained
+
+    private void tfCNPJClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJClienteFocusLost
+        if (tfCNPJCliente.getText().isEmpty()) {
+            tfCNPJCliente.setText("CNPJ");
+        }
+    }//GEN-LAST:event_tfCNPJClienteFocusLost
+
+    private void tfInscricaoEstadualClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualClienteFocusGained
+        tfInscricaoEstadualCliente.setText("");
+    }//GEN-LAST:event_tfInscricaoEstadualClienteFocusGained
+
+    private void tfInscricaoEstadualClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualClienteFocusLost
+        if (tfInscricaoEstadualCliente.getText().isEmpty()) {
+            tfInscricaoEstadualCliente.setText("Inscrição Estadual");
+        }
+    }//GEN-LAST:event_tfInscricaoEstadualClienteFocusLost
+
+    private void tfNumeroResiClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusGained
+        tfNumeroResiCliente.setText("");
+    }//GEN-LAST:event_tfNumeroResiClienteFocusGained
+
+    private void tfNumeroResiClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusLost
+        if (tfNumeroResiCliente.getText().isEmpty()) {
+            tfNumeroResiCliente.setText("Numero Residencial");
+        }
+    }//GEN-LAST:event_tfNumeroResiClienteFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

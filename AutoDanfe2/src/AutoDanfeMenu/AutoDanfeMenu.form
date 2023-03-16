@@ -76,7 +76,7 @@
                   <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="jLabel3" pref="199" max="32767" attributes="0"/>
+                  <Component id="jLabel3" pref="201" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="365" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -156,7 +156,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icons/voltarLogo.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Menu Iniciar"/>
+            <Property name="text" type="java.lang.String" value="Menu Inicial"/>
             <Property name="toolTipText" type="java.lang.String" value="Retornar ao Menu Inicial"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>

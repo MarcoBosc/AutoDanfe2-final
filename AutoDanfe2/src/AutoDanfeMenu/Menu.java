@@ -6,11 +6,9 @@ import javax.swing.JButton;
 
 public class Menu extends javax.swing.JInternalFrame {
 
-
+    
     public Menu() {
         initComponents();
-        
-//        Program.getAutoDanfeMenu().setBtnMenuIniciarEnabled(false);
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();

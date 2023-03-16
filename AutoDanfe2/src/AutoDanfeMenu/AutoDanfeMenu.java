@@ -1,5 +1,6 @@
 package AutoDanfeMenu;
 
+import Components.btnRounded;
 import Controller.Program;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -8,12 +9,10 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
 
     public AutoDanfeMenu() {
         initComponents();
-        
-          JInternalFrame frameAtual = dpPrincipal.getSelectedFrame() ;
-        
+
         dpPrincipal.add(Program.getMenu());
         Program.getMenu().setVisible(true);
-
+        
         dpPrincipal.add(Program.getCadastroClientes());
         Program.getCadastroClientes().setVisible(false);
 
@@ -80,7 +79,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         btnMenuIniciar.setBackground(new java.awt.Color(0, 0, 0));
         btnMenuIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnMenuIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/voltarLogo.png"))); // NOI18N
-        btnMenuIniciar.setText("Menu Iniciar");
+        btnMenuIniciar.setText("Menu Inicial");
         btnMenuIniciar.setToolTipText("Retornar ao Menu Inicial");
         btnMenuIniciar.setBorderColor(new java.awt.Color(0, 0, 0));
         btnMenuIniciar.setColor(new java.awt.Color(0, 0, 0));
@@ -102,7 +101,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
                 .addGap(260, 260, 260)
                 .addComponent(jLabel5)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addGap(365, 365, 365))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -151,26 +150,21 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuIniciarActionPerformed
-              
         Program.getMenu().setVisible(true);
         Program.getCadastroClientes().setVisible(false);
         Program.getCadastroTransportadoras().setVisible(false);
         Program.getCadastroProdutos().setVisible(false);
         Program.getEmissaoBoleto().setVisible(false);
         Program.getEmissaoNota().setVisible(false);
-        Program.getCancelamentoNota().setVisible(false);    
+        Program.getCancelamentoNota().setVisible(false);
+
     }//GEN-LAST:event_btnMenuIniciarActionPerformed
 
-    public JButton getBtnMenuIniciar() {
-        return btnMenuIniciar;
-    }
 
-   public void setBtnMenuIniciarEnabled(boolean enabled) {
-       btnMenuIniciar.setEnabled(enabled);
+    public static void setBtnMenuIniciarVisible() {
+        Program.getAutoDanfeMenu().btnMenuIniciar.setVisible(true);
     }
-   
-   
-  
+    
     /**
      * @param args the command line arguments
      */
