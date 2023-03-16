@@ -1,6 +1,7 @@
 package Components;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -20,8 +21,9 @@ public class btnRounded extends JButton {
 
     public btnRounded() {
         //  Init Color teste
-
+        
         setColor(Color.WHITE);
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         colorOver = new Color(179, 250, 160);
         colorClick = new Color(152, 184, 144);
         borderColor = new Color(255, 255, 255);

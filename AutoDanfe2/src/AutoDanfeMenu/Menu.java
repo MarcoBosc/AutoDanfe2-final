@@ -1,10 +1,20 @@
 package AutoDanfeMenu;
 
+import Controller.Program;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.JButton;
+
 public class Menu extends javax.swing.JInternalFrame {
 
 
     public Menu() {
         initComponents();
+        
+//        Program.getAutoDanfeMenu().setBtnMenuIniciarEnabled(false);
+        
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
+        bui.setNorthPane(null);
     }
 
     /**
@@ -39,8 +49,8 @@ public class Menu extends javax.swing.JInternalFrame {
 
         btnEmitir.setBorder(null);
         btnEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/EmissaoNfe.png"))); // NOI18N
-        btnEmitir.setColorClick(new java.awt.Color(153, 153, 255));
-        btnEmitir.setColorOver(new java.awt.Color(204, 204, 255));
+        btnEmitir.setColorClick(new java.awt.Color(102, 102, 102));
+        btnEmitir.setColorOver(new java.awt.Color(153, 153, 153));
         btnEmitir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmitirActionPerformed(evt);
@@ -49,8 +59,8 @@ public class Menu extends javax.swing.JInternalFrame {
 
         btnCancelarNfe.setBorder(null);
         btnCancelarNfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CancelarNfe.png"))); // NOI18N
-        btnCancelarNfe.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCancelarNfe.setColorOver(new java.awt.Color(204, 204, 255));
+        btnCancelarNfe.setColorClick(new java.awt.Color(102, 102, 102));
+        btnCancelarNfe.setColorOver(new java.awt.Color(153, 153, 153));
         btnCancelarNfe.setPreferredSize(new java.awt.Dimension(169, 169));
         btnCancelarNfe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,8 +70,8 @@ public class Menu extends javax.swing.JInternalFrame {
 
         btnEmissaoBoleto.setBorder(null);
         btnEmissaoBoleto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/EmissaoBoleto.png"))); // NOI18N
-        btnEmissaoBoleto.setColorClick(new java.awt.Color(153, 153, 255));
-        btnEmissaoBoleto.setColorOver(new java.awt.Color(204, 204, 255));
+        btnEmissaoBoleto.setColorClick(new java.awt.Color(102, 102, 102));
+        btnEmissaoBoleto.setColorOver(new java.awt.Color(153, 153, 153));
         btnEmissaoBoleto.setPreferredSize(new java.awt.Dimension(169, 169));
         btnEmissaoBoleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,8 +82,8 @@ public class Menu extends javax.swing.JInternalFrame {
         btnCadastroProd.setBorder(null);
         btnCadastroProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CadastroProd.png"))); // NOI18N
         btnCadastroProd.setToolTipText("");
-        btnCadastroProd.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCadastroProd.setColorOver(new java.awt.Color(204, 204, 255));
+        btnCadastroProd.setColorClick(new java.awt.Color(102, 102, 102));
+        btnCadastroProd.setColorOver(new java.awt.Color(153, 153, 153));
         btnCadastroProd.setPreferredSize(new java.awt.Dimension(169, 169));
         btnCadastroProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +93,8 @@ public class Menu extends javax.swing.JInternalFrame {
 
         btnCadastroCliente.setBorder(null);
         btnCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CadastroClientes.png"))); // NOI18N
-        btnCadastroCliente.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCadastroCliente.setColorOver(new java.awt.Color(204, 204, 255));
+        btnCadastroCliente.setColorClick(new java.awt.Color(102, 102, 102));
+        btnCadastroCliente.setColorOver(new java.awt.Color(153, 153, 153));
         btnCadastroCliente.setPreferredSize(new java.awt.Dimension(169, 169));
         btnCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,8 +104,8 @@ public class Menu extends javax.swing.JInternalFrame {
 
         btnCadastroTransp.setBorder(null);
         btnCadastroTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/CadastroTransp.png"))); // NOI18N
-        btnCadastroTransp.setColorClick(new java.awt.Color(153, 153, 255));
-        btnCadastroTransp.setColorOver(new java.awt.Color(204, 204, 255));
+        btnCadastroTransp.setColorClick(new java.awt.Color(102, 102, 102));
+        btnCadastroTransp.setColorOver(new java.awt.Color(153, 153, 153));
         btnCadastroTransp.setPreferredSize(new java.awt.Dimension(169, 169));
         btnCadastroTransp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,27 +174,33 @@ public class Menu extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirActionPerformed
-        // TODO add your handling code here:
+        Program.getMenu().setVisible(false);
+        Program.getEmissaoNota().setVisible(true);
     }//GEN-LAST:event_btnEmitirActionPerformed
 
     private void btnCancelarNfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarNfeActionPerformed
-        // TODO add your handling code here:
+        Program.getMenu().setVisible(false);
+        Program.getCancelamentoNota().setVisible(true);
     }//GEN-LAST:event_btnCancelarNfeActionPerformed
 
     private void btnEmissaoBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoBoletoActionPerformed
-        // TODO add your handling code here:
+        Program.getMenu().setVisible(false);
+        Program.getEmissaoBoleto().setVisible(true);
     }//GEN-LAST:event_btnEmissaoBoletoActionPerformed
 
     private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed
-        // TODO add your handling code here:
+        Program.getMenu().setVisible(false);
+        Program.getCadastroProdutos().setVisible(true);
     }//GEN-LAST:event_btnCadastroProdActionPerformed
 
     private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteActionPerformed
-
+        Program.getMenu().setVisible(false);
+        Program.getCadastroClientes().setVisible(true);
     }//GEN-LAST:event_btnCadastroClienteActionPerformed
 
     private void btnCadastroTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroTranspActionPerformed
-        // TODO add your handling code here:
+        Program.getMenu().setVisible(false);
+        Program.getCadastroTransportadoras().setVisible(true);
     }//GEN-LAST:event_btnCadastroTranspActionPerformed
 
 

@@ -1,20 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package AutoDanfeCadCliente;
 
-/**
- *
- * @author marco
- */
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 public class CadastroClientes extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CadastroClientes
-     */
     public CadastroClientes() {
         initComponents();
+        
+        
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
+        bui.setNorthPane(null);
     }
 
     /**

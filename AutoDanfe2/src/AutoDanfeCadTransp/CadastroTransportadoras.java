@@ -1,5 +1,7 @@
 package AutoDanfeCadTransp;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 
 public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
@@ -8,6 +10,10 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
      */
     public CadastroTransportadoras() {
         initComponents();
+       
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
+        bui.setNorthPane(null);
     }
 
     /**
@@ -162,7 +168,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                     .addComponent(btnAdicionarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(272, 272, 272))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

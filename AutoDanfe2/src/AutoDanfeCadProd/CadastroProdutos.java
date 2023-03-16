@@ -4,6 +4,8 @@
  */
 package AutoDanfeCadProd;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author marco
@@ -15,6 +17,10 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
      */
     public CadastroProdutos() {
         initComponents();
+       
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
+        bui.setNorthPane(null);
     }
 
     /**
@@ -107,6 +113,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         btnAdicionarProd.setColorOver(new java.awt.Color(0, 114, 114));
 
         btnRemoverProd.setBackground(new java.awt.Color(153, 0, 0));
+        btnRemoverProd.setForeground(new java.awt.Color(255, 255, 255));
         btnRemoverProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cancelarLogo.png"))); // NOI18N
         btnRemoverProd.setText("Remover");
         btnRemoverProd.setBorderColor(new java.awt.Color(153, 0, 0));

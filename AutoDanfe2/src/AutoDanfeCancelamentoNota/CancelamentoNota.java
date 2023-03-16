@@ -4,6 +4,8 @@
  */
 package AutoDanfeCancelamentoNota;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author marco
@@ -15,6 +17,10 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
      */
     public CancelamentoNota() {
         initComponents();
+
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
+        bui.setNorthPane(null);
     }
 
     /**
