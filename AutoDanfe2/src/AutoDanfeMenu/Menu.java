@@ -2,7 +2,6 @@ package AutoDanfeMenu;
 
 import Controller.Program;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.JButton;
 
 public class Menu extends javax.swing.JInternalFrame {
 

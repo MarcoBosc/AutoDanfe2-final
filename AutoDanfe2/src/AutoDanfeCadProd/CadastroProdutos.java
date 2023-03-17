@@ -4,6 +4,7 @@
  */
 package AutoDanfeCadProd;
 
+import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -17,7 +18,10 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
      */
     public CadastroProdutos() {
         initComponents();
-       
+
+        tfCodProd.setForeground(Color.GRAY);
+        tfNCM.setForeground(Color.GRAY);
+        tfNomeProd.setForeground(Color.GRAY);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -41,6 +45,9 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         btnAdicionarProd = new Components.btnRounded();
         btnRemoverProd = new Components.btnRounded();
         btnAtualizarProd = new Components.btnRounded();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1000, 596));
         setMinimumSize(new java.awt.Dimension(1000, 596));
@@ -71,7 +78,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        tfNomeProd.setText("Nome do Produto");
+        tfNomeProd.setText("JALECO ML BRANCO M");
         tfNomeProd.setLineColor(new java.awt.Color(75, 110, 175));
         tfNomeProd.setMargin(new java.awt.Insets(1, 3, 1, 3));
         tfNomeProd.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -83,7 +90,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
             }
         });
 
-        tfNCM.setText("NCM do Produto");
+        tfNCM.setText("09012100");
         tfNCM.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfNCMFocusGained(evt);
@@ -93,7 +100,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
             }
         });
 
-        tfCodProd.setText("Código do Produto");
+        tfCodProd.setText("0920900");
         tfCodProd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfCodProdFocusGained(evt);
@@ -130,37 +137,62 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         btnAtualizarProd.setColorClick(new java.awt.Color(159, 159, 159));
         btnAtualizarProd.setColorOver(new java.awt.Color(180, 180, 180));
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Nome do Produto:");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("NCM do Produto:");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Código do Produto:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNCM, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                            .addComponent(tfNomeProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(67, 67, 67)
-                        .addComponent(tfCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfNCM, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                                    .addComponent(tfNomeProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(67, 67, 67)
+                                .addComponent(tfCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnRemoverProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnAdicionarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel3))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnRemoverProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAdicionarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)
+                        .addGap(377, 377, 377)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfCodProd, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(tfNomeProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(1, 1, 1)
                 .addComponent(tfNCM, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -189,31 +221,37 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     private void tfNomeProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNomeProdFocusGained
         tfNomeProd.setText("");
+        tfNomeProd.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfNomeProdFocusGained
 
     private void tfNomeProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNomeProdFocusLost
-        if (tfNomeProd.getText().isEmpty()){
-            tfNomeProd.setText("Nome do Produto");
+        if (tfNomeProd.getText().isEmpty()) {
+            tfNomeProd.setText("JALECO ML BRANCO M");
+            tfNomeProd.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNomeProdFocusLost
 
     private void tfCodProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodProdFocusGained
         tfCodProd.setText("");
+        tfCodProd.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfCodProdFocusGained
 
     private void tfCodProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodProdFocusLost
-        if (tfCodProd.getText().isEmpty()){
-            tfCodProd.setText("Código do Produto");
+        if (tfCodProd.getText().isEmpty()) {
+            tfCodProd.setText("0920900");
+            tfCodProd.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCodProdFocusLost
 
     private void tfNCMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusGained
         tfNCM.setText("");
+        tfNCM.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfNCMFocusGained
 
     private void tfNCMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusLost
-        if (tfNCM.getText().isEmpty()){
-            tfNCM.setText("NCM do Produto");
+        if (tfNCM.getText().isEmpty()) {
+            tfNCM.setText("09012100");
+            tfNCM.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNCMFocusLost
 
@@ -223,6 +261,9 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     private Components.btnRounded btnAtualizarProd;
     private Components.btnRounded btnRemoverProd;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private test.RoundedTextField tfCodProd;

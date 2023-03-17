@@ -1,5 +1,6 @@
 package AutoDanfeCadTransp;
 
+import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 
@@ -11,6 +12,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     public CadastroTransportadoras() {
         initComponents();
        
+        tfRazaoSocialTransp.setForeground(Color.GRAY);
+        tfLogradouroTransp.setForeground(Color.GRAY);
+        tfMunicipio.setForeground(Color.GRAY);
+        tfCNPJ.setForeground(Color.GRAY);
+        tfUF.setForeground(Color.GRAY);
+        tfInscricaoEstadual.setForeground(Color.GRAY);
+        
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -37,8 +45,15 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         btnAdicionarTransp = new Components.btnRounded();
         btnRemoverTransp = new Components.btnRounded();
         btnAtualizarTransp = new Components.btnRounded();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
+        setPreferredSize(new java.awt.Dimension(1000, 596));
 
         jPanel1.setBackground(new java.awt.Color(223, 223, 223));
 
@@ -66,7 +81,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         );
 
         tfRazaoSocialTransp.setBackground(new java.awt.Color(255, 255, 255));
-        tfRazaoSocialTransp.setText("Razão Social");
+        tfRazaoSocialTransp.setText("Aimê Uniformes e Cia Ltda");
         tfRazaoSocialTransp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfRazaoSocialTranspFocusGained(evt);
@@ -75,8 +90,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 tfRazaoSocialTranspFocusLost(evt);
             }
         });
+        tfRazaoSocialTransp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfRazaoSocialTranspActionPerformed(evt);
+            }
+        });
 
-        tfCNPJ.setText("CNPJ");
+        tfCNPJ.setText("10.628.776/0001-04");
         tfCNPJ.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfCNPJFocusGained(evt);
@@ -86,7 +106,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfLogradouroTransp.setText("Logradouro");
+        tfLogradouroTransp.setText("Rua Duque de Caxias");
         tfLogradouroTransp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfLogradouroTranspFocusGained(evt);
@@ -96,7 +116,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfMunicipio.setText("Município");
+        tfMunicipio.setText("Erechim");
         tfMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfMunicipioFocusGained(evt);
@@ -105,8 +125,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 tfMunicipioFocusLost(evt);
             }
         });
+        tfMunicipio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfMunicipioActionPerformed(evt);
+            }
+        });
 
-        tfInscricaoEstadual.setText("Inscrição Estadual");
+        tfInscricaoEstadual.setText("388.108.598.269");
         tfInscricaoEstadual.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfInscricaoEstadualFocusGained(evt);
@@ -116,7 +141,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfUF.setText("UF");
+        tfUF.setText("RS");
         tfUF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfUFFocusGained(evt);
@@ -153,45 +178,95 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         btnAtualizarTransp.setColorClick(new java.awt.Color(159, 159, 159));
         btnAtualizarTransp.setColorOver(new java.awt.Color(180, 180, 180));
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Razão Social:");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Logradouro:");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Munucípio:");
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("CNPJ:");
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Inscrição Estadual:");
+
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("UF:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnAdicionarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnAdicionarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfLogradouroTransp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfRazaoSocialTransp, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))))
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfInscricaoEstadual, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                                        .addComponent(tfUF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel6)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfLogradouroTransp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfRazaoSocialTransp, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfInscricaoEstadual, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                            .addComponent(tfUF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(41, 41, 41))
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel2)
+                        .addGap(405, 405, 405)
+                        .addComponent(jLabel5)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfRazaoSocialTransp, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(tfCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfInscricaoEstadual, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(tfLogradouroTransp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(tfUF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -219,63 +294,83 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfRazaoSocialTranspFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspFocusGained
         tfRazaoSocialTransp.setText("");
+        tfRazaoSocialTransp.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfRazaoSocialTranspFocusGained
 
     private void tfRazaoSocialTranspFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspFocusLost
         if (tfRazaoSocialTransp.getText().isEmpty()) {
-            tfRazaoSocialTransp.setText("Razão Social");
+            tfRazaoSocialTransp.setText("Aimê Uniformes e Cia Ltda");
+            tfRazaoSocialTransp.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfRazaoSocialTranspFocusLost
 
     private void tfLogradouroTranspFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLogradouroTranspFocusGained
         tfLogradouroTransp.setText("");
+        tfLogradouroTransp.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfLogradouroTranspFocusGained
 
     private void tfLogradouroTranspFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLogradouroTranspFocusLost
         if(tfLogradouroTransp.getText().isEmpty()) {
-            tfLogradouroTransp.setText("Logradouro");
+            tfLogradouroTransp.setText("Rua Duque de Caxias");
+            tfLogradouroTransp.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfLogradouroTranspFocusLost
 
     private void tfMunicipioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioFocusGained
         tfMunicipio.setText("");
+        tfMunicipio.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfMunicipioFocusGained
 
     private void tfMunicipioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioFocusLost
         if (tfMunicipio.getText().isEmpty()){
-            tfMunicipio.setText("Município");
+            tfMunicipio.setText("Erechim");
+            tfMunicipio.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfMunicipioFocusLost
 
     private void tfCNPJFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJFocusGained
         tfCNPJ.setText("");
+        tfCNPJ.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfCNPJFocusGained
 
     private void tfCNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJFocusLost
         if (tfCNPJ.getText().isEmpty()){
-            tfCNPJ.setText("CNPJ");
+            tfCNPJ.setText("10.628.776/0001-04");
+            tfCNPJ.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCNPJFocusLost
 
     private void tfInscricaoEstadualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualFocusGained
         tfInscricaoEstadual.setText("");
+        tfInscricaoEstadual.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfInscricaoEstadualFocusGained
 
     private void tfInscricaoEstadualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualFocusLost
         if(tfInscricaoEstadual.getText().isEmpty()) {
-            tfInscricaoEstadual.setText("Inscrição Estadual");
+            tfInscricaoEstadual.setText("388.108.598.269");
+            tfInscricaoEstadual.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfInscricaoEstadualFocusLost
 
     private void tfUFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUFFocusGained
         tfUF.setText("");
+        tfUF.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfUFFocusGained
 
     private void tfUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUFFocusLost
         if (tfUF.getText().isEmpty()) {
-            tfUF.setText("UF");
+            tfUF.setText("RS");
+            tfUF.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfUFFocusLost
+
+    private void tfRazaoSocialTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfRazaoSocialTranspActionPerformed
+
+    private void tfMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMunicipioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfMunicipioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -283,6 +378,12 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     private Components.btnRounded btnAtualizarTransp;
     private Components.btnRounded btnRemoverTransp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private test.RoundedTextField tfCNPJ;
