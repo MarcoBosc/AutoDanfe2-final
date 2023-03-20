@@ -21,7 +21,7 @@ public class table extends JTable {
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
                 TableHeader header = new TableHeader(o + "");
                 header.setForeground(new Color(225,225,225));
-                header.setBackground(new Color(214,70,14));
+                header.setBackground(new Color(0,0,0));
                 return header;
             }
         });
@@ -29,7 +29,7 @@ public class table extends JTable {
             @Override
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean selected, boolean bln1, int i, int i1) {
                 Component com = super.getTableCellRendererComponent(jtable, o, selected, bln1, i, i1);
-                com.setBackground(new Color(34,34,34));
+                com.setBackground(new Color(255,255,255));
                 setBorder(noFocusBorder);
                 setHorizontalAlignment(CENTER);
                 if (selected) {

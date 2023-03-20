@@ -201,13 +201,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "CNPJ", "Razão Social", "IE", "Município", "Logradouro", "UF"
             }
         ));
         jScrollPane1.setViewportView(table1);
@@ -223,7 +223,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(40, 40, 40)
                             .addComponent(jLabel2)
-                            .addGap(400, 400, 400)
+                            .addGap(398, 398, 398)
                             .addComponent(jLabel5))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(31, 31, 31)
