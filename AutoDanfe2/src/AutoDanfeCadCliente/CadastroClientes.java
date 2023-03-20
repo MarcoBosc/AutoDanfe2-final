@@ -1,5 +1,6 @@
 package AutoDanfeCadCliente;
 
+import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class CadastroClientes extends javax.swing.JInternalFrame {
@@ -7,6 +8,12 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     public CadastroClientes() {
         initComponents();
         
+        tfRazaoSocialCliente.setForeground(Color.GRAY);
+        tfCEPCliente.setForeground(Color.GRAY);       
+        tfMunicipioCliente.setForeground(Color.GRAY);
+        tfCNPJCliente.setForeground(Color.GRAY);
+        tfInscricaoEstadualCliente.setForeground(Color.GRAY);
+        tfNumeroResiCliente.setForeground(Color.GRAY);  
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -32,6 +39,8 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         btnAdicionarCLientes = new Components.btnRounded();
         btnRemoverCLientes = new Components.btnRounded();
         btnAtualizarClientes = new Components.btnRounded();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table1 = new Components.table();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -147,25 +156,40 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         btnAtualizarClientes.setColorClick(new java.awt.Color(159, 159, 159));
         btnAtualizarClientes.setColorOver(new java.awt.Color(184, 180, 180));
 
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(table1);
+
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpPrincipalLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 433, Short.MAX_VALUE)
                         .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(btnRemoverCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(btnAdicionarCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpPrincipalLayout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpPrincipalLayout.createSequentialGroup()
                         .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfMunicipioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                             .addComponent(tfCEPCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                            .addComponent(tfRazaoSocialCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(67, 67, 67)
+                            .addComponent(tfRazaoSocialCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfMunicipioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfCNPJCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfInscricaoEstadualCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,7 +216,9 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
                     .addComponent(btnAdicionarCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoverCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(246, 246, 246))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -230,7 +256,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,61 +268,73 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
     private void tfRazaoSocialClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialClienteFocusGained
         tfRazaoSocialCliente.setText("");
+        tfRazaoSocialCliente.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfRazaoSocialClienteFocusGained
 
     private void tfRazaoSocialClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialClienteFocusLost
         if (tfRazaoSocialCliente.getText().isEmpty()) {
             tfRazaoSocialCliente.setText("Razão Social");
+            tfRazaoSocialCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfRazaoSocialClienteFocusLost
 
     private void tfCEPClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCEPClienteFocusGained
         tfCEPCliente.setText("");
+        tfCEPCliente.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfCEPClienteFocusGained
 
     private void tfCEPClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCEPClienteFocusLost
         if(tfCEPCliente.getText().isEmpty()) {
             tfCEPCliente.setText("CEP");
+            tfCEPCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCEPClienteFocusLost
 
     private void tfMunicipioClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusGained
         tfMunicipioCliente.setText("");
+        tfMunicipioCliente.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfMunicipioClienteFocusGained
 
     private void tfMunicipioClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusLost
         if (tfMunicipioCliente.getText().isEmpty()) {
             tfMunicipioCliente.setText("Município");
+            tfMunicipioCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfMunicipioClienteFocusLost
 
     private void tfCNPJClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJClienteFocusGained
         tfCNPJCliente.setText("");
+        tfCNPJCliente.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfCNPJClienteFocusGained
 
     private void tfCNPJClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJClienteFocusLost
         if (tfCNPJCliente.getText().isEmpty()) {
             tfCNPJCliente.setText("CNPJ");
+            tfCNPJCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCNPJClienteFocusLost
 
     private void tfInscricaoEstadualClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualClienteFocusGained
         tfInscricaoEstadualCliente.setText("");
+        tfInscricaoEstadualCliente.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfInscricaoEstadualClienteFocusGained
 
     private void tfInscricaoEstadualClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualClienteFocusLost
         if (tfInscricaoEstadualCliente.getText().isEmpty()) {
             tfInscricaoEstadualCliente.setText("Inscrição Estadual");
+            tfInscricaoEstadualCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfInscricaoEstadualClienteFocusLost
 
     private void tfNumeroResiClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusGained
         tfNumeroResiCliente.setText("");
+        tfNumeroResiCliente.setForeground(Color.BLACK);
     }//GEN-LAST:event_tfNumeroResiClienteFocusGained
 
     private void tfNumeroResiClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusLost
         if (tfNumeroResiCliente.getText().isEmpty()) {
             tfNumeroResiCliente.setText("Numero Residencial");
+            tfNumeroResiCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNumeroResiClienteFocusLost
 
@@ -307,7 +345,9 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     private Components.btnRounded btnRemoverCLientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpPrincipal;
+    private Components.table table1;
     private test.RoundedTextField tfCEPCliente;
     private test.RoundedTextField tfCNPJCliente;
     private test.RoundedTextField tfInscricaoEstadualCliente;
