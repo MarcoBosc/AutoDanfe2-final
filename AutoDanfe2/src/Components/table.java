@@ -21,7 +21,7 @@ public class table extends JTable {
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
                 TableHeader header = new TableHeader(o + "");
                 header.setForeground(new Color(225,225,225));
-                header.setBackground(new Color(0,0,0));
+                header.setBackground(new Color(0,153,153));
                 return header;
             }
         });
