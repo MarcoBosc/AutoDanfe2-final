@@ -32,23 +32,186 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnRounded1 = new Components.btnRounded();
+        btnRounded2 = new Components.btnRounded();
+        btnRounded3 = new Components.btnRounded();
+
         setPreferredSize(new java.awt.Dimension(1000, 596));
+
+        jPanel1.setBackground(new java.awt.Color(223, 223, 223));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Automação de Nf-e");
+
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("1. Destinatário");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("2. Produtos");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("3. Definições");
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("4. Transporte");
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("5. Revisão Geral");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel2)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel4)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel3)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel5)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel6)
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addContainerGap())
+        );
+
+        btnRounded1.setBackground(new java.awt.Color(0, 153, 153));
+        btnRounded1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRounded1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconNext.png"))); // NOI18N
+        btnRounded1.setText("Próximo");
+        btnRounded1.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnRounded1.setColor(new java.awt.Color(0, 153, 153));
+        btnRounded1.setColorClick(new java.awt.Color(0, 116, 116));
+        btnRounded1.setColorOver(new java.awt.Color(0, 127, 127));
+        btnRounded1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnRounded1.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnRounded1.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnRounded1.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnRounded1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRounded1ActionPerformed(evt);
+            }
+        });
+
+        btnRounded2.setBackground(new java.awt.Color(0, 153, 153));
+        btnRounded2.setForeground(new java.awt.Color(255, 255, 255));
+        btnRounded2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adicionarLogo.png"))); // NOI18N
+        btnRounded2.setText("Adicionar");
+        btnRounded2.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnRounded2.setColor(new java.awt.Color(0, 153, 153));
+        btnRounded2.setColorClick(new java.awt.Color(0, 116, 116));
+        btnRounded2.setColorOver(new java.awt.Color(0, 127, 127));
+        btnRounded2.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnRounded2.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnRounded2.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnRounded2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRounded2ActionPerformed(evt);
+            }
+        });
+
+        btnRounded3.setBackground(new java.awt.Color(153, 0, 0));
+        btnRounded3.setForeground(new java.awt.Color(255, 255, 255));
+        btnRounded3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/removeIcon.png"))); // NOI18N
+        btnRounded3.setText("Remover");
+        btnRounded3.setActionCommand("Remover");
+        btnRounded3.setBorderColor(new java.awt.Color(153, 0, 0));
+        btnRounded3.setColor(new java.awt.Color(153, 0, 0));
+        btnRounded3.setColorClick(new java.awt.Color(126, 0, 0));
+        btnRounded3.setColorOver(new java.awt.Color(135, 2, 2));
+        btnRounded3.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnRounded3.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnRounded3.setPreferredSize(new java.awt.Dimension(142, 30));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRounded3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRounded2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRounded3, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(btnRounded2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(432, 432, 432)
+                .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 988, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRounded1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRounded1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRounded1ActionPerformed
+
+    private void btnRounded2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRounded2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRounded2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Components.btnRounded btnRounded1;
+    private Components.btnRounded btnRounded2;
+    private Components.btnRounded btnRounded3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
