@@ -6,7 +6,7 @@ import AutoDanfeCadTransp.CadastroTransportadoras;
 import AutoDanfeCancelamentoNota.CancelamentoNota;
 import AutoDanfeEmissaoBoleto.EmissaoBoleto;
 import AutoDanfeCadCliente.CadastroClientes;
-import AutoDanfeEmissaoNota.EmissaoNota;
+import AutoDanfeEmissaoNota.EmissaoDestinatario;
 import AutoDanfeMenu.Menu;
 
 public class Program {
@@ -17,7 +17,7 @@ public class Program {
     private static CadastroTransportadoras cadastroTransportadoras;
     private static CancelamentoNota cancelamentoNota;
     private static EmissaoBoleto emissaoBoleto;
-    private static EmissaoNota emissaoNota;
+    private static EmissaoDestinatario emissaoNota;
     private static Menu menu;
 
     private Program() {
@@ -73,9 +73,9 @@ public class Program {
         return emissaoBoleto;
     }
 
-    public static EmissaoNota getEmissaoNota() {
+    public static EmissaoDestinatario getEmissaoNota() {
         if (emissaoNota == null) {
-            emissaoNota = new EmissaoNota();
+            emissaoNota = new EmissaoDestinatario();
         }
         return emissaoNota;
     }
