@@ -4,6 +4,7 @@
  */
 package AutoDanfeEmissaoNota;
 
+import Controller.Program;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -42,6 +43,8 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnNextRevisao = new Components.btnRounded();
+        btnVoltarDef = new Components.btnRounded();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
         setPreferredSize(new java.awt.Dimension(1000, 596));
@@ -104,17 +107,62 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnNextRevisao.setBackground(new java.awt.Color(0, 153, 153));
+        btnNextRevisao.setForeground(new java.awt.Color(255, 255, 255));
+        btnNextRevisao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconNext.png"))); // NOI18N
+        btnNextRevisao.setText("Próximo");
+        btnNextRevisao.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnNextRevisao.setColor(new java.awt.Color(0, 153, 153));
+        btnNextRevisao.setColorClick(new java.awt.Color(0, 116, 116));
+        btnNextRevisao.setColorOver(new java.awt.Color(0, 127, 127));
+        btnNextRevisao.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnNextRevisao.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnNextRevisao.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnNextRevisao.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnNextRevisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextRevisaoActionPerformed(evt);
+            }
+        });
+
+        btnVoltarDef.setBackground(new java.awt.Color(204, 204, 204));
+        btnVoltarDef.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltarDef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconBack.png"))); // NOI18N
+        btnVoltarDef.setText("Voltar");
+        btnVoltarDef.setBorderColor(new java.awt.Color(204, 204, 204));
+        btnVoltarDef.setColor(new java.awt.Color(204, 204, 204));
+        btnVoltarDef.setColorClick(new java.awt.Color(159, 159, 159));
+        btnVoltarDef.setColorOver(new java.awt.Color(184, 184, 184));
+        btnVoltarDef.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnVoltarDef.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnVoltarDef.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnVoltarDef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarDefActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnVoltarDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNextRevisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(525, 525, 525))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNextRevisao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltarDef, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,8 +179,20 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNextRevisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextRevisaoActionPerformed
+        Program.getEmissaoTransp().setVisible(false);
+        Program.getEmissaoRevisao().setVisible(true);
+    }//GEN-LAST:event_btnNextRevisaoActionPerformed
+
+    private void btnVoltarDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDefActionPerformed
+        Program.getEmissaoTransp().setVisible(false);
+        Program.getEmissaoDefinicoes().setVisible(true);
+    }//GEN-LAST:event_btnVoltarDefActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Components.btnRounded btnNextRevisao;
+    private Components.btnRounded btnVoltarDef;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

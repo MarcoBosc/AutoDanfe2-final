@@ -4,6 +4,7 @@
  */
 package AutoDanfeEmissaoNota;
 
+import Controller.Program;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -40,6 +41,8 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnEmitirNfe = new Components.btnRounded();
+        btnVoltarTransp = new Components.btnRounded();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
 
@@ -85,7 +88,7 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
                 .addComponent(jLabel5)
                 .addGap(38, 38, 38)
                 .addComponent(jLabel6)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,17 +104,63 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnEmitirNfe.setBackground(new java.awt.Color(0, 153, 153));
+        btnEmitirNfe.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmitirNfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emitirIcon.png"))); // NOI18N
+        btnEmitirNfe.setText("Emitir Nf-e");
+        btnEmitirNfe.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnEmitirNfe.setColor(new java.awt.Color(0, 153, 153));
+        btnEmitirNfe.setColorClick(new java.awt.Color(0, 116, 116));
+        btnEmitirNfe.setColorOver(new java.awt.Color(0, 127, 127));
+        btnEmitirNfe.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnEmitirNfe.setIconTextGap(8);
+        btnEmitirNfe.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnEmitirNfe.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnEmitirNfe.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnEmitirNfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmitirNfeActionPerformed(evt);
+            }
+        });
+
+        btnVoltarTransp.setBackground(new java.awt.Color(204, 204, 204));
+        btnVoltarTransp.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconBack.png"))); // NOI18N
+        btnVoltarTransp.setText("Voltar");
+        btnVoltarTransp.setBorderColor(new java.awt.Color(204, 204, 204));
+        btnVoltarTransp.setColor(new java.awt.Color(204, 204, 204));
+        btnVoltarTransp.setColorClick(new java.awt.Color(159, 159, 159));
+        btnVoltarTransp.setColorOver(new java.awt.Color(184, 184, 184));
+        btnVoltarTransp.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnVoltarTransp.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnVoltarTransp.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnVoltarTransp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarTranspActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnVoltarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEmitirNfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(525, 525, 525))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 446, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEmitirNfe, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -128,8 +177,19 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEmitirNfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirNfeActionPerformed
+        ///Emissao da nota
+    }//GEN-LAST:event_btnEmitirNfeActionPerformed
+
+    private void btnVoltarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarTranspActionPerformed
+        Program.getEmissaoRevisao().setVisible(false);
+        Program.getEmissaoTransp().setVisible(true);
+    }//GEN-LAST:event_btnVoltarTranspActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Components.btnRounded btnEmitirNfe;
+    private Components.btnRounded btnVoltarTransp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

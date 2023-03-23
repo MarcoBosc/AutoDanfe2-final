@@ -38,7 +38,7 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         tableItems = new Components.table();
         jLabel13 = new javax.swing.JLabel();
         tfValor = new test.RoundedTextField();
-        roundedTextField1 = new test.RoundedTextField();
+        tfQuantidade = new test.RoundedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -251,18 +251,39 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
 
         tfValor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfValor.setText("39,80");
+        tfValor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfValorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfValorFocusLost(evt);
+            }
+        });
 
-        roundedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        roundedTextField1.setText("0");
-        roundedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfQuantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfQuantidade.setText("0");
+        tfQuantidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfQuantidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfQuantidadeFocusLost(evt);
+            }
+        });
+        tfQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roundedTextField1ActionPerformed(evt);
+                tfQuantidadeActionPerformed(evt);
             }
         });
 
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camisa Social Azul Grafil ML M", "Calça Azul M", "Camiseta  Azul ML XGG" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Pesquise pelo nome do item:");
@@ -305,13 +326,13 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
                             .addComponent(jLabel10))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
+                            .addComponent(jLabel11)
+                            .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(roundedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)
                                 .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -334,9 +355,9 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1)
-                    .addComponent(roundedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -376,9 +397,33 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         Program.getEmissaoNota().setVisible(true);
     }//GEN-LAST:event_btnVoltarDestActionPerformed
 
-    private void roundedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundedTextField1ActionPerformed
+    private void tfQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQuantidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_roundedTextField1ActionPerformed
+    }//GEN-LAST:event_tfQuantidadeActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void tfValorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfValorFocusGained
+        tfValor.setText("");
+    }//GEN-LAST:event_tfValorFocusGained
+
+    private void tfValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfValorFocusLost
+        if (tfValor.getText().isEmpty()) {
+            tfValor.setText("39,80");
+        }
+    }//GEN-LAST:event_tfValorFocusLost
+
+    private void tfQuantidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfQuantidadeFocusGained
+        tfQuantidade.setText("");
+    }//GEN-LAST:event_tfQuantidadeFocusGained
+
+    private void tfQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfQuantidadeFocusLost
+        if (tfQuantidade.getText().isEmpty()) {
+            tfQuantidade.setText("0");
+        }
+    }//GEN-LAST:event_tfQuantidadeFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -405,9 +450,9 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbTotal;
-    private test.RoundedTextField roundedTextField1;
     private Components.table table1;
     private Components.table tableItems;
+    private test.RoundedTextField tfQuantidade;
     private test.RoundedTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }
