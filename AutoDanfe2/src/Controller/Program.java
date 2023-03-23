@@ -7,6 +7,10 @@ import AutoDanfeCancelamentoNota.CancelamentoNota;
 import AutoDanfeEmissaoBoleto.EmissaoBoleto;
 import AutoDanfeCadCliente.CadastroClientes;
 import AutoDanfeEmissaoNota.EmissaoDestinatario;
+import AutoDanfeEmissaoNota.EmissaoProduto;
+import AutoDanfeEmissaoNota.EmissaoDefinicoes;
+import AutoDanfeEmissaoNota.EmissaoTransp;
+import AutoDanfeEmissaoNota.EmissaoRevisao;
 import AutoDanfeMenu.Menu;
 
 public class Program {
@@ -19,7 +23,12 @@ public class Program {
     private static EmissaoBoleto emissaoBoleto;
     private static EmissaoDestinatario emissaoNota;
     private static Menu menu;
-
+    private static EmissaoProduto emissaoProduto;
+    private static EmissaoDefinicoes emissaoDefinicoes;
+    private static EmissaoTransp emissaoTransp;
+    private static EmissaoRevisao emissaoRevisao;
+    
+    
     private Program() {
     }
     
@@ -79,6 +88,34 @@ public class Program {
         }
         return emissaoNota;
     }
+    
+
+    public static EmissaoProduto getEmissaoProduto() {
+        if (emissaoProduto == null) {
+            emissaoProduto = new EmissaoProduto();
+        }
+        return emissaoProduto;
+    }
+
+    public static EmissaoDefinicoes getEmissaoDefinicoes() {
+        if (emissaoDefinicoes == null) {
+            emissaoDefinicoes = new EmissaoDefinicoes();
+        }
+        return emissaoDefinicoes;
+    }
    
+    public static EmissaoTransp getEmissaoTransp() {
+        if (emissaoTransp == null) {
+            emissaoTransp = new EmissaoTransp();
+        }
+        return emissaoTransp;
+    }
+   
+    public static EmissaoRevisao getEmissaoRevisao() {
+        if (emissaoRevisao == null) {
+            emissaoRevisao = new EmissaoRevisao();
+        }
+        return emissaoRevisao;
+    }
 
 } 

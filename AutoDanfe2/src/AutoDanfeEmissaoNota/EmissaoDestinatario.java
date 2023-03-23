@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package AutoDanfeEmissaoNota;
 
+import Controller.Program;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-/**
- *
- * @author marco
- */
+
 public class EmissaoDestinatario extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form EmissaoNota
-     */
+
     public EmissaoDestinatario() {
-        initComponents();
+        initComponents();    
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -32,7 +24,7 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jpPrincipal = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -40,13 +32,14 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnRounded1 = new Components.btnRounded();
+        btnProxProd = new Components.btnRounded();
 
         setPreferredSize(new java.awt.Dimension(1000, 596));
 
-        jPanel1.setBackground(new java.awt.Color(223, 223, 223));
+        jpPrincipal.setBackground(new java.awt.Color(223, 223, 223));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(988, 35));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -101,71 +94,72 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        btnRounded1.setBackground(new java.awt.Color(0, 153, 153));
-        btnRounded1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRounded1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconNext.png"))); // NOI18N
-        btnRounded1.setText("Próximo");
-        btnRounded1.setBorderColor(new java.awt.Color(0, 153, 153));
-        btnRounded1.setColor(new java.awt.Color(0, 153, 153));
-        btnRounded1.setColorClick(new java.awt.Color(0, 116, 116));
-        btnRounded1.setColorOver(new java.awt.Color(0, 127, 127));
-        btnRounded1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnRounded1.setMaximumSize(new java.awt.Dimension(142, 30));
-        btnRounded1.setMinimumSize(new java.awt.Dimension(142, 30));
-        btnRounded1.setPreferredSize(new java.awt.Dimension(142, 30));
-        btnRounded1.addActionListener(new java.awt.event.ActionListener() {
+        btnProxProd.setBackground(new java.awt.Color(0, 153, 153));
+        btnProxProd.setForeground(new java.awt.Color(255, 255, 255));
+        btnProxProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconNext.png"))); // NOI18N
+        btnProxProd.setText("Próximo");
+        btnProxProd.setBorderColor(new java.awt.Color(0, 153, 153));
+        btnProxProd.setColor(new java.awt.Color(0, 153, 153));
+        btnProxProd.setColorClick(new java.awt.Color(0, 116, 116));
+        btnProxProd.setColorOver(new java.awt.Color(0, 127, 127));
+        btnProxProd.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnProxProd.setMaximumSize(new java.awt.Dimension(142, 30));
+        btnProxProd.setMinimumSize(new java.awt.Dimension(142, 30));
+        btnProxProd.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnProxProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRounded1ActionPerformed(evt);
+                btnProxProdActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
+        jpPrincipal.setLayout(jpPrincipalLayout);
+        jpPrincipalLayout.setHorizontalGroup(
+            jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addComponent(btnProxProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jpPrincipalLayout.setVerticalGroup(
+            jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(477, 477, 477)
-                .addComponent(btnRounded1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                .addComponent(btnProxProd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRounded1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRounded1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRounded1ActionPerformed
+    private void btnProxProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxProdActionPerformed
+        Program.getEmissaoNota().setVisible(false);
+        Program.getEmissaoProduto().setVisible(true);
+    }//GEN-LAST:event_btnProxProdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Components.btnRounded btnRounded1;
+    private Components.btnRounded btnProxProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jpPrincipal;
     // End of variables declaration//GEN-END:variables
 }

@@ -82,6 +82,11 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                 tfNomeProdFocusLost(evt);
             }
         });
+        tfNomeProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomeProdActionPerformed(evt);
+            }
+        });
 
         tfNCM.setText("09012100");
         tfNCM.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -265,6 +270,10 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
             tfNCM.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNCMFocusLost
+
+    private void tfNomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeProdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomeProdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

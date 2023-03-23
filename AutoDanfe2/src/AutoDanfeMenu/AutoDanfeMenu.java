@@ -12,7 +12,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
 
         dpPrincipal.add(Program.getMenu());
         Program.getMenu().setVisible(true);
-        
+
         dpPrincipal.add(Program.getCadastroClientes());
         Program.getCadastroClientes().setVisible(false);
 
@@ -30,6 +30,18 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
 
         dpPrincipal.add(Program.getCancelamentoNota());
         Program.getCancelamentoNota().setVisible(false);
+
+        dpPrincipal.add(Program.getEmissaoProduto());
+        Program.getEmissaoProduto().setVisible(false);
+
+        dpPrincipal.add(Program.getEmissaoDefinicoes());
+        Program.getEmissaoDefinicoes().setVisible(false);
+
+        dpPrincipal.add(Program.getEmissaoRevisao());
+        Program.getEmissaoRevisao().setVisible(false);
+
+        dpPrincipal.add(Program.getEmissaoTransp());
+        Program.getEmissaoTransp().setVisible(false);
 
     }
 
@@ -157,6 +169,11 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         Program.getEmissaoBoleto().setVisible(false);
         Program.getEmissaoNota().setVisible(false);
         Program.getCancelamentoNota().setVisible(false);
+        Program.getEmissaoProduto().setVisible(false);
+        Program.getEmissaoProduto().setVisible(false);
+        Program.getEmissaoDefinicoes().setVisible(false);
+        Program.getEmissaoRevisao().setVisible(false);
+        Program.getEmissaoTransp().setVisible(false);
 
     }//GEN-LAST:event_btnMenuIniciarActionPerformed
 
