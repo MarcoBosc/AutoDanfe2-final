@@ -23,7 +23,7 @@ public class FormattedDateEntry extends JPanel {
         field = new JFormattedTextField(formatter);
         field.setBackground(Color.WHITE); // Define a cor de fundo como branco
         field.setColumns(8);
-        field.setPreferredSize(new Dimension(field.getPreferredSize().width, 33));
+        field.setPreferredSize(new Dimension(128, 43));
         add(field);
     }
 
