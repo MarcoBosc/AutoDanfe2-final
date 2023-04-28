@@ -33,9 +33,10 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnProxProd = new Components.btnRounded();
-        roundedTextField1 = new test.RoundedTextField();
+        tfPesquisarEmpresa = new test.RoundedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new Components.table();
+        jLabel7 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1000, 596));
 
@@ -81,7 +82,7 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
                 .addComponent(jLabel5)
                 .addGap(38, 38, 38)
                 .addComponent(jLabel6)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +116,15 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
             }
         });
 
-        roundedTextField1.setText("roundedTextField1");
+        tfPesquisarEmpresa.setText("Aime Uniformes");
+        tfPesquisarEmpresa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPesquisarEmpresaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPesquisarEmpresaFocusLost(evt);
+            }
+        });
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,34 +139,38 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(table1);
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Pesquisar por nome ou CNPJ");
+
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnProxProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 993, Short.MAX_VALUE)
             .addGroup(jpPrincipalLayout.createSequentialGroup()
+                .addGap(319, 319, 319)
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpPrincipalLayout.createSequentialGroup()
-                        .addGap(317, 317, 317)
-                        .addComponent(roundedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpPrincipalLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 904, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel7)
+                    .addComponent(tfPesquisarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 953, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProxProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(roundedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfPesquisarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnProxProd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -181,6 +194,16 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
         Program.getEmissaoProduto().setVisible(true);
     }//GEN-LAST:event_btnProxProdActionPerformed
 
+    private void tfPesquisarEmpresaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisarEmpresaFocusGained
+        tfPesquisarEmpresa.setText("");
+    }//GEN-LAST:event_tfPesquisarEmpresaFocusGained
+
+    private void tfPesquisarEmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisarEmpresaFocusLost
+         if (tfPesquisarEmpresa.getText().isEmpty()) {
+            tfPesquisarEmpresa.setText("Aimê Uniformes");
+         }
+    }//GEN-LAST:event_tfPesquisarEmpresaFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnProxProd;
@@ -190,10 +213,11 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpPrincipal;
-    private test.RoundedTextField roundedTextField1;
     private Components.table table1;
+    private test.RoundedTextField tfPesquisarEmpresa;
     // End of variables declaration//GEN-END:variables
 }

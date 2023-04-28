@@ -19,7 +19,7 @@ public class RoundedTextField extends JTextField {
         fillColor = new Color(236, 240, 241);
         lineColor = new Color(52, 152, 219);
         strokeWidth = 2;
-        radius = 7;
+        radius = 10;
         setOpaque(false);
         setBorder(BorderFactory.createEmptyBorder(2, 10, 2, 10));
     }
