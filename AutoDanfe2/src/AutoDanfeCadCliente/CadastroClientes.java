@@ -2,12 +2,12 @@ package AutoDanfeCadCliente;
 
 import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import AutoDanfeCadCliente.apiCEP;
 
 public class CadastroClientes extends javax.swing.JInternalFrame {
 
     public CadastroClientes() {
         initComponents();
-        
         tfRazaoSocialCliente.setForeground(Color.GRAY);
         tfCEPCliente.setForeground(Color.GRAY);       
         tfMunicipioCliente.setForeground(Color.GRAY);
@@ -346,9 +346,23 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         if(tfCEPCliente.getText().isEmpty()) {
             tfCEPCliente.setText("99700-274");
             tfCEPCliente.setForeground(Color.GRAY);
+        } else {
+            String CEP = getCEP();
+            apiCEP api = new apiCEP(CEP);
+            String rua = api.getRua();
+            String bairro = api.getBairro();
+            String cidade = api.getCidade();
+            String uf = api.getEstado();
+            tfMunicipioCliente.setText(cidade);
+            tfMunicipioCliente.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfCEPClienteFocusLost
-
+    
+    public String getCEP() {
+       String CEP = tfCEPCliente.getText();
+       return CEP;
+    }
+    
     private void tfMunicipioClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusGained
         tfMunicipioCliente.setText("");
         tfMunicipioCliente.setForeground(Color.BLACK);
