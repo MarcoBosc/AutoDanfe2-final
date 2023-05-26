@@ -2,14 +2,22 @@ package AutoDanfeMenu;
 
 import Components.btnRounded;
 import Controller.Program;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 
 public class AutoDanfeMenu extends javax.swing.JFrame {
+    
 
     public AutoDanfeMenu() {
         initComponents();
-
+        
+        setLocationRelativeTo(null);
+         ImageIcon icon = new ImageIcon(getClass().getResource("/icons/logoAime.png"));
+        setIconImage(icon.getImage());
+        
         dpPrincipal.add(Program.getMenu());
         Program.getMenu().setVisible(true);
 
@@ -42,6 +50,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
 
         dpPrincipal.add(Program.getEmissaoTransp());
         Program.getEmissaoTransp().setVisible(false);
+        
 
     }
 
@@ -62,6 +71,7 @@ public class AutoDanfeMenu extends javax.swing.JFrame {
         btnMenuIniciar = new Components.btnRounded();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Auto Danfe");
         setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
 

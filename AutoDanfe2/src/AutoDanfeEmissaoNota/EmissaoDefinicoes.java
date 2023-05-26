@@ -66,24 +66,18 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Automação de Nf-e");
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("1. Destinatário");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("2. Produtos");
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("3. Definições");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("4. Transporte");
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("5. Revisão Geral");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -138,7 +132,6 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
         });
 
         btnVoltarProd.setBackground(new java.awt.Color(204, 204, 204));
-        btnVoltarProd.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconBack.png"))); // NOI18N
         btnVoltarProd.setText("Voltar");
         btnVoltarProd.setBorderColor(new java.awt.Color(204, 204, 204));
@@ -154,7 +147,6 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Adicionar parcelas:");
 
         btnAddParcela.setBackground(new java.awt.Color(0, 153, 153));
@@ -179,9 +171,7 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
         btnRemover.setMaximumSize(new java.awt.Dimension(114, 30));
         btnRemover.setMinimumSize(new java.awt.Dimension(114, 30));
 
-        txaParcelas.setBackground(new java.awt.Color(255, 255, 255));
         txaParcelas.setColumns(20);
-        txaParcelas.setForeground(new java.awt.Color(0, 0, 0));
         txaParcelas.setRows(5);
         txaParcelas.setText("Parcelas adicionadas:");
         txaParcelas.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -192,22 +182,17 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(txaParcelas);
 
         dateParcela.setBackground(new java.awt.Color(223, 223, 223));
-        dateParcela.setForeground(new java.awt.Color(0, 0, 0));
         dateParcela.setMinimumSize(new java.awt.Dimension(128, 43));
 
         jLabel8.setBackground(new java.awt.Color(223, 223, 223));
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tipo de operação:");
 
-        radioBtnEstadual.setForeground(new java.awt.Color(0, 0, 0));
         radioBtnEstadual.setSelected(true);
         radioBtnEstadual.setText("Estadual");
 
-        radioBtnInterestadual.setForeground(new java.awt.Color(0, 0, 0));
         radioBtnInterestadual.setText("Interestadual");
         radioBtnInterestadual.setToolTipText("");
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Ordem de compra:");
 
         tbOrdemCompra.setText("12345");
@@ -218,11 +203,11 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(25, 25, 25)
                 .addComponent(btnVoltarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNextTransp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(21, 21, 21))
             .addComponent(jSeparator2)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -242,7 +227,7 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
                         .addComponent(dateParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,11 +272,11 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tbOrdemCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNextTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVoltarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
+                .addGap(78, 78, 78))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

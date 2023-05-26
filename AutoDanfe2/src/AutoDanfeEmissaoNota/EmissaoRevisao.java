@@ -51,24 +51,18 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Automação de Nf-e");
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("1. Destinatário");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("2. Produtos");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("3. Definições");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("4. Transporte");
 
         jLabel6.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("5. Revisão Geral");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -124,7 +118,6 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
         });
 
         btnVoltarTransp.setBackground(new java.awt.Color(204, 204, 204));
-        btnVoltarTransp.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltarTransp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconBack.png"))); // NOI18N
         btnVoltarTransp.setText("Voltar");
         btnVoltarTransp.setBorderColor(new java.awt.Color(204, 204, 204));
