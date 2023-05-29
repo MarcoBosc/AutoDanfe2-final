@@ -492,13 +492,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     }
 
     public void insertTransportadora() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO transportadoras (cnpj, inscricao_estadual, logradouro, municipio, razao_social, uf) VALUES (?, ?, ?, ?, ?, ?)")) {
-            ps.setString(1, tfCNPJ.getText());
-            ps.setString(2, tfInscricaoEstadual.getText());
-            ps.setString(3, tfLogradouroTransp.getText());
-            ps.setString(4, tfMunicipio.getText());
-            ps.setString(5, tfRazaoSocialTransp.getText());
-            ps.setString(6, tfUF.getText());
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO transportadoras (razao_social_transp, cnpj_transportadora, IE_transportadora, uf_transportadora, municipio_transportadora, logradouro_transportadora) VALUES (?, ?, ?, ?, ?, ?)")) {
+            ps.setString(2, tfCNPJ.getText());
+            ps.setString(3, tfInscricaoEstadual.getText());
+            ps.setString(6, tfLogradouroTransp.getText());
+            ps.setString(5, tfMunicipio.getText());
+            ps.setString(1, tfRazaoSocialTransp.getText());
+            ps.setString(4, tfUF.getText());
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Transportadora adicionada com sucesso!");

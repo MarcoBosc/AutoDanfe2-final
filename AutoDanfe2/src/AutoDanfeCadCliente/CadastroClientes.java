@@ -537,16 +537,16 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         if (conn != null) {
             try {
-                PreparedStatement ps = conn.prepareStatement("INSERT INTO clientes (cep, cnpj, ie, municipio, numero_residencia, razao_social, rua, bairro, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                ps.setString(1, cep);
+                PreparedStatement ps = conn.prepareStatement("INSERT INTO clientes (razao_social_cliente, CNPJ_cliente, IE_cliente, CEP_cliente, uf_cliente, bairro_cliente, municipio_cliente, Logradouro_cliente, num_residencial) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                ps.setString(4, cep);
                 ps.setString(2, tfCNPJCliente.getText());
                 ps.setString(3, tfInscricaoEstadualCliente.getText());
-                ps.setString(4, cidade);
-                ps.setString(5, tfNumeroResiCliente.getText());
-                ps.setString(6, tfRazaoSocialCliente.getText());
-                ps.setString(7, rua);
-                ps.setString(8, bairro);
-                ps.setString(9, estado);
+                ps.setString(7, cidade);
+                ps.setString(9, tfNumeroResiCliente.getText());
+                ps.setString(1, tfRazaoSocialCliente.getText());
+                ps.setString(8, rua);
+                ps.setString(6, bairro);
+                ps.setString(5, estado);
                 ps.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso!");

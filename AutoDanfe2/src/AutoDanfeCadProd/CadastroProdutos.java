@@ -13,6 +13,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     public CadastroProdutos() {
         initComponents();
+        populateTable();
 
         tfCodProd.setForeground(Color.GRAY);
         tfNCM.setForeground(Color.GRAY);
@@ -308,6 +309,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     private void btnAtualizarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarProdActionPerformed
         updateProduto();
+        populateTable();
     }//GEN-LAST:event_btnAtualizarProdActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
@@ -318,8 +320,8 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
             String codigoProduto = table1.getValueAt(selectedRow, 0).toString();
-            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM produtos WHERE codigo_produto = ?")) {
-                ps.setString(1, codigoProduto);
+            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM produtos WHERE cod_produto = ?")) {
+                ps.setInt(1, Integer.parseInt(codigoProduto));
                 ps.executeUpdate();
 
                 DefaultTableModel model = (DefaultTableModel) table1.getModel();
@@ -333,10 +335,10 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }
 
     private void updateProduto() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE produtos SET ncm=?, nome_produto=? WHERE codigo_produto=?")) {
-            ps.setString(1, tfNCM.getText());
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE produtos SET NCM=?, nome_produto=? WHERE cod_produto=?")) {
+            ps.setInt(1, Integer.parseInt(tfNCM.getText()));
             ps.setString(2, tfNomeProd.getText());
-            ps.setString(3, tfCodProd.getText());
+            ps.setInt(3, Integer.parseInt(tfCodProd.getText()));
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
@@ -358,13 +360,15 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }
 
     public void insertProduto() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO produtos (codigo_produto, ncm, nome_produto) VALUES (?, ?, ?)")) {
-            ps.setString(1, tfCodProd.getText());
-            ps.setString(2, tfNCM.getText());
-            ps.setString(3, tfNomeProd.getText());
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO produtos (cod_produto, nome_produto, NCM) VALUES (?, ?, ?)")) {
+            ps.setInt(1, Integer.parseInt(tfCodProd.getText()));
+            ps.setString(2, tfNomeProd.getText());
+            ps.setInt(3, Integer.parseInt(tfNCM.getText()));
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao converter valor para inteiro: " + e.getMessage());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar produto: " + e.getMessage());
         }
@@ -377,8 +381,8 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
             model.setRowCount(0);
 
             while (rs.next()) {
-                String codigoProduto = rs.getString("codigo_produto");
-                String ncm = rs.getString("ncm");
+                String codigoProduto = rs.getString("cod_produto");
+                String ncm = rs.getString("NCM");
                 String nomeProduto = rs.getString("nome_produto");
 
                 Object[] row = {codigoProduto, ncm, nomeProduto};
