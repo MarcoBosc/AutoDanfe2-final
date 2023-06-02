@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package AutoDanfeCadCliente;
 
 import java.sql.Connection;
@@ -9,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoPG {
-    private static final String url = "jdbc:postgresql://localhost:5432/Danfe2";
+    private static final String url = "jdbc:postgresql://localhost:5432/AutoDanfe2";
     private static final String user = "postgres";
     private static final String password = "admin";
 

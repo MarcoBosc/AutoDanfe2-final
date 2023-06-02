@@ -290,12 +290,8 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
     private void btnNextRevisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextRevisaoActionPerformed
 
         Object[] transportData = getTransportData();
+        writeJsonToFile();
 
-        JSONObject json = new JSONObject();
-        json.put("meio_transp", transportData[0]);
-        json.put("id_transportadora", transportData[1]);
-        json.put("volume", transportData[2]);
-        writeJsonToFile(json);
         Program.getEmissaoTransp().setVisible(false);
         Program.getEmissaoRevisao().setVisible(true);
     }//GEN-LAST:event_btnNextRevisaoActionPerformed
@@ -376,31 +372,52 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         return contentBuilder.toString();
     }
 
-    private void writeJsonToFile(JSONObject json) {
-        String fileName = "json.txt";
-        String fileContent = readJsonFromFile();
+    private void writeJsonToFile() {
+        String meioTransp = CBMeiodeTransp.getSelectedItem().toString();
+        String especie = tbEspecie.getText();
+        int quantidadeVol = Integer.parseInt(tbQuantidadeVol.getText());
+        double pesoLiquido = Double.parseDouble(tbPesoLiquido.getText());
+        double pesoBruto = Double.parseDouble(lbPesoBruto.getText());
+        String transportadora = (String) CbTransp.getSelectedItem();
+        try {
+            String fileName = "json.txt";
+            StringBuilder jsonContent = new StringBuilder();
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            if (!fileContent.isEmpty()) {
-                // Remove the closing brace '}' from the existing JSON to append the new data
-                fileContent = fileContent.substring(0, fileContent.lastIndexOf('}')).trim();
-                if (!fileContent.isEmpty()) {
-                    fileContent += ",";
+            jsonContent.append("  \"transportadora\": {\n");
+            jsonContent.append("   \"meio_transporte\": \"" + meioTransp + "\",\n");
+            jsonContent.append("    \"id_transp\": \"" + getSelectedTransportadoraId() + "\",\n");
+            jsonContent.append("    \"razao_social\": \"" + transportadora + "\",\n");
+            jsonContent.append("    \"especie\": \"" + especie + "\",\n");
+            jsonContent.append("    \"quantidadeVol\": \"" + quantidadeVol + "\",\n");
+            jsonContent.append("    \"peso_liquido\": \"" + pesoLiquido + "\",\n");
+            jsonContent.append("    \"peso_bruto\": \"" + pesoBruto + "\"\n");
+            jsonContent.append("  }\n");
+            jsonContent.append("}\n");
+
+            String fileContent = readJsonFromFile();
+            if (fileContent.isEmpty()) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                    writer.write(jsonContent.toString());
+                    System.out.println("Data written to the JSON file successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+                }
+            } else {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+                    writer.newLine();
+                    writer.write(jsonContent.toString());
+                    System.out.println("Data written to the JSON file successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
                 }
             }
-
-            writer.write(fileContent);
-            writer.newLine();
-            writer.write(json.toString());
-            writer.write("}"); // Add the closing brace '}' for the overall JSON structure
-            System.out.println("Data written to the JSON file successfully.");
-        } catch (IOException e) {
-            System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
         }
     }
-    
-    private void salvarJsonDB(){
-        
+
+    private void salvarJsonDB() {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

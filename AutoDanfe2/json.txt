@@ -1,2 +1,39 @@
-{"id_destinatario": "23132132",{"itens": []},{"itens": [    {        "valor_unidade": "2",        "id_prod": "4",        "quantidade": "2"    },    {        "valor_unidade": "2",        "id_prod": "4",        "quantidade": "2"    },    {        "valor_unidade": "2",        "id_prod": "4",        "quantidade": "2"    }]},{"parcelas":["22/22/2222","22/22/2222"],"tipo_op":"estadual","ordem_compra":"222"},
-{"volume":{"especie":"a","peso_bruto":2,"qtd_volume":2,"peso_liq":2},"id_transportadora":1,"meio_transp":"Transporte por conta do emitente"}}
+{
+  "id_destinatario": "123456778",
+
+  "itens": [
+    {
+      "id_prod": "4",
+      "quantidade": "33242",
+      "valor_unidade": "423423"
+    }
+  ],
+
+  "itens": [
+    {
+      "id_prod": "4",
+      "quantidade": "33242",
+      "valor_unidade": "423423"
+    },
+    {
+      "id_prod": "5",
+      "quantidade": "423",
+      "valor_unidade": "24"
+    }
+  ]
+,"definicoes": {
+   "parcelas": ["24/23/4234", "24/23/4234", "42/34/2342", "42/34/2342", "42/34/3242", "42/34/3242", "42/34/2423", "42/34/2423"],
+    "tipo_op": "estadual",
+    "tbOrdemCompra": "2442"
+  },
+
+  "transportadora": {
+   "meio_transporte": "Transporte por conta do emitente",
+    "id_transp": "1",
+    "razao_social": "Transportadora Erechim",
+    "especie": "fsdf",
+    "quantidadeVol": "4234",
+    "peso_liquido": "34.0",
+    "peso_bruto": "43.0"
+  }
+}

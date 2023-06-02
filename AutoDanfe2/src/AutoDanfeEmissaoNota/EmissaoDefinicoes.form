@@ -443,6 +443,9 @@
           </Properties>
         </Component>
         <Component class="test.RoundedTextField" name="tbOrdemCompra">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbOrdemCompraActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

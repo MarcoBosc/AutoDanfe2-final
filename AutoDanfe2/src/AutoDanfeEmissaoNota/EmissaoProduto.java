@@ -584,9 +584,9 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
     private void writeJsonToFile() {
         try {
             String fileName = "json.txt";
-            JSONObject json = new JSONObject();
+            StringBuilder jsonContent = new StringBuilder();
 
-            JSONArray jsonArray = new JSONArray();
+            jsonContent.append("  \"itens\": [\n");
 
             DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
             int rowCount = model.getRowCount();
@@ -596,37 +596,39 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
                 String quantidade = model.getValueAt(i, 3).toString();
                 String valorUnidade = model.getValueAt(i, 4).toString();
 
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("id_prod", idProduto);
-                jsonObject.put("quantidade", quantidade);
-                jsonObject.put("valor_unidade", valorUnidade);
+                jsonContent.append("    {\n");
+                jsonContent.append("      \"id_prod\": \"" + idProduto + "\",\n");
+                jsonContent.append("      \"quantidade\": \"" + quantidade + "\",\n");
+                jsonContent.append("      \"valor_unidade\": \"" + valorUnidade + "\"\n");
+                jsonContent.append("    }");
 
-                jsonArray.put(jsonObject);
+                if (i < rowCount - 1) {
+                    jsonContent.append(",");
+                }
+
+                jsonContent.append("\n");
             }
 
-            json.put("itens", jsonArray);
+            jsonContent.append("  ]\n");
 
             String fileContent = readJsonFromFile();
             if (fileContent.isEmpty()) {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-                    writer.write(json.toString(4));
+                    writer.write(jsonContent.toString());
                     System.out.println("Data written to the JSON file successfully.");
                 } catch (IOException e) {
                     System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
                 }
             } else {
-                // Remove the trailing '}' brace from the existing content
-                String modifiedContent = fileContent.trim();
-                modifiedContent = modifiedContent.substring(0, modifiedContent.lastIndexOf("}")).trim();
-
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-                    writer.write(modifiedContent + "," + json.toString(4) + "}");
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+                    writer.newLine();
+                    writer.write(jsonContent.toString());
                     System.out.println("Data written to the JSON file successfully.");
                 } catch (IOException e) {
                     System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
                 }
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
         }
     }

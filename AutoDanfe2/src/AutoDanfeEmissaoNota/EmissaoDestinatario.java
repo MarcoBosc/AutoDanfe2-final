@@ -365,24 +365,21 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
     }
 
     private void writeJsonToFile(String cnpj) {
-    try {
-        String fileName = "json.txt";
-        JSONObject json = new JSONObject();
+        try {
+            String fileName = "json.txt";
+            String jsonContent = "{\n"
+                    + "  \"id_destinatario\": \"" + cnpj + "\",\n";
 
-        json.put("id_destinatario", cnpj);
-
-        String modifiedJsonContent = json.toString(4);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            writer.write(modifiedJsonContent);
-            System.out.println("CNPJ written to the JSON file successfully.");
-        } catch (IOException e) {
-            System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+                writer.write(jsonContent);
+                System.out.println("CNPJ written to the JSON file successfully.");
+            } catch (IOException e) {
+                System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
         }
-    } catch (JSONException e) {
-        System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
     }
-}
 
     private void searchCnpjAndWriteToJson(String razaoSocial) {
         Connection conn = ConexaoPG.getConnection();
@@ -396,6 +393,7 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
                 if (rs.next()) {
                     String cnpj = rs.getString("CNPJ_cliente");
                     writeJsonToFile(cnpj);
+                    /// preciso que o java pule uma linha aqui para quando ele escrever o próximo item do json que ele seja escrito na linha abaixo.
                 } else {
                     System.out.println("No matching CNPJ found for the given razao social: " + razaoSocial);
                 }
@@ -441,8 +439,6 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
 
         return cnpj;
     }
-
-  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

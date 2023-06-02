@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package AutoDanfeEmissaoNota;
 
 import Controller.Program;
@@ -18,6 +14,9 @@ import javax.swing.JFormattedTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -36,9 +35,9 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
     }
 
     private void addToDatesList() {
-    String dateValue = dateParcela.getDate();
-    datesList.add(dateValue);
-}
+        String dateValue = dateParcela.getDate();
+        datesList.add(dateValue);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -219,6 +218,12 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Ordem de compra:");
 
+        tbOrdemCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbOrdemCompraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -319,6 +324,7 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
         saveRadioButtonSelection();
         Program.getEmissaoDefinicoes().setVisible(false);
         Program.getEmissaoTransp().setVisible(true);
+        writeJsonToFile();
     }//GEN-LAST:event_btnNextTranspActionPerformed
 
     private void btnVoltarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarProdActionPerformed
@@ -333,6 +339,8 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
     private void btnAddParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddParcelaActionPerformed
         appendDateFromFormattedDateEntryToTextArea();
         addToDatesList();
+        String data = dateParcela.getDate();
+        datesList.add(data);
     }//GEN-LAST:event_btnAddParcelaActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
@@ -343,6 +351,10 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
     private void radioBtnEstadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnEstadualActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioBtnEstadualActionPerformed
+
+    private void tbOrdemCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbOrdemCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbOrdemCompraActionPerformed
 
     private void appendDateFromFormattedDateEntryToTextArea() {
         String dateText = dateParcela.getDate();
@@ -389,29 +401,61 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
         parcelas.addAll(datesList);
 
         JSONObject json = new JSONObject();
+
         json.put("parcelas", new JSONArray(parcelas));
         json.put("tipo_op", tipoOp);
         json.put("ordem_compra", ordemCompra);
 
-        writeJsonToFile(json);
     }
 
-    private void writeJsonToFile(JSONObject json) {
-    String fileName = "json.txt";
-    String fileContent = readJsonFromFile();
-
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-        // Check if the file content is not empty
-        if (!fileContent.isEmpty()) {
-            // Remove the closing brace '}' from the existing JSON to append the new JSON object
-            fileContent = fileContent.substring(0, fileContent.lastIndexOf('}'));
-            writer.write(fileContent + ","); // Add a comma separator before appending the new JSON object
+private void writeJsonToFile() {
+    try {
+        String fileName = "json.txt";
+        StringBuilder jsonContent = new StringBuilder();
+        String OrdemCompra = tbOrdemCompra.getText();
+        String tipoOp = "Interestadual";
+        if (radioBtnEstadual.isSelected()) {
+            tipoOp = "estadual";
         }
-        writer.write(json.toString());
-        writer.write("}"); // Add the closing brace '}' for the overall JSON structure
-        System.out.println("Data written to the JSON file successfully.");
-    } catch (IOException e) {
-        System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+        jsonContent.append("\"definicoes\": {\n");
+        
+        // Adicionar as parcelas
+        jsonContent.append("   \"parcelas\": [");
+        
+        for (int i = 0; i < datesList.size(); i++) {
+            String parcela = "\"" + datesList.get(i) + "\"";
+            jsonContent.append(parcela);
+            
+            if (i < datesList.size() - 1) {
+                jsonContent.append(", ");
+            }
+        }
+        
+        jsonContent.append("],\n");
+        
+        jsonContent.append("    \"tipo_op\": \"" + tipoOp + "\",\n");
+        jsonContent.append("    \"tbOrdemCompra\": \"" + OrdemCompra + "\"\n");
+        jsonContent.append("  },\n");
+
+        String fileContent = readJsonFromFile();
+        
+        if (fileContent.isEmpty()) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                writer.write(jsonContent.toString());
+                System.out.println("Data written to the JSON file successfully.");
+            } catch (IOException e) {
+                System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+            }
+        } else {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+                writer.write("," + jsonContent.toString());
+                System.out.println("Data written to the JSON file successfully.");
+            } catch (IOException e) {
+                System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
     }
 }
 

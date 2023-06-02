@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package AutoDanfeEmissaoNota;
 
 import Controller.Program;
-import java.io.BufferedReader;
+
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 /**
  *
@@ -24,14 +17,11 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
 
     public EmissaoRevisao() {
         initComponents();
-        
-        populateRevisaoNotaTextArea();
-        
+
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -196,35 +186,82 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
         Program.getEmissaoTransp().setVisible(true);
     }//GEN-LAST:event_btnVoltarTranspActionPerformed
 
-    
-    private void populateRevisaoNotaTextArea() {
-    String fileName = "json.txt";
-    StringBuilder contentBuilder = new StringBuilder();
+    private static class Item {
+        private String valorUnidade;
+        private String idProd;
+        private String quantidade;
 
-    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            contentBuilder.append(line);
+        public Item(String valorUnidade, String idProd, String quantidade) {
+            this.valorUnidade = valorUnidade;
+            this.idProd = idProd;
+            this.quantidade = quantidade;
         }
-    } catch (IOException e) {
-        System.out.println("An error occurred while reading the file: " + e.getMessage());
     }
+    
+    
+    public void populateRevisaoNotaTextArea() {
+        try {
+            // Abre o arquivo JSON
+            FileReader reader = new FileReader("json.txt");
 
-    String jsonContent = contentBuilder.toString();
+            // Converte o arquivo em objeto JSON
+            JSONObject jsonObject = new JSONObject(reader);
 
-        // Create a Gson instance with pretty printing enabled
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            // Obtém os valores das variáveis do JSON
+            String idDestinatario = jsonObject.getString("id_destinatario");
 
-        // Parse the JSON string into a Java object or data structure
-        Object parsedObject = gson.fromJson(jsonContent, Object.class);
+            JSONArray itensArray = jsonObject.getJSONArray("itens");
+            // Percorre o array de itens
+            for (int i = 0; i < itensArray.length(); i++) {
+                JSONObject itemObject = itensArray.getJSONObject(i);
+                String valorUnidade = itemObject.getString("valor_unidade");
+                String idProd = itemObject.getString("id_prod");
+                String quantidade = itemObject.getString("quantidade");
 
-        // Convert the parsed object back to a formatted JSON string
-        String formattedJson = gson.toJson(parsedObject);
-       
-        TaRevisaoNota.setText(formattedJson);
-       
-         System.out.println(formattedJson);
-}
+                // Faça o que for necessário com os valores do item
+                // Exemplo: criar um objeto Item e adicioná-lo a uma lista
+                Item item = new Item(valorUnidade, idProd, quantidade);
+                // listaDeItens.add(item);
+            }
+
+            JSONArray parcelasArray = jsonObject.getJSONArray("parcelas");
+            // Percorre o array de parcelas
+            for (int i = 0; i < parcelasArray.length(); i++) {
+                String parcela = parcelasArray.getString(i);
+
+                // Faça o que for necessário com cada parcela
+            }
+
+            String tipoOp = jsonObject.getString("tipo_op");
+            String ordemCompra = jsonObject.getString("ordem_compra");
+
+            JSONObject volumeObject = jsonObject.getJSONObject("volume");
+            String especie = volumeObject.getString("especie");
+            int pesoBruto = volumeObject.getInt("peso_bruto");
+            int qtdVolume = volumeObject.getInt("qtd_volume");
+            int pesoLiq = volumeObject.getInt("peso_liq");
+
+            int idTransportadora = jsonObject.getInt("id_transportadora");
+            String meioTransp = jsonObject.getString("meio_transp");
+
+            System.out.println("tipoOp: " + tipoOp);
+            System.out.println("ordemCompra: " + ordemCompra);
+            System.out.println("especie: " + especie);
+            System.out.println("pesoBruto: " + pesoBruto);
+            System.out.println("qtdVolume: " + qtdVolume);
+            System.out.println("pesoLiq: " + pesoLiq);
+            System.out.println("idTransportadora: " + idTransportadora);
+            System.out.println("meioTransp: " + meioTransp);
+
+            // Fechar o leitor de arquivo
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }   
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
