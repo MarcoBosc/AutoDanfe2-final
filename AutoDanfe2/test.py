@@ -1,29 +1,15 @@
-import json
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
-# Lê o arquivo JSON
-with open('json.txt') as file:
-    data = json.load(file)
+# Configuração do WebDriver
+driver = webdriver.Chrome()  # Certifique-se de ter o ChromeDriver instalado e no PATH
+driver.maximize_window()  # Maximiza a janela do navegador
 
-# Imprime os valores
-print("ID do Destinatário:", data["id_destinatario"])
+# Navegar para o link
+url = "https://www.sefaz.rs.gov.br/Receita/PortaleCAC.aspx"
+driver.get(url)
 
-print("Itens:")
-for item in data["itens"]:
-    print("ID do Produto:", item["id_prod"])
-    print("Quantidade:", item["quantidade"])
-    print("Valor por Unidade:", item["valor_unidade"])
-    print()
+# Aguardar alguns segundos para a página carregar completamente (opcional)
+driver.find_element(By.CLASS_NAME, 'glyphicon').click()
+driver.find_element(By.XPATH, '//*[@id="frmCert"]/table/tbody/tr/td/fieldset/div/table/tbody/tr/td/fieldset[1]/div/table/tbody/tr[2]/td[2]/label/a').click()
 
-print("Definições:")
-print("Parcelas:", data["definicoes"]["parcelas"])
-print("Tipo de Operação:", data["definicoes"]["tipo_op"])
-print("Tabela Ordem de Compra:", data["definicoes"]["tbOrdemCompra"])
-
-print("Transportadora:")
-print("Meio de Transporte:", data["transportadora"]["meio_transporte"])
-print("ID da Transportadora:", data["transportadora"]["id_transp"])
-print("Razão Social:", data["transportadora"]["razao_social"])
-print("Espécie:", data["transportadora"]["especie"])
-print("Quantidade de Volumes:", data["transportadora"]["quantidadeVol"])
-print("Peso Líquido:", data["transportadora"]["peso_liquido"])
-print("Peso Bruto:", data["transportadora"]["peso_bruto"])

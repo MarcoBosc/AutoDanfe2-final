@@ -3,21 +3,17 @@ package AutoDanfeEmissaoNota;
 import Controller.Program;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import javax.swing.JTextArea;
 
-/**
- *
- * @author marco
- */
 public class EmissaoRevisao extends javax.swing.JInternalFrame {
 
     public EmissaoRevisao() {
         initComponents();
-
+        lerArquivoTxt("string.txt");
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -178,7 +174,25 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmitirNfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirNfeActionPerformed
-        ///Emissao da nota
+
+        ProcessBuilder pb = new ProcessBuilder("python3", "test.py");
+
+        try {
+            // Iniciar o processo e esperar pela sua conclusão
+            Process p = pb.start();
+            p.waitFor();
+
+            // Imprimir a saída do processo, se houver
+            if (p.getInputStream().available() > 0) {
+                byte[] buffer = new byte[1024];
+                int bytesRead = p.getInputStream().read(buffer);
+                System.out.println(new String(buffer, 0, bytesRead));
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }//GEN-LAST:event_btnEmitirNfeActionPerformed
 
     private void btnVoltarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarTranspActionPerformed
@@ -186,81 +200,18 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
         Program.getEmissaoTransp().setVisible(true);
     }//GEN-LAST:event_btnVoltarTranspActionPerformed
 
-    private static class Item {
-        private String valorUnidade;
-        private String idProd;
-        private String quantidade;
-
-        public Item(String valorUnidade, String idProd, String quantidade) {
-            this.valorUnidade = valorUnidade;
-            this.idProd = idProd;
-            this.quantidade = quantidade;
-        }
-    }
-    
-    
-    public void populateRevisaoNotaTextArea() {
-        try {
-            // Abre o arquivo JSON
-            FileReader reader = new FileReader("json.txt");
-
-            // Converte o arquivo em objeto JSON
-            JSONObject jsonObject = new JSONObject(reader);
-
-            // Obtém os valores das variáveis do JSON
-            String idDestinatario = jsonObject.getString("id_destinatario");
-
-            JSONArray itensArray = jsonObject.getJSONArray("itens");
-            // Percorre o array de itens
-            for (int i = 0; i < itensArray.length(); i++) {
-                JSONObject itemObject = itensArray.getJSONObject(i);
-                String valorUnidade = itemObject.getString("valor_unidade");
-                String idProd = itemObject.getString("id_prod");
-                String quantidade = itemObject.getString("quantidade");
-
-                // Faça o que for necessário com os valores do item
-                // Exemplo: criar um objeto Item e adicioná-lo a uma lista
-                Item item = new Item(valorUnidade, idProd, quantidade);
-                // listaDeItens.add(item);
+    public void lerArquivoTxt(String nomeArquivo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
+            StringBuilder conteudo = new StringBuilder();
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                conteudo.append(linha);
+                conteudo.append("\n");
             }
-
-            JSONArray parcelasArray = jsonObject.getJSONArray("parcelas");
-            // Percorre o array de parcelas
-            for (int i = 0; i < parcelasArray.length(); i++) {
-                String parcela = parcelasArray.getString(i);
-
-                // Faça o que for necessário com cada parcela
-            }
-
-            String tipoOp = jsonObject.getString("tipo_op");
-            String ordemCompra = jsonObject.getString("ordem_compra");
-
-            JSONObject volumeObject = jsonObject.getJSONObject("volume");
-            String especie = volumeObject.getString("especie");
-            int pesoBruto = volumeObject.getInt("peso_bruto");
-            int qtdVolume = volumeObject.getInt("qtd_volume");
-            int pesoLiq = volumeObject.getInt("peso_liq");
-
-            int idTransportadora = jsonObject.getInt("id_transportadora");
-            String meioTransp = jsonObject.getString("meio_transp");
-
-            System.out.println("tipoOp: " + tipoOp);
-            System.out.println("ordemCompra: " + ordemCompra);
-            System.out.println("especie: " + especie);
-            System.out.println("pesoBruto: " + pesoBruto);
-            System.out.println("qtdVolume: " + qtdVolume);
-            System.out.println("pesoLiq: " + pesoLiq);
-            System.out.println("idTransportadora: " + idTransportadora);
-            System.out.println("meioTransp: " + meioTransp);
-
-            // Fechar o leitor de arquivo
-            reader.close();
-
+            TaRevisaoNota.setText(conteudo.toString());
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }   
+        }
     }
 
 

@@ -16,6 +16,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class EmissaoTransp extends javax.swing.JInternalFrame {
 
@@ -291,9 +295,11 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
 
         Object[] transportData = getTransportData();
         writeJsonToFile();
-
+        executarJsonToString();
         Program.getEmissaoTransp().setVisible(false);
         Program.getEmissaoRevisao().setVisible(true);
+
+
     }//GEN-LAST:event_btnNextRevisaoActionPerformed
 
     private void CbTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbTranspActionPerformed
@@ -413,6 +419,25 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
             }
         } catch (Exception e) {
             System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
+        }
+    }
+
+    private void executarJsonToString() {
+        ProcessBuilder pb = new ProcessBuilder("python3", "jsonToString.py");
+
+        try {
+            // Iniciar o processo e esperar pela sua conclusão
+            Process p = pb.start();
+            p.waitFor();
+
+            // Imprimir a saída do processo, se houver
+            if (p.getInputStream().available() > 0) {
+                byte[] buffer = new byte[1024];
+                int bytesRead = p.getInputStream().read(buffer);
+                System.out.println(new String(buffer, 0, bytesRead));
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

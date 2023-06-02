@@ -1,0 +1,22 @@
+
+ID Destinatário: Cliente do bom
+
+Itens:
+----------------------------------------------------------------------------------------------------
+Nome Prod      Quantidade     Valor Unidade  
+----------------------------------------------------------------------------------------------------
+cocrante       12             12             
+
+Definições:
+Parcelas: ['12/12/1212', '12/12/1212']
+Tipo de operação: estadual
+Ordem Compra: 12
+
+Transportadora:
+Meio de Transporte: Transporte por conta do emitente
+ID Transp: 1
+Razão Social: Transportadora Erechim
+Espécie: 12
+Quantidade Volume: 12
+Peso Líquido: 12.0
+Peso Bruto: 12.0
