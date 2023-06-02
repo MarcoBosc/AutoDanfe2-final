@@ -11,12 +11,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 public class CadastroClientes extends javax.swing.JInternalFrame {
 
     public CadastroClientes() {
         initComponents();
+        configureTable();
+        populateTable();
         tfRazaoSocialCliente.setForeground(Color.GRAY);
         tfCEPCliente.setForeground(Color.GRAY);
         tfMunicipioCliente.setForeground(Color.GRAY);
@@ -207,7 +214,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         jLabel5.setText("CNPJ:");
 
-        jLabel6.setText("Inscrião Estadual:");
+        jLabel6.setText("Inscrição Estadual:");
 
         jLabel7.setText("Número Residencial:");
 
@@ -433,9 +440,9 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
     private void tfNumeroResiClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusLost
         if (tfNumeroResiCliente.getText().isEmpty()) {
-        tfNumeroResiCliente.setText("41");
-        tfNumeroResiCliente.setForeground(Color.GRAY);
-    }
+            tfNumeroResiCliente.setText("41");
+            tfNumeroResiCliente.setForeground(Color.GRAY);
+        }
     }//GEN-LAST:event_tfNumeroResiClienteFocusLost
 
     private void tfMunicipioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMunicipioClienteActionPerformed
@@ -452,34 +459,34 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         populateFields();
     }//GEN-LAST:event_table1MouseClicked
 
+    private void configureTable() {
+        table1.setDefaultEditor(Object.class, null);
+    }
     private void btnRemoverCLientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCLientesActionPerformed
-        int selectedRow = table1.getSelectedRow();
-        if (selectedRow >= 0) {
-            DefaultTableModel model = (DefaultTableModel) table1.getModel();
-            model.removeRow(selectedRow);
-        }
         removeClienteFromDB();
     }//GEN-LAST:event_btnRemoverCLientesActionPerformed
     private void removeClienteFromDB() {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
-            String cnpj = table1.getValueAt(selectedRow, 1).toString();
-            Connection conn = ConexaoPG.getConnection();
-            if (conn != null) {
-                try {
-                    PreparedStatement ps = conn.prepareStatement("DELETE FROM clientes WHERE CNPJ_cliente = ?");
-                    ps.setString(1, cnpj);
-                    ps.executeUpdate();
+            String cnpj = table1.getValueAt(selectedRow, 0).toString();
+
+            try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM clientes WHERE CNPJ_cliente = ?")) {
+                ps.setString(1, cnpj);
+                int rowsAffected = ps.executeUpdate();
+
+                System.out.println(cnpj);
+
+                if (rowsAffected > 0) {
+                    DefaultTableModel model = (DefaultTableModel) table1.getModel();
+                    model.removeRow(selectedRow);
                     JOptionPane.showMessageDialog(null, "Cliente removido com sucesso!");
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Erro ao remover cliente: " + e.getMessage());
-                } finally {
-                    try {
-                        conn.close();
-                    } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
-                    }
+                } else {
+                    System.out.println("No rows affected.");
+                    JOptionPane.showMessageDialog(null, "Nenhum cliente encontrado com o CNPJ especificado!");
                 }
+            } catch (SQLException e) {
+                System.out.println("SQLException: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro ao remover cliente: " + e.getMessage());
             }
         }
     }
@@ -489,11 +496,11 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         if (conn != null) {
             try {
-                PreparedStatement ps = conn.prepareStatement("UPDATE clientes SET cnpj=?, ie=?, municipio=?, numero_residencia=?, razao_social=? WHERE cep=?");
+                PreparedStatement ps = conn.prepareStatement("UPDATE clientes SET CNPJ_cliente=?, IE_cliente=?, municipio_cliente=?, num_residencial=?, razao_social_cliente=? WHERE CEP_cliente=?");
                 ps.setString(1, tfCNPJCliente.getText());
                 ps.setString(2, tfInscricaoEstadualCliente.getText());
                 ps.setString(3, tfMunicipioCliente.getText());
-                ps.setString(4, tfNumeroResiCliente.getText());
+                ps.setInt(4, Integer.parseInt(tfNumeroResiCliente.getText()));
                 ps.setString(5, tfRazaoSocialCliente.getText());
                 ps.setString(6, tfCEPCliente.getText());
                 ps.executeUpdate();
@@ -515,18 +522,27 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         int row = table1.getSelectedRow();
         if (row != -1) {
             tfRazaoSocialCliente.setText(table1.getValueAt(row, 1).toString());
-            tfCNPJCliente.setText(table1.getValueAt(row, 2).toString());
-            tfInscricaoEstadualCliente.setText(table1.getValueAt(row, 3).toString());
-            tfCEPCliente.setText(table1.getValueAt(row, 4).toString());
+            tfCNPJCliente.setText(table1.getValueAt(row, 0).toString());
+            tfInscricaoEstadualCliente.setText(table1.getValueAt(row, 2).toString());
+            tfCEPCliente.setText(table1.getValueAt(row, 3).toString());
             tfNumeroResiCliente.setText(table1.getValueAt(row, 5).toString());
-            btnAdicionarCLientes.setEnabled(false);
+
+            tfRazaoSocialCliente.setForeground(Color.BLACK);
+            tfCNPJCliente.setForeground(Color.BLACK);
+            tfInscricaoEstadualCliente.setForeground(Color.BLACK);
+            tfCEPCliente.setForeground(Color.BLACK);
+            tfNumeroResiCliente.setForeground(Color.BLACK);
+            tfMunicipioCliente.setForeground(Color.BLACK);
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente na tabela");
         }
     }
 
     public void insertCliente() {
-        String cep = tfCEPCliente.getText();
+        String cep = tfCEPCliente.getText().replace("-", "");
+        String cnpj = tfCNPJCliente.getText().replace(".", "").replace("-", "").replace("/", "");
+        String inscricaoEstadual = tfInscricaoEstadualCliente.getText().replace(".", "");
+
         apiCEP api = new apiCEP(cep);
         String rua = api.getRua();
         String bairro = api.getBairro();
@@ -538,11 +554,11 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         if (conn != null) {
             try {
                 PreparedStatement ps = conn.prepareStatement("INSERT INTO clientes (razao_social_cliente, CNPJ_cliente, IE_cliente, CEP_cliente, uf_cliente, bairro_cliente, municipio_cliente, Logradouro_cliente, num_residencial) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                ps.setString(4, cep);
-                ps.setString(2, tfCNPJCliente.getText());
-                ps.setString(3, tfInscricaoEstadualCliente.getText());
+                ps.setInt(4, Integer.parseInt(cep));
+                ps.setLong(2, Long.parseLong(cnpj));
+                ps.setLong(3, Long.parseLong(inscricaoEstadual));
                 ps.setString(7, cidade);
-                ps.setString(9, tfNumeroResiCliente.getText());
+                ps.setInt(9, Integer.parseInt(tfNumeroResiCliente.getText()));
                 ps.setString(1, tfRazaoSocialCliente.getText());
                 ps.setString(8, rua);
                 ps.setString(6, bairro);
@@ -550,6 +566,8 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
                 ps.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso!");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao converter valor para número: " + e.getMessage());
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao adicionar cliente: " + e.getMessage());
             } finally {
@@ -563,43 +581,64 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     }
 
     private void populateTable() {
-        Connection conn = ConexaoPG.getConnection();
+    Connection conn = ConexaoPG.getConnection();
 
-        if (conn != null) {
+    if (conn != null) {
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
+            ResultSet rs = ps.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) table1.getModel();
+            model.setColumnCount(9);
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                String cep = rs.getString("CEP_cliente");
+                String cnpj = rs.getString("CNPJ_cliente");
+                String ie = rs.getString("IE_cliente");
+                String municipio = rs.getString("municipio_cliente");
+                String num_residencia = rs.getString("num_residencial");
+                String razao_social = rs.getString("razao_social_cliente");
+                String rua = rs.getString("Logradouro_cliente");
+                String bairro = rs.getString("bairro_cliente");
+                String estado = rs.getString("uf_cliente");
+
+                Object[] rowData = {cnpj, razao_social, ie, cep, municipio, num_residencia, rua, bairro, estado};
+                model.addRow(rowData);
+            }
+
+            rs.close();
+
+            DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+            cellRenderer.setForeground(Color.BLACK);
+            cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JTableHeader header = table1.getTableHeader();
+            header.setDefaultRenderer(cellRenderer);
+
+            TableColumnModel columnModel = table1.getColumnModel();
+            for (int i = 0; i < columnModel.getColumnCount(); i++) {
+                columnModel.getColumn(i).setCellRenderer(cellRenderer);
+            }
+
+            // Set column names for the additional columns
+            columnModel.getColumn(6).setHeaderValue("Logradouro");
+            columnModel.getColumn(7).setHeaderValue("Bairro");
+            columnModel.getColumn(8).setHeaderValue("UF");
+            header.repaint();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela clientes: " + e.getMessage());
+        } finally {
             try {
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
-                ResultSet rs = ps.executeQuery();
-
-                DefaultTableModel model = (DefaultTableModel) table1.getModel();
-                model.setRowCount(0);
-
-                while (rs.next()) {
-                    String cep = rs.getString("cep");
-                    String cnpj = rs.getString("cnpj");
-                    String ie = rs.getString("ie");
-                    String municipio = rs.getString("municipio");
-                    String num_residencia = rs.getString("numero_residencia");
-                    String razao_social = rs.getString("razao_social");
-                    String rua = rs.getString("rua");
-                    String bairro = rs.getString("bairro");
-                    String estado = rs.getString("estado");
-
-                    Object[] row = {cep, cnpj, ie, municipio, num_residencia, razao_social, rua, bairro, estado};
-                    model.addRow(row);
-                }
-
-                rs.close();
+                conn.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela clientes : " + e.getMessage());
-            } finally {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
-                }
+                JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
             }
         }
     }
+}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

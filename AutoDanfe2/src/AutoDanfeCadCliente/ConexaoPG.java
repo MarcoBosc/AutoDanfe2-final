@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoPG {
-    private static final String url = "jdbc:postgresql://localhost:5432/AutoDanfe2";
+    private static final String url = "jdbc:postgresql://localhost:5432/Danfe2";
     private static final String user = "postgres";
     private static final String password = "admin";
 

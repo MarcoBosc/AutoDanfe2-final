@@ -211,6 +211,7 @@
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCNPJActionPerformed"/>
           </Events>
         </Component>
         <Component class="test.RoundedTextField" name="tfLogradouroTransp">
@@ -352,7 +353,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Munuc&#xed;pio:"/>
+            <Property name="text" type="java.lang.String" value="Munic&#xed;pio:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">

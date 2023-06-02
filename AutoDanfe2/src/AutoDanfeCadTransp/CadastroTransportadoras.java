@@ -10,12 +10,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     public CadastroTransportadoras() {
         initComponents();
+
+        populateTable();
+        configureTable();
 
         tfRazaoSocialTransp.setForeground(Color.GRAY);
         tfLogradouroTransp.setForeground(Color.GRAY);
@@ -103,6 +110,11 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tfCNPJFocusLost(evt);
+            }
+        });
+        tfCNPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCNPJActionPerformed(evt);
             }
         });
 
@@ -198,7 +210,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Logradouro:");
 
-        jLabel4.setText("Munucípio:");
+        jLabel4.setText("Município:");
 
         jLabel5.setText("CNPJ:");
 
@@ -434,6 +446,14 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         populateFields();
     }//GEN-LAST:event_table1MouseClicked
 
+    private void tfCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCNPJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCNPJActionPerformed
+
+    private void configureTable() {
+        table1.setDefaultEditor(Object.class, null);
+    }
+
     private void removeTransportadoraFromTable() {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
@@ -443,90 +463,120 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     }
 
     private void removeTransportadoraFromDB() {
-        int selectedRow = table1.getSelectedRow();
-        if (selectedRow >= 0) {
-            String cnpj = table1.getValueAt(selectedRow, 0).toString();
-            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM transportadoras WHERE cnpj = ?")) {
-                ps.setString(1, cnpj);
-                ps.executeUpdate();
-
-                DefaultTableModel model = (DefaultTableModel) table1.getModel();
-                model.removeRow(selectedRow);
-
-                JOptionPane.showMessageDialog(null, "Transportadora removida com sucesso!");
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro ao remover transportadora: " + e.getMessage());
-            }
-        }
-    }
-
-    private void updateTransportadoraInDB() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE transportadoras SET razao_social = ?, logradouro = ?, municipio = ?, inscricao_estadual = ?, uf = ? WHERE cnpj = ?")) {
-            ps.setString(1, tfRazaoSocialTransp.getText());
-            ps.setString(2, tfLogradouroTransp.getText());
-            ps.setString(3, tfMunicipio.getText());
-            ps.setString(4, tfInscricaoEstadual.getText());
-            ps.setString(5, tfUF.getText());
-            ps.setString(6, tfCNPJ.getText());
+    int selectedRow = table1.getSelectedRow();
+    if (selectedRow >= 0) {
+        String cnpj = table1.getValueAt(selectedRow, 2).toString();
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM transportadoras WHERE CNPJ_transportador = ?")) {
+            ps.setString(1, cnpj);
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Transportadora atualizada com sucesso!");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar transportadora: " + e.getMessage());
-        }
-    }
+            DefaultTableModel model = (DefaultTableModel) table1.getModel();
+            model.removeRow(selectedRow);
 
-    private void populateFields() {
-        int row = table1.getSelectedRow();
-        if (row != -1) {
-            tfCNPJ.setText(table1.getValueAt(row, 1).toString());
-            tfInscricaoEstadual.setText(table1.getValueAt(row, 2).toString());
-            tfLogradouroTransp.setText(table1.getValueAt(row, 3).toString());
-            tfMunicipio.setText(table1.getValueAt(row, 4).toString());
-            tfRazaoSocialTransp.setText(table1.getValueAt(row, 5).toString());
-            tfUF.setText(table1.getValueAt(row, 6).toString());
-            btnAdicionarTransp.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma transportadora na tabela");
+            JOptionPane.showMessageDialog(null, "Transportadora removida com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover transportadora: " + e.getMessage());
         }
     }
+}
+
+   private void updateTransportadoraInDB() {
+    try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE transportadoras SET razao_social_transp = ?, logradouro_transportadora = ?, municipio_transportadora = ?, IE_transportadora = ?, UF_transportadora = ? WHERE CNPJ_transportador = ?")) {
+        ps.setString(1, tfRazaoSocialTransp.getText());
+        ps.setString(2, tfLogradouroTransp.getText());
+        ps.setString(3, tfMunicipio.getText());
+        ps.setString(4, tfInscricaoEstadual.getText());
+        ps.setString(5, tfUF.getText());
+        ps.setString(6, tfCNPJ.getText());
+        ps.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Transportadora atualizada com sucesso!");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar transportadora: " + e.getMessage());
+    }
+}
+
+  private void populateFields() {
+    int row = table1.getSelectedRow();
+    if (row != -1) {
+        tfCNPJ.setText(table1.getValueAt(row, 0).toString());
+        tfInscricaoEstadual.setText(table1.getValueAt(row, 1).toString());
+        tfLogradouroTransp.setText(table1.getValueAt(row, 2).toString());
+        tfMunicipio.setText(table1.getValueAt(row, 3).toString());
+        tfRazaoSocialTransp.setText(table1.getValueAt(row, 4).toString());
+        tfUF.setText(table1.getValueAt(row, 5).toString());
+
+        tfCNPJ.setForeground(Color.BLACK);
+        tfInscricaoEstadual.setForeground(Color.BLACK);
+        tfLogradouroTransp.setForeground(Color.BLACK);
+        tfMunicipio.setForeground(Color.BLACK);
+        tfRazaoSocialTransp.setForeground(Color.BLACK);
+        tfUF.setForeground(Color.BLACK);
+        
+        btnAdicionarTransp.setEnabled(false);
+    } else {
+        JOptionPane.showMessageDialog(null, "Selecione uma transportadora na tabela");
+    }
+}
 
     public void insertTransportadora() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO transportadoras (razao_social_transp, cnpj_transportadora, IE_transportadora, uf_transportadora, municipio_transportadora, logradouro_transportadora) VALUES (?, ?, ?, ?, ?, ?)")) {
-            ps.setString(2, tfCNPJ.getText());
-            ps.setString(3, tfInscricaoEstadual.getText());
-            ps.setString(6, tfLogradouroTransp.getText());
-            ps.setString(5, tfMunicipio.getText());
-            ps.setString(1, tfRazaoSocialTransp.getText());
-            ps.setString(4, tfUF.getText());
-            ps.executeUpdate();
+    try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO transportadoras (razao_social_transp, CNPJ_transportador, IE_transportadora, UF_transportadora, municipio_transportadora, logradouro_transportadora) VALUES (?, ?, ?, ?, ?, ?)")) {
+        ps.setString(1, tfRazaoSocialTransp.getText());
+        ps.setString(2, tfCNPJ.getText());
+        ps.setString(3, tfInscricaoEstadual.getText());
+        ps.setString(4, tfUF.getText());
+        ps.setString(5, tfMunicipio.getText());
+        ps.setString(6, tfLogradouroTransp.getText());
+        ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Transportadora adicionada com sucesso!");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar transportadora: " + e.getMessage());
-        }
+        JOptionPane.showMessageDialog(null, "Transportadora adicionada com sucesso!");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao adicionar transportadora: " + e.getMessage());
     }
+}
 
-    private void populateTable() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras"); ResultSet rs = ps.executeQuery()) {
-            DefaultTableModel model = (DefaultTableModel) table1.getModel();
-            model.setRowCount(0);
+   private void populateTable() {
+    try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras"); ResultSet rs = ps.executeQuery()) {
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
+        model.setRowCount(0);
 
-            while (rs.next()) {
-                String cnpj = rs.getString("cnpj");
-                String inscricaoEstadual = rs.getString("inscricao_estadual");
-                String logradouro = rs.getString("logradouro");
-                String municipio = rs.getString("municipio");
-                String razaoSocial = rs.getString("razao_social");
-                String uf = rs.getString("uf");
+        while (rs.next()) {
+            String cnpj = rs.getString("CNPJ_transportador");
+            String inscricaoEstadual = rs.getString("IE_transportadora");
+            String logradouro = rs.getString("logradouro_transportadora");
+            String municipio = rs.getString("municipio_transportadora");
+            String razaoSocial = rs.getString("razao_social_transp");
+            String uf = rs.getString("UF_transportadora");
 
-                Object[] row = {cnpj, inscricaoEstadual, logradouro, municipio, razaoSocial, uf};
-                model.addRow(row);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela transportadoras: " + e.getMessage());
+            Object[] row = {cnpj, inscricaoEstadual, logradouro, municipio, razaoSocial, uf};
+            model.addRow(row);
         }
+
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setForeground(Color.BLACK);
+        cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JTableHeader header = table1.getTableHeader();
+        header.setDefaultRenderer(cellRenderer);
+
+        TableColumnModel columnModel = table1.getColumnModel();
+        for (int i = 0; i < columnModel.getColumnCount(); i++) {
+            columnModel.getColumn(i).setCellRenderer(cellRenderer);
+        }
+
+        // Set column names
+        columnModel.getColumn(0).setHeaderValue("CNPJ");
+        columnModel.getColumn(1).setHeaderValue("Inscrição Estadual");
+        columnModel.getColumn(2).setHeaderValue("Logradouro");
+        columnModel.getColumn(3).setHeaderValue("Município");
+        columnModel.getColumn(4).setHeaderValue("Razão Social");
+        columnModel.getColumn(5).setHeaderValue("UF");
+        header.repaint();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela transportadoras: " + e.getMessage());
     }
+}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

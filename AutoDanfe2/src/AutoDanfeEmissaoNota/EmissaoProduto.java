@@ -1,14 +1,46 @@
 package AutoDanfeEmissaoNota;
 
+import AutoDanfeCadCliente.ConexaoPG;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import Controller.Program;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Vector;
+import javax.swing.JFormattedTextField;
+import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.text.NumberFormatter;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class EmissaoProduto extends javax.swing.JInternalFrame {
 
-
     public EmissaoProduto() {
         initComponents();
-
+        populateComboBox();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -43,7 +75,7 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new Components.table();
+        TabelaItens = new Components.table();
 
         setMaximumSize(new java.awt.Dimension(1000, 596));
         setMinimumSize(new java.awt.Dimension(1000, 596));
@@ -151,6 +183,11 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         btnRemoveItem.setMaximumSize(new java.awt.Dimension(142, 30));
         btnRemoveItem.setMinimumSize(new java.awt.Dimension(142, 30));
         btnRemoveItem.setPreferredSize(new java.awt.Dimension(142, 30));
+        btnRemoveItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveItemActionPerformed(evt);
+            }
+        });
 
         btnVoltarDest.setBackground(new java.awt.Color(204, 204, 204));
         btnVoltarDest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/iconBack.png"))); // NOI18N
@@ -236,7 +273,6 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         );
 
         tfValor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfValor.setText("39,80");
         tfValor.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfValorFocusGained(evt);
@@ -247,7 +283,6 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         });
 
         tfQuantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfQuantidade.setText("0");
         tfQuantidade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfQuantidadeFocusGained(evt);
@@ -262,7 +297,6 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camisa Social Azul Grafil ML M", "Calça Azul M", "Camiseta  Azul ML XGG" }));
         jComboBox1.setMinimumSize(new java.awt.Dimension(239, 31));
         jComboBox1.setPreferredSize(new java.awt.Dimension(239, 31));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -277,18 +311,23 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
 
         jLabel12.setText("Valor:");
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Descrição", "NCM", "Quantidade", "Valor Unitário"
             }
-        ));
-        jScrollPane1.setViewportView(table1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TabelaItens);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -317,7 +356,7 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
                                 .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 12, Short.MAX_VALUE))
+                        .addGap(0, 3, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnVoltarDest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -346,9 +385,9 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltarDest, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNextDefinitions, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNextDefinitions, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltarDest, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -356,23 +395,25 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextDefinitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextDefinitionsActionPerformed
+        writeJsonToFile();
         Program.getEmissaoProduto().setVisible(false);
         Program.getEmissaoDefinicoes().setVisible(true);
     }//GEN-LAST:event_btnNextDefinitionsActionPerformed
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
-        // TODO add your handling code here:
+        populateTabelaItens();
+        updateSumTotal();
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void btnVoltarDestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDestActionPerformed
@@ -383,10 +424,6 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
     private void tfQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQuantidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfQuantidadeActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void tfValorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfValorFocusGained
         tfValor.setText("");
@@ -408,8 +445,195 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tfQuantidadeFocusLost
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnRemoveItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItemActionPerformed
+        removeSelectedRow();
+        updateSumTotal();
+    }//GEN-LAST:event_btnRemoveItemActionPerformed
+    private void removeSelectedRow() {
+        int selectedRowIndex = TabelaItens.getSelectedRow();
+        if (selectedRowIndex != -1) {
+            DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
+            model.removeRow(selectedRowIndex);
+        } else {
+            JOptionPane.showMessageDialog(null, "No row selected.");
+        }
+    }
+
+    private void populateTabelaItens() {
+        DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
+        model.setColumnCount(7);
+
+        String quantidade = tfQuantidade.getText();
+        String valor = tfValor.getText().replace(",", ".");
+        double total = Integer.parseInt(quantidade) * Double.parseDouble(valor);
+        String formattedTotal = String.format("%.2f", total);
+        formattedTotal = formattedTotal.replace(".", ",");
+        String nomeProduto = jComboBox1.getSelectedItem().toString();
+        String idProduto = "";
+        String codigoProduto = "";
+        String ncmProduto = "";
+
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT id_produto, cod_produto, NCM FROM produtos WHERE nome_produto = ?")) {
+            ps.setString(1, nomeProduto);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    idProduto = rs.getString("id_produto");
+                    codigoProduto = rs.getString("cod_produto");
+                    ncmProduto = rs.getString("NCM");
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar o ID do produto: " + e.getMessage());
+        }
+        Object[] row = {codigoProduto, nomeProduto, ncmProduto, quantidade, valor, formattedTotal, idProduto};
+        model.addRow(row);
+
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setForeground(Color.BLACK);
+        cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JTableHeader header = TabelaItens.getTableHeader();
+        header.setDefaultRenderer(cellRenderer);
+
+        TableColumnModel columnModel = TabelaItens.getColumnModel();
+        for (int i = 0; i < columnModel.getColumnCount(); i++) {
+            columnModel.getColumn(i).setCellRenderer(cellRenderer);
+        }
+
+        columnModel.getColumn(0).setHeaderValue("Código");
+        columnModel.getColumn(1).setHeaderValue("Descrição");
+        columnModel.getColumn(2).setHeaderValue("NCM");
+        columnModel.getColumn(3).setHeaderValue("Quantidade");
+        columnModel.getColumn(4).setHeaderValue("Valor Unitário");
+        columnModel.getColumn(5).setHeaderValue("Total");
+        columnModel.getColumn(6).setHeaderValue("ID Produto");
+
+        header.repaint();
+        TabelaItens.repaint();
+
+    }
+
+    private void populateComboBox() {
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM produtos ORDER BY nome_produto ASC"); ResultSet rs = ps.executeQuery()) {
+
+            jComboBox1.removeAllItems();
+
+            while (rs.next()) {
+                String nomeProduto = rs.getString("nome_produto");
+                jComboBox1.addItem(nomeProduto);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela produtos: " + e.getMessage());
+        }
+    }
+
+    private double calculateSumTotal() {
+        DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
+        int rowCount = model.getRowCount();
+
+        int totalColumnIndex = getColumnIndex("Total");
+        double sumTotal = 0.0;
+        for (int i = 0; i < rowCount; i++) {
+            String totalValue = model.getValueAt(i, totalColumnIndex).toString();
+            double totalProduct = Double.parseDouble(totalValue.replace(",", "."));
+            sumTotal += totalProduct;
+        }
+        return sumTotal;
+    }
+
+    private void updateSumTotal() {
+        double sumTotal = calculateSumTotal();
+        lbTotal.setText(String.format("R$ %.2f", sumTotal));
+    }
+
+    private int getColumnIndex(String columnName) {
+        DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
+        TableColumnModel columnModel = TabelaItens.getColumnModel();
+
+        for (int i = 0; i < columnModel.getColumnCount(); i++) {
+            TableColumn tableColumn = columnModel.getColumn(i);
+            if (tableColumn.getHeaderValue().equals(columnName)) {
+                return tableColumn.getModelIndex();
+            }
+        }
+
+        return -1;
+    }
+
+    private String readJsonFromFile() {
+        String fileName = "json.txt";
+        StringBuilder contentBuilder = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                contentBuilder.append(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+
+        return contentBuilder.toString();
+    }
+
+    private void writeJsonToFile() {
+        try {
+            String fileName = "json.txt";
+            JSONObject json = new JSONObject();
+
+            JSONArray jsonArray = new JSONArray();
+
+            DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
+            int rowCount = model.getRowCount();
+
+            for (int i = 0; i < rowCount; i++) {
+                String idProduto = model.getValueAt(i, 6).toString();
+                String quantidade = model.getValueAt(i, 3).toString();
+                String valorUnidade = model.getValueAt(i, 4).toString();
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id_prod", idProduto);
+                jsonObject.put("quantidade", quantidade);
+                jsonObject.put("valor_unidade", valorUnidade);
+
+                jsonArray.put(jsonObject);
+            }
+
+            json.put("itens", jsonArray);
+
+            String fileContent = readJsonFromFile();
+            if (fileContent.isEmpty()) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                    writer.write(json.toString(4));
+                    System.out.println("Data written to the JSON file successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+                }
+            } else {
+                // Remove the trailing '}' brace from the existing content
+                String modifiedContent = fileContent.trim();
+                modifiedContent = modifiedContent.substring(0, modifiedContent.lastIndexOf("}")).trim();
+
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                    writer.write(modifiedContent + "," + json.toString(4) + "}");
+                    System.out.println("Data written to the JSON file successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+                }
+            }
+        } catch (JSONException e) {
+            System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Components.table TabelaItens;
     private Components.btnRounded btnAddItem;
     private Components.btnRounded btnNextDefinitions;
     private Components.btnRounded btnRemoveItem;
@@ -432,7 +656,6 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbTotal;
-    private Components.table table1;
     private Components.table tableItems;
     private test.RoundedTextField tfQuantidade;
     private test.RoundedTextField tfValor;

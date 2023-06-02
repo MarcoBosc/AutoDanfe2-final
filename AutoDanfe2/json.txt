@@ -1,0 +1,2 @@
+{"id_destinatario": "23132132",{"itens": []},{"itens": [    {        "valor_unidade": "2",        "id_prod": "4",        "quantidade": "2"    },    {        "valor_unidade": "2",        "id_prod": "4",        "quantidade": "2"    },    {        "valor_unidade": "2",        "id_prod": "4",        "quantidade": "2"    }]},{"parcelas":["22/22/2222","22/22/2222"],"tipo_op":"estadual","ordem_compra":"222"},
+{"volume":{"especie":"a","peso_bruto":2,"qtd_volume":2,"peso_liq":2},"id_transportadora":1,"meio_transp":"Transporte por conta do emitente"}}

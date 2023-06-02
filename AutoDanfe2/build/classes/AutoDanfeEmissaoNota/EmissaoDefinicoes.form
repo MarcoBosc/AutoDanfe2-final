@@ -345,6 +345,9 @@
               <Dimension value="[114, 30]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddParcelaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="Components.btnRounded" name="btnRemover">
           <Properties>
@@ -377,6 +380,9 @@
               <Dimension value="[114, 30]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -417,9 +423,11 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioBtnEstadual">
           <Properties>
-            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Estadual"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnEstadualActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioBtnInterestadual">
           <Properties>
@@ -435,9 +443,6 @@
           </Properties>
         </Component>
         <Component class="test.RoundedTextField" name="tbOrdemCompra">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="12345"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

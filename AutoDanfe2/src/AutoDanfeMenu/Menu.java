@@ -1,7 +1,14 @@
 package AutoDanfeMenu;
 
 import Controller.Program;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Menu extends javax.swing.JInternalFrame {
 
@@ -171,6 +178,7 @@ public class Menu extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirActionPerformed
+        clearJsonFile();
         Program.getMenu().setVisible(false);
         Program.getEmissaoNota().setVisible(true);
     }//GEN-LAST:event_btnEmitirActionPerformed
@@ -199,6 +207,29 @@ public class Menu extends javax.swing.JInternalFrame {
         Program.getMenu().setVisible(false);
         Program.getCadastroTransportadoras().setVisible(true);
     }//GEN-LAST:event_btnCadastroTranspActionPerformed
+private void clearJsonFile() {
+    String fileName = "json.txt";
+    File file = new File(fileName);
+
+    if (file.exists()) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            if (reader.readLine() != null) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                    writer.write("");
+                    System.out.println("JSON file cleared successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while clearing the JSON file: " + e.getMessage());
+                }
+            } else {
+                System.out.println("JSON file is already empty.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the JSON file: " + e.getMessage());
+        }
+    } else {
+        System.out.println("JSON file does not exist.");
+    }
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

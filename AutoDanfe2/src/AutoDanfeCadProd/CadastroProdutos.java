@@ -5,6 +5,12 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +19,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     public CadastroProdutos() {
         initComponents();
+        configureTable();
         populateTable();
 
         tfCodProd.setForeground(Color.GRAY);
@@ -316,12 +323,16 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         populateFields();
     }//GEN-LAST:event_table1MouseClicked
 
+    private void configureTable() {
+        table1.setDefaultEditor(Object.class, null);
+    }
+
     private void removeProdutoFromDB() {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
-            String codigoProduto = table1.getValueAt(selectedRow, 0).toString();
-            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM produtos WHERE cod_produto = ?")) {
-                ps.setInt(1, Integer.parseInt(codigoProduto));
+            String idProduto = table1.getValueAt(selectedRow, 0).toString();
+            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM produtos WHERE id_produto = ?")) {
+                ps.setInt(1, Integer.parseInt(idProduto));
                 ps.executeUpdate();
 
                 DefaultTableModel model = (DefaultTableModel) table1.getModel();
@@ -335,36 +346,48 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }
 
     private void updateProduto() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE produtos SET NCM=?, nome_produto=? WHERE cod_produto=?")) {
-            ps.setInt(1, Integer.parseInt(tfNCM.getText()));
-            ps.setString(2, tfNomeProd.getText());
-            ps.setInt(3, Integer.parseInt(tfCodProd.getText()));
-            ps.executeUpdate();
+        int selectedRow = table1.getSelectedRow();
+        if (selectedRow >= 0) {
+            String idProduto = table1.getValueAt(selectedRow, 0).toString();
+            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE produtos SET NCM=?, nome_produto=? WHERE id_produto=?")) {
+                ps.setInt(1, Integer.parseInt(tfNCM.getText()));
+                ps.setString(2, tfNomeProd.getText());
+                ps.setInt(3, Integer.parseInt(idProduto));
+                ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar produto: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso!");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao atualizar produto: " + e.getMessage());
+            }
         }
     }
 
     private void populateFields() {
-        int row = table1.getSelectedRow();
-        if (row != -1) {
-            tfCodProd.setText(table1.getValueAt(row, 0).toString());
-            tfNCM.setText(table1.getValueAt(row, 1).toString());
-            tfNomeProd.setText(table1.getValueAt(row, 2).toString());
-            btnAdicionarProd.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto na tabela");
-        }
+    int row = table1.getSelectedRow();
+    if (row != -1) {
+        tfCodProd.setText(table1.getValueAt(row, 1).toString());
+        tfNCM.setText(table1.getValueAt(row, 2).toString());
+        tfNomeProd.setText(table1.getValueAt(row, 3).toString());
+        tfCodProd.setForeground(Color.BLACK);
+        tfNCM.setForeground(Color.BLACK);
+        tfNomeProd.setForeground(Color.BLACK);
+        
+        btnAdicionarProd.setEnabled(false);
+    } else {
+        JOptionPane.showMessageDialog(null, "Selecione um produto na tabela");
     }
-
+}
     public void insertProduto() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO produtos (cod_produto, nome_produto, NCM) VALUES (?, ?, ?)")) {
+        try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO produtos (cod_produto, nome_produto, NCM) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, Integer.parseInt(tfCodProd.getText()));
             ps.setString(2, tfNomeProd.getText());
             ps.setInt(3, Integer.parseInt(tfNCM.getText()));
             ps.executeUpdate();
+
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int generatedId = generatedKeys.getInt(1);
+            }
 
             JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!");
         } catch (NumberFormatException e) {
@@ -378,20 +401,44 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM produtos"); ResultSet rs = ps.executeQuery()) {
 
             DefaultTableModel model = (DefaultTableModel) table1.getModel();
+            model.setColumnCount(4);
             model.setRowCount(0);
 
             while (rs.next()) {
+                int idProduto = rs.getInt("id_produto");
                 String codigoProduto = rs.getString("cod_produto");
                 String ncm = rs.getString("NCM");
                 String nomeProduto = rs.getString("nome_produto");
 
-                Object[] row = {codigoProduto, ncm, nomeProduto};
+                Object[] row = {idProduto, codigoProduto, ncm, nomeProduto};
                 model.addRow(row);
             }
+            rs.close();
+
+            DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+            cellRenderer.setForeground(Color.BLACK);
+            cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JTableHeader header = table1.getTableHeader();
+            header.setDefaultRenderer(cellRenderer);
+
+            TableColumnModel columnModel = table1.getColumnModel();
+            for (int i = 0; i < columnModel.getColumnCount(); i++) {
+                columnModel.getColumn(i).setCellRenderer(cellRenderer);
+            }
+
+            columnModel.getColumn(0).setHeaderValue("ID");
+            columnModel.getColumn(1).setHeaderValue("Código Produto");
+            columnModel.getColumn(2).setHeaderValue("NCM");
+            columnModel.getColumn(3).setHeaderValue("Nome Produto");
+
+            header.repaint();
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela produtos: " + e.getMessage());
         }
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnAdicionarProd;
