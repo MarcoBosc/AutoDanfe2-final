@@ -440,6 +440,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void btnAtualizarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTranspActionPerformed
         updateTransportadoraInDB();
+        btnAdicionarTransp.setEnabled(true);
     }//GEN-LAST:event_btnAtualizarTranspActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked

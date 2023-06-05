@@ -1,26 +1,31 @@
 {
-  "id_destinatario": "123456778",
+  "id_destinatario": "312313242423",
 
   "itens": [
     {
       "id_prod": "4",
-      "quantidade": "12",
-      "valor_unidade": "12"
+      "quantidade": "13",
+      "valor_unidade": "21"
+    },
+    {
+      "id_prod": "7",
+      "quantidade": "13",
+      "valor_unidade": "23.8"
     }
   ]
 ,"definicoes": {
-   "parcelas": ["12/12/1212", "12/12/1212"],
-    "tipo_op": "estadual",
-    "tbOrdemCompra": "12"
+   "parcelas": ["32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242"],
+    "tipo_op": "Interestadual",
+    "tbOrdemCompra": "4235443"
   },
 
   "transportadora": {
    "meio_transporte": "Transporte por conta do emitente",
-    "id_transp": "1",
-    "razao_social": "Transportadora Erechim",
-    "especie": "12",
-    "quantidadeVol": "12",
-    "peso_liquido": "12.0",
-    "peso_bruto": "12.0"
+    "id_transp": "2",
+    "razao_social": "Transportadora aratiba",
+    "especie": "caixa",
+    "quantidadeVol": "31",
+    "peso_liquido": "31.0",
+    "peso_bruto": "31.0"
   }
 }

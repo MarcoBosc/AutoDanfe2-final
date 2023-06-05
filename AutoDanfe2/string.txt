@@ -1,22 +1,23 @@
 
-ID Destinatário: Cliente do bom
+ID Destinatário: Cliente que paga atrasado
 
 Itens:
 ----------------------------------------------------------------------------------------------------
 Nome Prod      Quantidade     Valor Unidade  
 ----------------------------------------------------------------------------------------------------
-cocrante       12             12             
+cocrante       13             21             
+Teste          13             23.8           
 
 Definições:
-Parcelas: ['12/12/1212', '12/12/1212']
-Tipo de operação: estadual
-Ordem Compra: 12
+Parcelas: ['32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242']
+Tipo de operação: Interestadual
+Ordem Compra: 4235443
 
 Transportadora:
 Meio de Transporte: Transporte por conta do emitente
-ID Transp: 1
-Razão Social: Transportadora Erechim
-Espécie: 12
-Quantidade Volume: 12
-Peso Líquido: 12.0
-Peso Bruto: 12.0
+ID Transp: 2
+Razão Social: Transportadora aratiba
+Espécie: caixa
+Quantidade Volume: 31
+Peso Líquido: 31.0
+Peso Bruto: 31.0

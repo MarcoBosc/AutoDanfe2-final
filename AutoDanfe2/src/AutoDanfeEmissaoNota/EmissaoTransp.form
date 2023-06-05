@@ -325,12 +325,13 @@
         <Component class="javax.swing.JComboBox" name="CBMeiodeTransp">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Transporte por conta do emitente"/>
-                <StringItem index="1" value="Transporte por conta do remetente"/>
-                <StringItem index="2" value="Transporte pr&#xf3;prio por conta do emitente"/>
-                <StringItem index="3" value="Transporte pr&#xf3;prio por conta do remitente"/>
-                <StringItem index="4" value="Sem frete"/>
+              <StringArray count="6">
+                <StringItem index="0" value="0 - Contrata&#xe7;&#xe3;o do Frete por conta do Remetente (CIF)"/>
+                <StringItem index="1" value="1 - Contrata&#xe7;&#xe3;o do Frete por conta do Destinat&#xe1;rio (FOB)"/>
+                <StringItem index="2" value="2 - Contrata&#xe7;&#xe3;o do Frete por conta de Terceiros"/>
+                <StringItem index="3" value="3 - Transporte Pr&#xf3;prio por conta do Remetente"/>
+                <StringItem index="4" value="4 - Transporte Pr&#xf3;prio por conta do Destinat&#xe1;rio"/>
+                <StringItem index="5" value="9 - Sem frete"/>
               </StringArray>
             </Property>
           </Properties>
@@ -343,7 +344,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Se o transporte for diferente de pr&#xf3;prio por conta do remetente ou emitente, \u005cn desbloquear os campos que ser&#xe3;o inseridos aqui, \u005cn" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="Se o transporte for diferente de pr&#xf3;prio por conta do remetente ou emitente, \u005cn desbloquear os campos que ser&#xe3;o inseridos aqui" containsInvalidXMLChars="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">

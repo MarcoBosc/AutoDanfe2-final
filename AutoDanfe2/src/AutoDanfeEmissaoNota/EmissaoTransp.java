@@ -153,10 +153,10 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Meio de transporte");
 
-        CBMeiodeTransp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transporte por conta do emitente", "Transporte por conta do remetente", "Transporte próprio por conta do emitente", "Transporte próprio por conta do remitente", "Sem frete" }));
+        CBMeiodeTransp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 - Contratação do Frete por conta do Remetente (CIF)", "1 - Contratação do Frete por conta do Destinatário (FOB)", "2 - Contratação do Frete por conta de Terceiros", "3 - Transporte Próprio por conta do Remetente", "4 - Transporte Próprio por conta do Destinatário", "9 - Sem frete" }));
 
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel8.setText("Se o transporte for diferente de próprio por conta do remetente ou emitente, \\n desbloquear os campos que serão inseridos aqui, \\n");
+        jLabel8.setText("Se o transporte for diferente de próprio por conta do remetente ou emitente, \\n desbloquear os campos que serão inseridos aqui");
 
         jLabel9.setText("Selecione a transportadora:");
 
@@ -298,7 +298,7 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         executarJsonToString();
         Program.getEmissaoTransp().setVisible(false);
         Program.getEmissaoRevisao().setVisible(true);
-
+        Program.getEmissaoRevisao().lerArquivoTxt("string.txt");
 
     }//GEN-LAST:event_btnNextRevisaoActionPerformed
 
