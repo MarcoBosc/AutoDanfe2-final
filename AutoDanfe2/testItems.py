@@ -28,7 +28,7 @@ def get_produto(id_produto):
 
 for item in data["itens"]:
     result = get_produto(item["id_prod"])
-    print("Cod Prod:", result[1])
+    print("Cod Prod:", result[1], type(result[1]))
     print("Nome Prod:", result[2])
     print("NCM Prod:", result[3])
     print("Quantidade:", item["quantidade"])
