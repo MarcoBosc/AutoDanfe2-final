@@ -227,6 +227,7 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
                 int selectedRow = tbNotas.getSelectedRow();
                 if (selectedRow >= 0) {
                     int idDanfe = (int) tbNotas.getValueAt(selectedRow, 0);
+                    String numNota = (String) tbNotas.getValueAt(selectedRow, 2);
                     showNoteDetails(idDanfe);
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecione uma nota da tabela para visualizar os detalhes.", "Aviso", JOptionPane.WARNING_MESSAGE);
