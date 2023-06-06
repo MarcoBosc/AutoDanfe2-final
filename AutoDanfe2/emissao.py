@@ -273,7 +273,9 @@ navegador.find_element(By.NAME, 'f_extras_email').send_keys('marcob.brl@gmail.co
 navegador.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/table[2]/tbody/tr[3]/td[2]/span/input').click()
 time.sleep(8)
 navegador.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/div/input').click()
+navegador.find_element(By.XPATH, '//*[@id="acoesAbaNivel1"]/ol/li[1]').click()
+num_nota_emitida = navegador.find_element(By.ID, 'f_nNF').get_attribute('value')
 
 
 # Chama a função que adiciona a nota no database
-adicionar_nota_db()
+adicionar_nota_db(num_nota_emitida)

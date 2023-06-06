@@ -1,7 +1,7 @@
 import json
 import psycopg2
 
-def adicionar_nota_db():
+def adicionar_nota_db(num_nota):
     try:
         # Conecta ao banco de dados
         conn = psycopg2.connect(
@@ -47,8 +47,8 @@ def adicionar_nota_db():
             print(id_cliente)
             # Insere na tabela danfe
             cur.execute(
-                "INSERT INTO danfe (id_cliente, id_pedido, id_transportadora, data_emissao, id_parcelas) VALUES (%s, %s, %s, CURRENT_DATE, %s)",
-                (id_cliente, id_pedido, data['transportadora']['id_transp'] if 'transportadora' in data else None, id_parcelas)
+                "INSERT INTO danfe (id_cliente, id_pedido, id_transportadora, data_emissao, id_parcelas, num_nota) VALUES (%s, %s, %s, CURRENT_DATE, %s, %s)",
+                (id_cliente, id_pedido, data['transportadora']['id_transp'] if 'transportadora' in data else None, id_parcelas, num_nota)
             )
 
             # Efetua o commit das operações
@@ -67,3 +67,4 @@ def adicionar_nota_db():
             conn.close()
 
 
+adicionar_nota_db("12345432")

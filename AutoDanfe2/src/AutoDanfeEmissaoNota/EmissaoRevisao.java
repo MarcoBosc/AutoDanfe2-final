@@ -179,7 +179,7 @@ public class EmissaoRevisao extends javax.swing.JInternalFrame {
 
     private void btnEmitirNfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmitirNfeActionPerformed
 
-        ProcessBuilder pb = new ProcessBuilder("python3", "test.py");
+        ProcessBuilder pb = new ProcessBuilder("python3", "emissao.py");
 
         try {
             // Iniciar o processo e esperar pela sua conclusão

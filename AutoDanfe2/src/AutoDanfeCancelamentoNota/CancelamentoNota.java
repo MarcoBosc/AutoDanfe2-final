@@ -1,20 +1,39 @@
 package AutoDanfeCancelamentoNota;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.beans.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- *
- * @author marco
- */
+
 public class CancelamentoNota extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CancelamentoNota
-     */
     public CancelamentoNota() {
         initComponents();
-        
+        popular_tabela();
+
         tfNumeroNota.setForeground(Color.GRAY);
 
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -38,7 +57,7 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         btnCancelar = new Components.btnRounded();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new Components.table();
+        tbNotas = new Components.table();
         btnVisualizar = new Components.btnRounded();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
@@ -101,7 +120,7 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
             }
         });
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tbNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -112,7 +131,7 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(table1);
+        jScrollPane2.setViewportView(tbNotas);
 
         btnVisualizar.setBackground(new java.awt.Color(153, 153, 153));
         btnVisualizar.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,6 +141,11 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         btnVisualizar.setColor(new java.awt.Color(153, 153, 153));
         btnVisualizar.setColorClick(new java.awt.Color(140, 140, 140));
         btnVisualizar.setColorOver(new java.awt.Color(148, 148, 148));
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +221,198 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+        btnVisualizar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tbNotas.getSelectedRow();
+                if (selectedRow >= 0) {
+                    int idDanfe = (int) tbNotas.getValueAt(selectedRow, 0);
+                    showNoteDetails(idDanfe);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma nota da tabela para visualizar os detalhes.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+    }//GEN-LAST:event_btnVisualizarActionPerformed
+
+    private void showNoteDetails(int idDanfe) {
+        try {
+            // Criando uma conexão com o banco de dados
+            String url = "jdbc:postgresql://localhost:5432/AutoDanfe2";
+            java.sql.Connection conn = DriverManager.getConnection(url, "postgres", "admin");
+
+            // Criando a consulta SQL para obter os detalhes da nota e as parcelas
+            String sql = "SELECT d.num_nota, p.num_pedido, pr.nome_produto, ip.qtd_produto, ip.valor_produto, ip.total_produto, c.razao_social_cliente, t.razao_social_transp, p.total_pedido, parc.data_parcela "
+                    + "FROM danfe AS d "
+                    + "JOIN pedidos AS p ON d.id_pedido = p.id_pedido "
+                    + "JOIN itens_pedido AS ip ON p.id_pedido = ip.id_pedido "
+                    + "JOIN produtos AS pr ON ip.id_produto = pr.id_produto "
+                    + "JOIN clientes AS c ON d.id_cliente = c.id_cliente "
+                    + "LEFT JOIN transportadoras AS t ON d.id_transportadora = t.id_transportadora "
+                    + "LEFT JOIN parcelas AS parc ON parc.id_pedido = p.id_pedido "
+                    + "WHERE d.id_danfe = " + idDanfe;
+
+            // Criando o objeto Statement com um conjunto de resultados rolável
+            java.sql.Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            // Executando a consulta SQL e obtendo o resultado
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Obtendo as informações da nota
+            String numNota = null;
+            String numPedido = null;
+            String razaoSocialCliente = null;
+            String razaoSocialTransportadora = null;
+            double valorTotalNota = 0.0;
+
+            // Iterando através do resultado e obtendo os valores da nota
+            while (rs.next()) {
+                if (numNota == null) {
+                    numNota = rs.getString("num_nota");
+                    numPedido = rs.getString("num_pedido");
+                    razaoSocialCliente = rs.getString("razao_social_cliente");
+                    razaoSocialTransportadora = rs.getString("razao_social_transp");
+                }
+                double totalProduto = rs.getDouble("total_produto");
+                valorTotalNota += totalProduto;
+            }
+
+            List<String> parcelas = new ArrayList<>();
+
+// Iterando através do resultado e obtendo os valores da nota
+            while (rs.next()) {
+                //...
+                String dataParcela = rs.getString("data_parcela");
+                if (dataParcela != null && !parcelas.contains(dataParcela)) {
+                    parcelas.add(dataParcela);
+                }
+                //...
+            }
+            int lenParcelas = parcelas.size();
+            // Voltando para a primeira linha do conjunto de resultados
+            rs.beforeFirst();
+
+            // Construindo os painéis com as informações da nota e as tabelas
+            JPanel panel = new JPanel();
+            panel.setLayout(new BorderLayout());
+
+            // Título
+            JLabel titleLabel = new JLabel("Visualização de Danfe");
+            titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 16f));
+            titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            panel.add(titleLabel, BorderLayout.NORTH);
+
+            // Construindo a tabela de produtos
+            DefaultTableModel tableModelProducts = new DefaultTableModel(new Object[]{"Nome Produto", "Qtd Produto", "Valor Produto", "Total Produto"}, 0);
+
+            // Construindo a tabela de parcelas
+            DefaultTableModel tableModelParcelas = new DefaultTableModel(new Object[]{"Parcela", "Valor"}, 0);
+
+            // Iterando através do resultado novamente para preencher as tabelas
+            while (rs.next()) {
+                String nomeProduto = rs.getString("nome_produto");
+                int qtdProduto = rs.getInt("qtd_produto");
+                double valorProduto = rs.getDouble("valor_produto");
+                double totalProduto = rs.getDouble("total_produto");
+                tableModelProducts.addRow(new Object[]{nomeProduto, qtdProduto, String.format("%.2f", valorProduto), String.format("%.2f", totalProduto)});
+
+                String dataParcela = rs.getString("data_parcela");
+                System.out.println(lenParcelas);
+                double valorParcela = valorTotalNota / lenParcelas;
+                tableModelParcelas.addRow(new Object[]{dataParcela, String.format("%.2f", valorParcela)});
+
+            }
+
+            // Tabela de produtos
+            JTable productsTable = new JTable(tableModelProducts);
+            JScrollPane scrollPaneProducts = new JScrollPane(productsTable);
+            scrollPaneProducts.setPreferredSize(new Dimension(scrollPaneProducts.getPreferredSize().width, Math.max(100, Math.min(300, productsTable.getRowHeight() * tableModelProducts.getRowCount()))));
+
+            // Informações da nota
+            JPanel infoPanel = new JPanel(new GridLayout(5, 2));
+            infoPanel.add(new JLabel("<html><b>Num Nota:</b></html>"));
+            infoPanel.add(new JLabel("<html><font size='5'>" + numNota + "</font></html>"));
+            infoPanel.add(new JLabel("<html><b>Num Pedido:</b></html>"));
+            infoPanel.add(new JLabel("<html><font size='5'>" + numPedido + "</font></html>"));
+            infoPanel.add(new JLabel("<html><b>Razão Social Cliente:</b></html>"));
+            infoPanel.add(new JLabel("<html><font size='5'>" + razaoSocialCliente + "</font></html>"));
+            infoPanel.add(new JLabel("<html><b>Razão Social Transportadora:</b></html>"));
+            infoPanel.add(new JLabel("<html><font size='5'>" + razaoSocialTransportadora + "</font></html>"));
+            infoPanel.add(new JLabel("<html><b>Valor Total Nota:</b></html>"));
+            infoPanel.add(new JLabel("<html><font size='5'>" + String.format("%.2f", valorTotalNota) + "</font></html>"));
+
+            // Tabela de parcelas
+            JTable parcelasTable = new JTable(tableModelParcelas);
+            JScrollPane scrollPaneParcelas = new JScrollPane(parcelasTable);
+            scrollPaneParcelas.setPreferredSize(new Dimension(scrollPaneParcelas.getPreferredSize().width, Math.max(100, parcelasTable.getRowHeight() * tableModelParcelas.getRowCount())));
+
+            // Adicionando os painéis no painel principal
+            panel.add(infoPanel, BorderLayout.NORTH);
+            panel.add(scrollPaneProducts, BorderLayout.CENTER);
+            panel.add(scrollPaneParcelas, BorderLayout.SOUTH);
+
+            // Exibindo a mensagem de detalhes da nota com as informações e as tabelas
+            JOptionPane.showMessageDialog(null, panel, "Detalhes da Nota", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao obter os detalhes da nota. " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void popular_tabela() {
+        try {
+            // Criando uma conexão com o banco de dados
+            String url = "jdbc:postgresql://localhost:5432/AutoDanfe2";
+            java.sql.Connection conn = DriverManager.getConnection(url, "postgres", "admin");
+
+            // Criando a consulta SQL
+            String sql = "SELECT d.id_danfe, c.razao_social_cliente, p.num_pedido, t.razao_social_transp, d.data_emissao, p.total_pedido, d.num_nota "
+                    + "FROM danfe d "
+                    + "JOIN pedidos p ON d.id_pedido = p.id_pedido "
+                    + "JOIN clientes c ON d.id_cliente = c.id_cliente "
+                    + "LEFT JOIN transportadoras t ON d.id_transportadora = t.id_transportadora";
+
+            // Criando o objeto Statement
+            java.sql.Statement stmt = conn.createStatement();
+
+            // Executando a consulta SQL e obtendo o resultado
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Obtendo o modelo da tabela
+            DefaultTableModel model = (DefaultTableModel) tbNotas.getModel();
+
+            // Limpar os dados existentes na tabela e definir as colunas
+            model.setRowCount(0);
+            model.setColumnIdentifiers(new Object[]{"ID Danfe", "Cliente", "Num Pedido", "Transportadora", "Data Emissão", "Valor Total", "Num Nota"});
+
+            // Definir um DefaultTableCellRenderer personalizado para personalizar a renderização dos itens da tabela
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+
+            // Aplicar o renderizador personalizado em todas as colunas da tabela
+            for (int i = 0; i < tbNotas.getColumnCount(); i++) {
+                tbNotas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
+
+            // Definir a cor do texto das células para preto
+            centerRenderer.setForeground(Color.BLACK);
+
+            // Iterando através do resultado e adicionando os dados na tabela
+            DecimalFormat decimalFormat = new DecimalFormat("0.00"); // Format for two decimal places
+            while (rs.next()) {
+                double valorTotal = rs.getDouble(6);
+                String valorTotalFormatted = decimalFormat.format(valorTotal);
+                model.addRow(new Object[]{rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), valorTotalFormatted, rs.getString(7)});
+            }
+
+            // Fechando a conexão
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao popular a tabela. " + ex.getMessage());
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnCancelar;
@@ -206,7 +422,7 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private Components.table table1;
+    private Components.table tbNotas;
     private test.RoundedTextField tfNumeroNota;
     // End of variables declaration//GEN-END:variables
 }
