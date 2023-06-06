@@ -1,23 +1,22 @@
 
-ID Destinatário: Cliente que paga atrasado
+ID Destinatário: Tracado
 
 Itens:
 ----------------------------------------------------------------------------------------------------
 Nome Prod      Quantidade     Valor Unidade  
 ----------------------------------------------------------------------------------------------------
-cocrante       13             21             
-Teste          13             23.8           
+cocrante       1              1              
 
 Definições:
-Parcelas: ['32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242', '32/34/3242']
-Tipo de operação: Interestadual
-Ordem Compra: 4235443
+Parcelas: ['11/11/1111', '11/11/1111']
+Tipo de operação: estadual
+Ordem Compra: 1
 
 Transportadora:
-Meio de Transporte: Transporte por conta do emitente
+Meio de Transporte: 0 - Contratação do Frete por conta do Remetente (CIF)
 ID Transp: 2
 Razão Social: Transportadora aratiba
-Espécie: caixa
-Quantidade Volume: 31
-Peso Líquido: 31.0
-Peso Bruto: 31.0
+Espécie: 1
+Quantidade Volume: 1
+Peso Líquido: 1.0
+Peso Bruto: 1.0

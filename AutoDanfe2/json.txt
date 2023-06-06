@@ -4,28 +4,34 @@
   "itens": [
     {
       "id_prod": "4",
-      "quantidade": "13",
-      "valor_unidade": "21"
-    },
-    {
-      "id_prod": "7",
-      "quantidade": "13",
-      "valor_unidade": "23.8"
+      "quantidade": "1",
+      "valor_unidade": "1"
     }
   ]
 ,"definicoes": {
-   "parcelas": ["32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242", "32/34/3242"],
-    "tipo_op": "Interestadual",
-    "tbOrdemCompra": "4235443"
+   "parcelas": ["11/11/1111", "11/11/1111"],
+    "tipo_op": "estadual",
+    "tbOrdemCompra": "1"
   },
 
   "transportadora": {
-   "meio_transporte": "Transporte por conta do emitente",
+   "meio_transporte": "0 - Contratação do Frete por conta do Remetente (CIF)",
     "id_transp": "2",
     "razao_social": "Transportadora aratiba",
-    "especie": "caixa",
-    "quantidadeVol": "31",
-    "peso_liquido": "31.0",
-    "peso_bruto": "31.0"
+    "especie": "1",
+    "quantidadeVol": "1",
+    "peso_liquido": "1.0",
+    "peso_bruto": "1.0"
+  }
+}
+
+  "transportadora": {
+   "meio_transporte": "0 - Contratação do Frete por conta do Remetente (CIF)",
+    "id_transp": "2",
+    "razao_social": "Transportadora aratiba",
+    "especie": "1",
+    "quantidadeVol": "1",
+    "peso_liquido": "1.0",
+    "peso_bruto": "1.0"
   }
 }
