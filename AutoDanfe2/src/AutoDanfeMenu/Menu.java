@@ -9,13 +9,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JInternalFrame {
 
-    
     public Menu() {
         initComponents();
-        
+        btnEmissaoBoleto.setEnabled(true);
+
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -47,7 +48,6 @@ public class Menu extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selecione a operação desejada");
 
@@ -189,8 +189,11 @@ public class Menu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarNfeActionPerformed
 
     private void btnEmissaoBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmissaoBoletoActionPerformed
-        Program.getMenu().setVisible(false);
-        Program.getEmissaoBoleto().setVisible(true);
+        String mensagem = "Serviço indisponível no momento.";
+        String titulo = "Erro";
+        JOptionPane.showMessageDialog(null, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
+        //Program.getMenu().setVisible(false);
+        //Program.getEmissaoBoleto().setVisible(true);
     }//GEN-LAST:event_btnEmissaoBoletoActionPerformed
 
     private void btnCadastroProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdActionPerformed

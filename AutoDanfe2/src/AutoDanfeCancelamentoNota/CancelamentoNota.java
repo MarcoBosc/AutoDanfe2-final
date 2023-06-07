@@ -27,14 +27,11 @@ import javax.swing.SwingConstants;
 import java.util.List;
 import java.util.ArrayList;
 
-
 public class CancelamentoNota extends javax.swing.JInternalFrame {
 
     public CancelamentoNota() {
         initComponents();
         popular_tabela();
-
-        tfNumeroNota.setForeground(Color.GRAY);
 
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -53,8 +50,6 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tfNumeroNota = new test.RoundedTextField();
-        jLabel2 = new javax.swing.JLabel();
         btnCancelar = new Components.btnRounded();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbNotas = new Components.table();
@@ -86,25 +81,6 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
-
-        tfNumeroNota.setText("045.892.312");
-        tfNumeroNota.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfNumeroNotaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfNumeroNotaFocusLost(evt);
-            }
-        });
-        tfNumeroNota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNumeroNotaActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Número da nota:");
 
         btnCancelar.setBackground(new java.awt.Color(153, 0, 0));
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,12 +128,6 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(325, 325, 325)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(tfNumeroNota, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,12 +144,8 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfNumeroNota, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,34 +167,14 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfNumeroNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNumeroNotaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfNumeroNotaActionPerformed
-
-    private void tfNumeroNotaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroNotaFocusGained
-        tfNumeroNota.setText("");
-        tfNumeroNota.setForeground(Color.BLACK);
-    }//GEN-LAST:event_tfNumeroNotaFocusGained
-
-    private void tfNumeroNotaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroNotaFocusLost
-        if (tfNumeroNota.getText() == "") {
-            tfNumeroNota.setText("045.892.312");
-            tfNumeroNota.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_tfNumeroNotaFocusLost
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
         btnVisualizar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tbNotas.getSelectedRow();
                 if (selectedRow >= 0) {
                     int idDanfe = (int) tbNotas.getValueAt(selectedRow, 0);
-                    String numNota = (String) tbNotas.getValueAt(selectedRow, 2);
-                    showNoteDetails(idDanfe);
+                    String numPedido = (String) tbNotas.getValueAt(selectedRow, 2);
+                    showNoteDetails(idDanfe, numPedido);
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecione uma nota da tabela para visualizar os detalhes.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
@@ -236,7 +182,11 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
         });
     }//GEN-LAST:event_btnVisualizarActionPerformed
 
-    private void showNoteDetails(int idDanfe) {
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void showNoteDetails(int idDanfe, String idPedido) {
         try {
             // Criando uma conexão com o banco de dados
             String url = "jdbc:postgresql://localhost:5432/AutoDanfe2";
@@ -289,7 +239,6 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
                 }
                 //...
             }
-            int lenParcelas = parcelas.size();
             // Voltando para a primeira linha do conjunto de resultados
             rs.beforeFirst();
 
@@ -299,7 +248,7 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
 
             // Título
             JLabel titleLabel = new JLabel("Visualização de Danfe");
-            titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 16f));
+            titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 12f));
             titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
             panel.add(titleLabel, BorderLayout.NORTH);
 
@@ -309,7 +258,21 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
             // Construindo a tabela de parcelas
             DefaultTableModel tableModelParcelas = new DefaultTableModel(new Object[]{"Parcela", "Valor"}, 0);
 
-            // Iterando através do resultado novamente para preencher as tabelas
+            String sqlParcelas = "SELECT COUNT(*) FROM parcelas WHERE id_pedido = " + idPedido;
+            System.out.println(idPedido + "idPEDIDO");
+// Criando o objeto Statement com um conjunto de resultados rolável
+            java.sql.Statement stmtParcelas = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+// Executando a consulta SQL e obtendo o resultado
+            ResultSet rsParcelas = stmtParcelas.executeQuery(sqlParcelas);
+
+// Obtendo a quantidade de parcelas
+            int lenParcelas = 0;
+            if (rsParcelas.next()) {
+                lenParcelas = rsParcelas.getInt(1);
+            }
+            double valorParcela = valorTotalNota / lenParcelas;
+
             while (rs.next()) {
                 String nomeProduto = rs.getString("nome_produto");
                 int qtdProduto = rs.getInt("qtd_produto");
@@ -318,8 +281,6 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
                 tableModelProducts.addRow(new Object[]{nomeProduto, qtdProduto, String.format("%.2f", valorProduto), String.format("%.2f", totalProduto)});
 
                 String dataParcela = rs.getString("data_parcela");
-                System.out.println(lenParcelas);
-                double valorParcela = valorTotalNota / lenParcelas;
                 tableModelParcelas.addRow(new Object[]{dataParcela, String.format("%.2f", valorParcela)});
 
             }
@@ -332,15 +293,15 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
             // Informações da nota
             JPanel infoPanel = new JPanel(new GridLayout(5, 2));
             infoPanel.add(new JLabel("<html><b>Num Nota:</b></html>"));
-            infoPanel.add(new JLabel("<html><font size='5'>" + numNota + "</font></html>"));
+            infoPanel.add(new JLabel("<html><font size='4'>" + numNota + "</font></html>"));
             infoPanel.add(new JLabel("<html><b>Num Pedido:</b></html>"));
-            infoPanel.add(new JLabel("<html><font size='5'>" + numPedido + "</font></html>"));
+            infoPanel.add(new JLabel("<html><font size='4'>" + numPedido + "</font></html>"));
             infoPanel.add(new JLabel("<html><b>Razão Social Cliente:</b></html>"));
-            infoPanel.add(new JLabel("<html><font size='5'>" + razaoSocialCliente + "</font></html>"));
+            infoPanel.add(new JLabel("<html><font size='4'>" + razaoSocialCliente + "</font></html>"));
             infoPanel.add(new JLabel("<html><b>Razão Social Transportadora:</b></html>"));
-            infoPanel.add(new JLabel("<html><font size='5'>" + razaoSocialTransportadora + "</font></html>"));
+            infoPanel.add(new JLabel("<html><font size='4'>" + razaoSocialTransportadora + "</font></html>"));
             infoPanel.add(new JLabel("<html><b>Valor Total Nota:</b></html>"));
-            infoPanel.add(new JLabel("<html><font size='5'>" + String.format("%.2f", valorTotalNota) + "</font></html>"));
+            infoPanel.add(new JLabel("<html><font size='4'>" + String.format("%.2f", valorTotalNota) + "</font></html>"));
 
             // Tabela de parcelas
             JTable parcelasTable = new JTable(tableModelParcelas);
@@ -419,11 +380,9 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
     private Components.btnRounded btnCancelar;
     private Components.btnRounded btnVisualizar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private Components.table tbNotas;
-    private test.RoundedTextField tfNumeroNota;
     // End of variables declaration//GEN-END:variables
 }
