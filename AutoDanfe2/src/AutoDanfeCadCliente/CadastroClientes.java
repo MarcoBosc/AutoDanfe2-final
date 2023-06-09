@@ -22,6 +22,9 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
     public CadastroClientes() {
         initComponents();
+        btnAtualizarClientes.setEnabled(false);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
         configureTable();
         populateTable();
         tfRazaoSocialCliente.setForeground(Color.GRAY);
@@ -58,6 +61,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnEdicao = new Components.btnRounded();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -68,7 +72,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         jpPrincipal.setBackground(new java.awt.Color(223, 223, 223));
 
-        tfRazaoSocialCliente.setText("Aimê Uniformes e Cia Ltda");
+        tfRazaoSocialCliente.setText("Coca-Cola");
         tfRazaoSocialCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         tfRazaoSocialCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -79,7 +83,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        tfCEPCliente.setText("99700-274");
+        tfCEPCliente.setText("00000-000");
         tfCEPCliente.setPreferredSize(new java.awt.Dimension(108, 22));
         tfCEPCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         tfCEPCliente.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -91,7 +95,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        tfMunicipioCliente.setText("Erechim");
+        tfMunicipioCliente.setText("Nova Iorque");
         tfMunicipioCliente.setPreferredSize(new java.awt.Dimension(108, 22));
         tfMunicipioCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         tfMunicipioCliente.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -108,7 +112,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        tfCNPJCliente.setText("01.834.341.0001-23");
+        tfCNPJCliente.setText("00.000.000.0000-00");
         tfCNPJCliente.setMinimumSize(new java.awt.Dimension(108, 22));
         tfCNPJCliente.setPreferredSize(new java.awt.Dimension(108, 22));
         tfCNPJCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
@@ -121,7 +125,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        tfInscricaoEstadualCliente.setText("388.108.598.269");
+        tfInscricaoEstadualCliente.setText("000.000.000.000");
         tfInscricaoEstadualCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         tfInscricaoEstadualCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -132,7 +136,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        tfNumeroResiCliente.setText("41");
+        tfNumeroResiCliente.setText("00");
         tfNumeroResiCliente.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         tfNumeroResiCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -218,6 +222,20 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Número Residencial:");
 
+        btnEdicao.setBackground(new java.awt.Color(191, 189, 189));
+        btnEdicao.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdicao.setText("Sair do Modo Edição");
+        btnEdicao.setBorderColor(new java.awt.Color(191, 189, 189));
+        btnEdicao.setBorderPainted(false);
+        btnEdicao.setColor(new java.awt.Color(191, 189, 189));
+        btnEdicao.setColorClick(new java.awt.Color(159, 159, 159));
+        btnEdicao.setColorOver(new java.awt.Color(184, 180, 180));
+        btnEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
@@ -225,7 +243,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 431, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(395, 395, 395))
             .addGroup(jpPrincipalLayout.createSequentialGroup()
@@ -234,7 +252,9 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
                         .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jpPrincipalLayout.createSequentialGroup()
-                                .addGap(0, 441, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(131, 131, 131)
                                 .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(btnRemoverCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +319,8 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionarCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoverCLientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAtualizarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11))
@@ -346,12 +367,26 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarCLientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCLientesActionPerformed
+        if (!verificarCamposCompletos()) {
+            return;
+        }
+
         insertCliente();
         populateTable();
+        limparCampos();
+        
     }//GEN-LAST:event_btnAdicionarCLientesActionPerformed
 
+    private void limparCampos(){
+        tfCEPCliente.setText("");
+        tfCNPJCliente.setText("");
+        tfInscricaoEstadualCliente.setText("");
+        tfMunicipioCliente.setText("");
+        tfNumeroResiCliente.setText("");
+        tfRazaoSocialCliente.setText("");
+    }
     private void tfRazaoSocialClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialClienteFocusGained
-        if (tfRazaoSocialCliente.getText().equals("Aimê Uniformes e Cia Ltda")) {
+        if (tfRazaoSocialCliente.getText().equals("Coca-Cola")) {
             tfRazaoSocialCliente.setText("");
             tfRazaoSocialCliente.setForeground(Color.BLACK);
         }
@@ -359,21 +394,21 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
     private void tfRazaoSocialClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialClienteFocusLost
         if (tfRazaoSocialCliente.getText().isEmpty()) {
-            tfRazaoSocialCliente.setText("Aimê Uniformes e Cia Ltda");
+            tfRazaoSocialCliente.setText("Coca-Cola");
             tfRazaoSocialCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfRazaoSocialClienteFocusLost
 
     private void tfCEPClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCEPClienteFocusGained
-        if (tfCEPCliente.getText().equals("99700-274")) {
+         if (tfCEPCliente.getText().equals("00000-000")) {
             tfCEPCliente.setText("");
             tfCEPCliente.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfCEPClienteFocusGained
 
     private void tfCEPClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCEPClienteFocusLost
-        if (tfCEPCliente.getText().isEmpty()) {
-            tfCEPCliente.setText("99700-274");
+         if (tfCEPCliente.getText().isEmpty()) {
+            tfCEPCliente.setText("00000-000");
             tfCEPCliente.setForeground(Color.GRAY);
         } else {
             String CEP = getCEP();
@@ -390,57 +425,57 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     }
 
     private void tfMunicipioClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusGained
-        if (tfMunicipioCliente.getText().equals("Erechim")) {
+       if (tfMunicipioCliente.getText().equals("Nova Iorque")) {
             tfMunicipioCliente.setText("");
             tfMunicipioCliente.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfMunicipioClienteFocusGained
 
     private void tfMunicipioClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioClienteFocusLost
-        if (tfMunicipioCliente.getText().isEmpty()) {
-            tfMunicipioCliente.setText("Erechim");
+         if (tfMunicipioCliente.getText().isEmpty()) {
+            tfMunicipioCliente.setText("Nova Iorque");
             tfMunicipioCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfMunicipioClienteFocusLost
 
     private void tfCNPJClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJClienteFocusGained
-        if (tfCNPJCliente.getText().equals("01.834.341.0001-23")) {
+       if (tfCNPJCliente.getText().equals("00.000.000.0000-00")) {
             tfCNPJCliente.setText("");
             tfCNPJCliente.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfCNPJClienteFocusGained
 
     private void tfCNPJClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJClienteFocusLost
-        if (tfCNPJCliente.getText().isEmpty()) {
-            tfCNPJCliente.setText("01.834.341.0001-23");
+         if (tfCNPJCliente.getText().isEmpty()) {
+            tfCNPJCliente.setText("00.000.000.0000-00");
             tfCNPJCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCNPJClienteFocusLost
 
     private void tfInscricaoEstadualClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualClienteFocusGained
-        if (tfInscricaoEstadualCliente.getText().equals("388.108.598.269")) {
+         if (tfInscricaoEstadualCliente.getText().equals("000.000.000.000")) {
             tfInscricaoEstadualCliente.setText("");
             tfInscricaoEstadualCliente.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfInscricaoEstadualClienteFocusGained
 
     private void tfInscricaoEstadualClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualClienteFocusLost
-        if (tfInscricaoEstadualCliente.getText().isEmpty()) {
-            tfInscricaoEstadualCliente.setText("388.108.598.269");
+         if (tfInscricaoEstadualCliente.getText().isEmpty()) {
+            tfInscricaoEstadualCliente.setText("000.000.000.000");
             tfInscricaoEstadualCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfInscricaoEstadualClienteFocusLost
 
     private void tfNumeroResiClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusGained
-        if (tfNumeroResiCliente.getText().equals("41")) {
+        if (tfNumeroResiCliente.getText().equals("00")) {
             tfNumeroResiCliente.setText("");
             tfNumeroResiCliente.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_tfNumeroResiClienteFocusGained
 
     private void tfNumeroResiClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroResiClienteFocusLost
-        if (tfNumeroResiCliente.getText().isEmpty()) {
-            tfNumeroResiCliente.setText("41");
+         if (tfNumeroResiCliente.getText().isEmpty()) {
+            tfNumeroResiCliente.setText("00");
             tfNumeroResiCliente.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNumeroResiClienteFocusLost
@@ -450,13 +485,31 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfMunicipioClienteActionPerformed
 
     private void btnAtualizarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarClientesActionPerformed
+         if (!verificarCamposCompletos()) {
+            return;
+        }
         updateCliente();
         populateTable();
+        limparCampos();
         btnAdicionarCLientes.setEnabled(true);
+        btnAtualizarClientes.setEnabled(false);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnAdicionarCLientes.setBackground(new Color(0, 153, 153));
+        btnAtualizarClientes.setEnabled(false);
     }//GEN-LAST:event_btnAtualizarClientesActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         populateFields();
+        btnEdicao.setVisible(true);
+        btnEdicao.setEnabled(true);
+        btnAdicionarCLientes.setEnabled(false);
+        if(btnAdicionarCLientes.isSelected()){
+            JOptionPane.showMessageDialog(null, "Atualize o produto atual ou saia do modo edição para prosseguir");
+        }
+        btnAdicionarCLientes.setBackground(Color.GRAY);
+        btnAtualizarClientes.setBackground(Color.green);
+        btnAtualizarClientes.setEnabled(true);
     }//GEN-LAST:event_table1MouseClicked
 
     private void configureTable() {
@@ -464,7 +517,59 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     }
     private void btnRemoverCLientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCLientesActionPerformed
         removeClienteFromDB();
+        limparCampos();
+        
     }//GEN-LAST:event_btnRemoverCLientesActionPerformed
+
+    private void btnEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoActionPerformed
+        limparCampos();
+        btnAdicionarCLientes.setEnabled(true);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnAtualizarClientes.setBackground(new Color(0, 153, 153));
+        btnAtualizarClientes.setEnabled(false);
+    }//GEN-LAST:event_btnEdicaoActionPerformed
+    private boolean verificarCamposCompletos() {
+        boolean camposCompletos = true;
+        StringBuilder camposNaoPreenchidos = new StringBuilder();
+
+        if (tfCEPCliente.getText().isEmpty() || tfCEPCliente.getText().equals("00000-000")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'CEP' ");
+        }
+
+        if (tfCNPJCliente.getText().isEmpty() || tfCNPJCliente.getText().equals("00.000.000.0000-00")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'CNPJ' ");
+        }
+
+        if (tfInscricaoEstadualCliente.getText().isEmpty() || tfInscricaoEstadualCliente.getText().equals("000.000.000.000")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Inscrição Estadual' ");
+        }
+
+        if (tfMunicipioCliente.getText().isEmpty() || tfMunicipioCliente.getText().equals("Nova Iorque")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Município' ");
+        }
+
+        if (tfNumeroResiCliente.getText().isEmpty() || tfNumeroResiCliente.getText().equals("00")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Número Residencial' ");
+        }
+
+        if (tfRazaoSocialCliente.getText().isEmpty() || tfRazaoSocialCliente.getText().equals("Coca-Cola")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Razão Social' ");
+        }
+
+        if (!camposCompletos) {
+            JOptionPane.showMessageDialog(this, "Os campos a seguir não foram preenchidos: " + camposNaoPreenchidos.toString());
+            return false;
+        }
+
+        return true;
+    }
     private void removeClienteFromDB() {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
@@ -526,6 +631,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
             tfInscricaoEstadualCliente.setText(table1.getValueAt(row, 2).toString());
             tfCEPCliente.setText(table1.getValueAt(row, 3).toString());
             tfNumeroResiCliente.setText(table1.getValueAt(row, 5).toString());
+            tfMunicipioCliente.setText(table1.getValueAt(row, 4).toString());
 
             tfRazaoSocialCliente.setForeground(Color.BLACK);
             tfCNPJCliente.setForeground(Color.BLACK);
@@ -581,69 +687,69 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
     }
 
     private void populateTable() {
-    Connection conn = ConexaoPG.getConnection();
+        Connection conn = ConexaoPG.getConnection();
 
-    if (conn != null) {
-        try {
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
-            ResultSet rs = ps.executeQuery();
-
-            DefaultTableModel model = (DefaultTableModel) table1.getModel();
-            model.setColumnCount(9);
-            model.setRowCount(0);
-
-            while (rs.next()) {
-                String cep = rs.getString("CEP_cliente");
-                String cnpj = rs.getString("CNPJ_cliente");
-                String ie = rs.getString("IE_cliente");
-                String municipio = rs.getString("municipio_cliente");
-                String num_residencia = rs.getString("num_residencial");
-                String razao_social = rs.getString("razao_social_cliente");
-                String rua = rs.getString("Logradouro_cliente");
-                String bairro = rs.getString("bairro_cliente");
-                String estado = rs.getString("uf_cliente");
-
-                Object[] rowData = {cnpj, razao_social, ie, cep, municipio, num_residencia, rua, bairro, estado};
-                model.addRow(rowData);
-            }
-
-            rs.close();
-
-            DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-            cellRenderer.setForeground(Color.BLACK);
-            cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-
-            JTableHeader header = table1.getTableHeader();
-            header.setDefaultRenderer(cellRenderer);
-
-            TableColumnModel columnModel = table1.getColumnModel();
-            for (int i = 0; i < columnModel.getColumnCount(); i++) {
-                columnModel.getColumn(i).setCellRenderer(cellRenderer);
-            }
-
-            // Set column names for the additional columns
-            columnModel.getColumn(6).setHeaderValue("Logradouro");
-            columnModel.getColumn(7).setHeaderValue("Bairro");
-            columnModel.getColumn(8).setHeaderValue("UF");
-            header.repaint();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela clientes: " + e.getMessage());
-        } finally {
+        if (conn != null) {
             try {
-                conn.close();
+                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
+                ResultSet rs = ps.executeQuery();
+
+                DefaultTableModel model = (DefaultTableModel) table1.getModel();
+                model.setColumnCount(9);
+                model.setRowCount(0);
+
+                while (rs.next()) {
+                    String cep = rs.getString("CEP_cliente");
+                    String cnpj = rs.getString("CNPJ_cliente");
+                    String ie = rs.getString("IE_cliente");
+                    String municipio = rs.getString("municipio_cliente");
+                    String num_residencia = rs.getString("num_residencial");
+                    String razao_social = rs.getString("razao_social_cliente");
+                    String rua = rs.getString("Logradouro_cliente");
+                    String bairro = rs.getString("bairro_cliente");
+                    String estado = rs.getString("uf_cliente");
+
+                    Object[] rowData = {cnpj, razao_social, ie, cep, municipio, num_residencia, rua, bairro, estado};
+                    model.addRow(rowData);
+                }
+
+                rs.close();
+
+                DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+                cellRenderer.setForeground(Color.BLACK);
+                cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+                JTableHeader header = table1.getTableHeader();
+                header.setDefaultRenderer(cellRenderer);
+
+                TableColumnModel columnModel = table1.getColumnModel();
+                for (int i = 0; i < columnModel.getColumnCount(); i++) {
+                    columnModel.getColumn(i).setCellRenderer(cellRenderer);
+                }
+
+                // Set column names for the additional columns
+                columnModel.getColumn(6).setHeaderValue("Logradouro");
+                columnModel.getColumn(7).setHeaderValue("Bairro");
+                columnModel.getColumn(8).setHeaderValue("UF");
+                header.repaint();
+
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela clientes: " + e.getMessage());
+            } finally {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
+                }
             }
         }
     }
-}
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnAdicionarCLientes;
     private Components.btnRounded btnAtualizarClientes;
+    private Components.btnRounded btnEdicao;
     private Components.btnRounded btnRemoverCLientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

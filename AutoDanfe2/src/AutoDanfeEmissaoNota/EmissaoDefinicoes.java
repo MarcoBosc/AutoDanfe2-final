@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -216,6 +217,11 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
 
         radioBtnInterestadual.setText("Interestadual");
         radioBtnInterestadual.setToolTipText("");
+        radioBtnInterestadual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBtnInterestadualActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Ordem de compra:");
 
@@ -246,7 +252,7 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
                             .addComponent(dateParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,6 +325,9 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextTranspActionPerformed
+        if (!verificarCamposPreenchidos()) {
+            return;
+        }
         saveRadioButtonSelection();
         Program.getEmissaoDefinicoes().setVisible(false);
         Program.getEmissaoTransp().setVisible(true);
@@ -348,17 +357,25 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void radioBtnEstadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnEstadualActionPerformed
-        // TODO add your handling code here:
+        if (radioBtnEstadual.isSelected()) {
+            radioBtnInterestadual.setSelected(false);
+        }
     }//GEN-LAST:event_radioBtnEstadualActionPerformed
 
     private void tbOrdemCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbOrdemCompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbOrdemCompraActionPerformed
 
+    private void radioBtnInterestadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnInterestadualActionPerformed
+        if (radioBtnInterestadual.isSelected()) {
+            radioBtnEstadual.setSelected(false);
+        }
+    }//GEN-LAST:event_radioBtnInterestadualActionPerformed
+
     private void appendDateFromFormattedDateEntryToTextArea() {
         String dateText = dateParcela.getDate();
         String currentText = txaParcelas.getText();
-        String newText = currentText + "\n" + dateText; // Add a new line separator ("\n") before appending the new date
+        String newText = currentText + "\n" + dateText;
         txaParcelas.setText(newText);
     }
 
@@ -407,57 +424,56 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
 
     }
 
-private void writeJsonToFile() {
-    try {
-        String fileName = "json.txt";
-        StringBuilder jsonContent = new StringBuilder();
-        String OrdemCompra = tbOrdemCompra.getText();
-        String tipoOp = "Interestadual";
-        if (radioBtnEstadual.isSelected()) {
-            tipoOp = "estadual";
-        }
-        jsonContent.append("\"definicoes\": {\n");
-        
-        // Adicionar as parcelas
-        jsonContent.append("   \"parcelas\": [");
-        
-        for (int i = 0; i < datesList.size(); i++) {
-            String parcela = "\"" + datesList.get(i) + "\"";
-            jsonContent.append(parcela);
-            
-            if (i < datesList.size() - 1) {
-                jsonContent.append(", ");
+    private void writeJsonToFile() {
+        try {
+            String fileName = "json.txt";
+            StringBuilder jsonContent = new StringBuilder();
+            String OrdemCompra = tbOrdemCompra.getText();
+            String tipoOp = "Interestadual";
+            if (radioBtnEstadual.isSelected()) {
+                tipoOp = "estadual";
             }
-        }
-        
-        jsonContent.append("],\n");
-        
-        jsonContent.append("    \"tipo_op\": \"" + tipoOp + "\",\n");
-        jsonContent.append("    \"tbOrdemCompra\": \"" + OrdemCompra + "\"\n");
-        jsonContent.append("  },\n");
+            jsonContent.append("\"definicoes\": {\n");
 
-        String fileContent = readJsonFromFile();
-        
-        if (fileContent.isEmpty()) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-                writer.write(jsonContent.toString());
-                System.out.println("Data written to the JSON file successfully.");
-            } catch (IOException e) {
-                System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+            // Adicionar as parcelas
+            jsonContent.append("   \"parcelas\": [");
+
+            for (int i = 0; i < datesList.size(); i++) {
+                String parcela = "\"" + datesList.get(i) + "\"";
+                jsonContent.append(parcela);
+
+                if (i < datesList.size() - 1) {
+                    jsonContent.append(", ");
+                }
             }
-        } else {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-                writer.write("," + jsonContent.toString());
-                System.out.println("Data written to the JSON file successfully.");
-            } catch (IOException e) {
-                System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+
+            jsonContent.append("],\n");
+
+            jsonContent.append("    \"tipo_op\": \"" + tipoOp + "\",\n");
+            jsonContent.append("    \"tbOrdemCompra\": \"" + OrdemCompra + "\"\n");
+            jsonContent.append("  },\n");
+
+            String fileContent = readJsonFromFile();
+
+            if (fileContent.isEmpty()) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                    writer.write(jsonContent.toString());
+                    System.out.println("Data written to the JSON file successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+                }
+            } else {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+                    writer.write("," + jsonContent.toString());
+                    System.out.println("Data written to the JSON file successfully.");
+                } catch (IOException e) {
+                    System.out.println("An error occurred while writing to the JSON file: " + e.getMessage());
+                }
             }
+        } catch (Exception e) {
+            System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("An error occurred while creating the JSON object: " + e.getMessage());
     }
-}
-
 
     private String readJsonFromFile() {
         String fileName = "json.txt";
@@ -475,6 +491,28 @@ private void writeJsonToFile() {
         return contentBuilder.toString();
     }
 
+    private boolean verificarCamposPreenchidos() {
+        String textoParcelas = txaParcelas.getText().trim();
+        String textoPadrao = "Parcelas adicionadas:";
+        if (textoParcelas.isEmpty() || textoParcelas.equals(textoPadrao)) {
+            JOptionPane.showMessageDialog(this, "Adicione parcelas antes de prosseguir.");
+            return false;
+        }
+
+        // Verificar se pelo menos um dos JRadioButtons radioBtnEstadual ou radioBtnInterestadual foi selecionado
+        if (!radioBtnEstadual.isSelected() && !radioBtnInterestadual.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Selecione um tipo de operação antes de seguir.");
+            return false;
+        }
+
+        // Verificar se RoundedTextField tbOrdemCompra foi preenchido
+        if (tbOrdemCompra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite uma ordem de compra antes de prosseguir");
+            return false;
+        }
+
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnAddParcela;

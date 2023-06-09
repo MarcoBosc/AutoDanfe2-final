@@ -30,7 +30,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="989" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="998" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -84,9 +84,12 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jScrollPane1" min="-2" pref="927" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                                  <Component id="btnEdicao" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnAtualizarProd" min="-2" pref="142" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="btnRemoverProd" min="-2" pref="142" max="-2" attributes="0"/>
@@ -123,6 +126,7 @@
                       <Component id="btnAdicionarProd" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="btnRemoverProd" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="btnAtualizarProd" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="btnEdicao" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="226" max="-2" attributes="0"/>
@@ -172,7 +176,7 @@
         </Container>
         <Component class="test.RoundedTextField" name="tfNomeProd">
           <Properties>
-            <Property name="text" type="java.lang.String" value="JALECO ML BRANCO M"/>
+            <Property name="text" type="java.lang.String" value="Camisa"/>
             <Property name="lineColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="af" green="6e" red="4b" type="rgb"/>
             </Property>
@@ -188,7 +192,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfNCM">
           <Properties>
-            <Property name="text" type="java.lang.String" value="09012100"/>
+            <Property name="text" type="java.lang.String" value="00000000"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfNCMFocusGained"/>
@@ -197,7 +201,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfCodProd">
           <Properties>
-            <Property name="text" type="java.lang.String" value="0920900"/>
+            <Property name="text" type="java.lang.String" value="0000000"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCodProdFocusGained"/>
@@ -329,6 +333,32 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="Components.btnRounded" name="btnEdicao">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bd" green="bd" red="bf" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Sair do modo Edi&#xe7;&#xe3;o"/>
+            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bd" green="bd" red="bf" type="rgb"/>
+            </Property>
+            <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bd" green="bd" red="bf" type="rgb"/>
+            </Property>
+            <Property name="colorClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="9f" green="9f" red="9f" type="rgb"/>
+            </Property>
+            <Property name="colorOver" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b4" green="b4" red="b4" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdicaoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

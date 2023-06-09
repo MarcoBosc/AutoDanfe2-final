@@ -25,7 +25,13 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
 
     public EmissaoTransp() {
         initComponents();
+        LbAviso.setVisible(false);
         populateComboBox();
+        CBMeiodeTransp.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                desabilitarCamposSeNecessario();
+            }
+        });
 
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -61,6 +67,7 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         tbPesoLiquido = new test.RoundedTextField();
+        LbAviso = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
         setPreferredSize(new java.awt.Dimension(1000, 596));
@@ -186,6 +193,10 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
             }
         });
 
+        LbAviso.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        LbAviso.setForeground(new java.awt.Color(153, 153, 153));
+        LbAviso.setText("Para essa Opção de meio de transporte não precisará completar os seguintes campos:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,8 +240,12 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
                             .addComponent(jLabel13)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lbPesoBruto, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                .addComponent(tbQuantidadeVol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(36, 151, Short.MAX_VALUE))
+                                .addComponent(tbQuantidadeVol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LbAviso)
+                        .addGap(9, 9, 9)))
+                .addGap(36, 218, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,9 +263,15 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CbTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LbAviso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,7 +287,7 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPesoBruto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tbPesoLiquido, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNextRevisao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVoltarDef, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,13 +314,29 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnVoltarDefActionPerformed
 
     private void btnNextRevisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextRevisaoActionPerformed
+        System.out.println("Botão 'Next Revisão' acionado.");
 
-        Object[] transportData = getTransportData();
-        writeJsonToFile();
-        executarJsonToString();
-        Program.getEmissaoTransp().setVisible(false);
-        Program.getEmissaoRevisao().setVisible(true);
-        Program.getEmissaoRevisao().lerArquivoTxt("string.txt");
+    if (!verificarCamposCompletos()) {
+        System.out.println("Campos não estão completos. O evento será interrompido.");
+        return;
+    }
+
+    System.out.println("Campos estão completos. Continuando a execução do evento...");
+
+    writeJsonToFile();
+    System.out.println("writeJsonToFile() executado com sucesso.");
+
+    executarJsonToString();
+    System.out.println("executarJsonToString() executado com sucesso.");
+
+    Program.getEmissaoTransp().setVisible(false);
+    System.out.println("Visibilidade de Program.getEmissaoTransp() alterada para false.");
+
+    Program.getEmissaoRevisao().setVisible(true);
+    System.out.println("Visibilidade de Program.getEmissaoRevisao() alterada para true.");
+
+    Program.getEmissaoRevisao().lerArquivoTxt("string.txt");
+    System.out.println("Program.getEmissaoRevisao().lerArquivoTxt() executado com sucesso.");
 
     }//GEN-LAST:event_btnNextRevisaoActionPerformed
 
@@ -328,10 +365,17 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
 
     private Object[] getTransportData() {
         String meioTransp = CBMeiodeTransp.getSelectedItem().toString();
-        String especie = tbEspecie.getText();
-        int quantidadeVol = Integer.parseInt(tbQuantidadeVol.getText());
-        double pesoLiquido = Double.parseDouble(tbPesoLiquido.getText());
-        double pesoBruto = Double.parseDouble(lbPesoBruto.getText());
+        String especie = "";
+        int quantidadeVol = 0;
+        double pesoLiquido = 0.0;
+        double pesoBruto = 0.0;
+
+        if (meioTransp.startsWith("0") || meioTransp.startsWith("1") || meioTransp.startsWith("2")) {
+            especie = tbEspecie.getText();
+            quantidadeVol = Integer.parseInt(tbQuantidadeVol.getText());
+            pesoLiquido = Double.parseDouble(tbPesoLiquido.getText());
+            pesoBruto = Double.parseDouble(lbPesoBruto.getText());
+        }
 
         Object[] transportData = new Object[5];
         transportData[0] = meioTransp;
@@ -381,11 +425,19 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
 
     private void writeJsonToFile() {
         String meioTransp = CBMeiodeTransp.getSelectedItem().toString();
-        String especie = tbEspecie.getText();
-        int quantidadeVol = Integer.parseInt(tbQuantidadeVol.getText());
-        double pesoLiquido = Double.parseDouble(tbPesoLiquido.getText());
-        double pesoBruto = Double.parseDouble(lbPesoBruto.getText());
         String transportadora = (String) CbTransp.getSelectedItem();
+        String especie = "";
+        int quantidadeVol = 0;
+        double pesoLiquido = 0.0;
+        double pesoBruto = 0.0;
+
+        if (meioTransp.startsWith("0") || meioTransp.startsWith("1") || meioTransp.startsWith("2")) {
+            especie = tbEspecie.getText();
+            quantidadeVol = Integer.parseInt(tbQuantidadeVol.getText());
+            pesoLiquido = Double.parseDouble(tbPesoLiquido.getText());
+            pesoBruto = Double.parseDouble(lbPesoBruto.getText());
+        }
+
         try {
             String fileName = "json.txt";
             StringBuilder jsonContent = new StringBuilder();
@@ -442,13 +494,76 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         }
     }
 
-    private void salvarJsonDB() {
+    private void desabilitarCamposSeNecessario() {
+        String opcaoSelecionada = CBMeiodeTransp.getSelectedItem().toString();
 
+        if (opcaoSelecionada.equals("3 - Transporte Próprio por conta do Remetente")
+                || opcaoSelecionada.equals("4 - Transporte Próprio por conta do Destinatário")
+                || opcaoSelecionada.equals("9 - Sem frete")) {
+
+            lbPesoBruto.setEnabled(false);
+            tbEspecie.setEnabled(false);
+            tbPesoLiquido.setEnabled(false);
+            tbQuantidadeVol.setEnabled(false);
+            LbAviso.setVisible(true);
+        } else {
+
+            lbPesoBruto.setEnabled(true);
+            tbEspecie.setEnabled(true);
+            tbPesoLiquido.setEnabled(true);
+            tbQuantidadeVol.setEnabled(true);
+            LbAviso.setVisible(false);
+        }
+    }
+
+    private boolean verificarCamposCompletos() {
+
+        String selectedItem = CBMeiodeTransp.getSelectedItem().toString();
+        boolean opcoesSelecionadas = selectedItem.startsWith("0") || selectedItem.startsWith("1") || selectedItem.startsWith("2");
+
+        boolean segundaCbSelecionada = CbTransp.getSelectedIndex() != -1;
+
+        if (opcoesSelecionadas) {
+
+            if (lbPesoBruto.getText().isEmpty() || tbEspecie.getText().isEmpty()
+                    || tbPesoLiquido.getText().isEmpty() || tbQuantidadeVol.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios antes de prosseguir.");
+                return false;
+            }
+        } else if (!segundaCbSelecionada) {
+            JOptionPane.showMessageDialog(this, "Selecione uma transportadora antes de prosseguir.");
+            return false;
+        }
+
+        if (opcoesSelecionadas) {
+            if (lbPesoBruto.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, " 'Peso Bruto' não foi preenchido. Preencha-o antes de prosseguir.");
+                return false;
+            }
+
+            if (tbEspecie.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, " 'Espécie de volume' não foi preenchido. Preencha-o antes de prosseguir.");
+                return false;
+            }
+
+            if (tbPesoLiquido.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "'Peso Líquido' não foi preenchido. Preencha-o antes de prosseguir.");
+                return false;
+            }
+
+            if (tbQuantidadeVol.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "'Quantidade de Volumes' não foi preenchido. Preencha-o antes de prosseguir.");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBMeiodeTransp;
     private javax.swing.JComboBox<String> CbTransp;
+    private javax.swing.JLabel LbAviso;
     private Components.btnRounded btnNextRevisao;
     private Components.btnRounded btnVoltarDef;
     private javax.swing.JLabel jLabel1;

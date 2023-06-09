@@ -223,6 +223,9 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProxProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxProdActionPerformed
+        if (!verificarSelecaoTabela()) {
+            return;
+        }
         String razaoSocial = tfPesquisarEmpresa.getText();
         searchCnpjAndWriteToJson(razaoSocial);
         Program.getEmissaoNota().setVisible(false);
@@ -440,6 +443,13 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
         return cnpj;
     }
 
+    private boolean verificarSelecaoTabela() {
+        if (table1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um Destinatário");
+            return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnProxProd;

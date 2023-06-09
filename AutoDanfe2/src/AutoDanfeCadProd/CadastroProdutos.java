@@ -19,6 +19,9 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     public CadastroProdutos() {
         initComponents();
+        btnAtualizarProd.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnEdicao.setEnabled(false);
         configureTable();
         populateTable();
 
@@ -28,6 +31,12 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
+    }
+    
+    private void limparCampos(){
+        tfCodProd.setText("");
+        tfNCM.setText("");
+        tfNomeProd.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +57,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new Components.table();
+        btnEdicao = new Components.btnRounded();
 
         setMaximumSize(new java.awt.Dimension(1000, 596));
         setMinimumSize(new java.awt.Dimension(1000, 596));
@@ -78,7 +88,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        tfNomeProd.setText("JALECO ML BRANCO M");
+        tfNomeProd.setText("Camisa");
         tfNomeProd.setLineColor(new java.awt.Color(75, 110, 175));
         tfNomeProd.setMargin(new java.awt.Insets(1, 3, 1, 3));
         tfNomeProd.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -95,7 +105,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
             }
         });
 
-        tfNCM.setText("09012100");
+        tfNCM.setText("00000000");
         tfNCM.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfNCMFocusGained(evt);
@@ -105,7 +115,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
             }
         });
 
-        tfCodProd.setText("0920900");
+        tfCodProd.setText("0000000");
         tfCodProd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfCodProdFocusGained(evt);
@@ -181,6 +191,19 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(table1);
 
+        btnEdicao.setBackground(new java.awt.Color(191, 189, 189));
+        btnEdicao.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdicao.setText("Sair do modo Edição");
+        btnEdicao.setBorderColor(new java.awt.Color(191, 189, 189));
+        btnEdicao.setColor(new java.awt.Color(191, 189, 189));
+        btnEdicao.setColorClick(new java.awt.Color(159, 159, 159));
+        btnEdicao.setColorOver(new java.awt.Color(180, 180, 180));
+        btnEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -207,9 +230,12 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(201, 201, 201)
+                                .addComponent(btnEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
                                 .addComponent(btnRemoverProd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,7 +263,8 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoverProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAtualizarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -247,7 +274,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +287,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNomeProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNomeProdFocusGained
-        if (tfNomeProd.getText().equals("JALECO ML BRANCO M")) {
+        if (tfNomeProd.getText().equals("Camisa")) {
             tfNomeProd.setText("");
             tfNomeProd.setForeground(Color.BLACK);
         }
@@ -268,13 +295,13 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     private void tfNomeProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNomeProdFocusLost
         if (tfNomeProd.getText().isEmpty()) {
-            tfNomeProd.setText("JALECO ML BRANCO M");
+            tfNomeProd.setText("Camisa");
             tfNomeProd.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNomeProdFocusLost
 
     private void tfCodProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodProdFocusGained
-        if (tfCodProd.getText().equals("0920900")) {
+        if (tfCodProd.getText().equals("0000000")) {
             tfCodProd.setText("");
             tfCodProd.setForeground(Color.BLACK);
         }
@@ -282,13 +309,13 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     private void tfCodProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodProdFocusLost
         if (tfCodProd.getText().isEmpty()) {
-            tfCodProd.setText("0920900");
+            tfCodProd.setText("0000000");
             tfCodProd.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCodProdFocusLost
 
     private void tfNCMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusGained
-        if (tfNCM.getText().equals("09012100")) {
+        if (tfNCM.getText().equals("00000000")) {
             tfNCM.setText("");
             tfNCM.setForeground(Color.BLACK);
         }
@@ -296,7 +323,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     private void tfNCMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNCMFocusLost
         if (tfNCM.getText().isEmpty()) {
-            tfNCM.setText("09012100");
+            tfNCM.setText("00000000");
             tfNCM.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfNCMFocusLost
@@ -307,24 +334,76 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
 
     private void btnRemoverProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProdActionPerformed
         removeProdutoFromDB();
+        limparCampos();
     }//GEN-LAST:event_btnRemoverProdActionPerformed
 
     private void btnAdicionarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdActionPerformed
+        if (!verificarCamposCompletos()) {
+            return; // Interrompe a execução do evento
+        }
+
         insertProduto();
         populateTable();
+        limparCampos();
     }//GEN-LAST:event_btnAdicionarProdActionPerformed
 
     private void btnAtualizarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarProdActionPerformed
+        if (!verificarCamposCompletos()) {
+            return; // Interrompe a execução do evento
+        }
         updateProduto();
         populateTable();
+        limparCampos();
+        btnAdicionarProd.setEnabled(true);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnAdicionarProd.setBackground(new Color(0, 153, 153));
+        btnAtualizarProd.setEnabled(false);
     }//GEN-LAST:event_btnAtualizarProdActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         populateFields();
+        btnAtualizarProd.setEnabled(true);
+        btnEdicao.setVisible(true);
+        btnEdicao.setEnabled(true);
+        btnAdicionarProd.setEnabled(false);
+        if(btnAdicionarProd.isSelected()){
+            JOptionPane.showMessageDialog(null, "Atualize o produto atual ou saia do modo edição para prosseguir");
+        }
+        btnAdicionarProd.setBackground(Color.GRAY);
+        btnAtualizarProd.setBackground(Color.green);
     }//GEN-LAST:event_table1MouseClicked
+
+    private void btnEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoActionPerformed
+        limparCampos();
+        btnAdicionarProd.setEnabled(true);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnAdicionarProd.setBackground(new Color(0, 153, 153));
+        btnAtualizarProd.setEnabled(false);
+    }//GEN-LAST:event_btnEdicaoActionPerformed
 
     private void configureTable() {
         table1.setDefaultEditor(Object.class, null);
+    }
+
+    private boolean verificarCamposCompletos() {
+        if (tfCodProd.getText().isEmpty() || tfCodProd.getText().equals("0920900")) {
+            JOptionPane.showMessageDialog(this, "O campo 'Código do Produto' não foi preenchido.");
+            return false;
+        }
+
+        if (tfNCM.getText().isEmpty() || tfNCM.getText().equals("09012100")) {
+            JOptionPane.showMessageDialog(this, "O campo 'NCM' não foi preenchido.");
+            return false;
+        }
+
+        if (tfNomeProd.getText().isEmpty() || tfNomeProd.getText().equals("JALECO ML BRANCO M")) {
+            JOptionPane.showMessageDialog(this, "O campo 'Nome do Produto' não foi preenchido.");
+            return false;
+        }
+
+        return true;
     }
 
     private void removeProdutoFromDB() {
@@ -363,20 +442,21 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }
 
     private void populateFields() {
-    int row = table1.getSelectedRow();
-    if (row != -1) {
-        tfCodProd.setText(table1.getValueAt(row, 1).toString());
-        tfNCM.setText(table1.getValueAt(row, 2).toString());
-        tfNomeProd.setText(table1.getValueAt(row, 3).toString());
-        tfCodProd.setForeground(Color.BLACK);
-        tfNCM.setForeground(Color.BLACK);
-        tfNomeProd.setForeground(Color.BLACK);
-        
-        btnAdicionarProd.setEnabled(false);
-    } else {
-        JOptionPane.showMessageDialog(null, "Selecione um produto na tabela");
+        int row = table1.getSelectedRow();
+        if (row != -1) {
+            tfCodProd.setText(table1.getValueAt(row, 1).toString());
+            tfNCM.setText(table1.getValueAt(row, 2).toString());
+            tfNomeProd.setText(table1.getValueAt(row, 3).toString());
+            tfCodProd.setForeground(Color.BLACK);
+            tfNCM.setForeground(Color.BLACK);
+            tfNomeProd.setForeground(Color.BLACK);
+
+            btnAdicionarProd.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto na tabela");
+        }
     }
-}
+
     public void insertProduto() {
         try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO produtos (cod_produto, nome_produto, NCM) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, Integer.parseInt(tfCodProd.getText()));
@@ -443,6 +523,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnAdicionarProd;
     private Components.btnRounded btnAtualizarProd;
+    private Components.btnRounded btnEdicao;
     private Components.btnRounded btnRemoverProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

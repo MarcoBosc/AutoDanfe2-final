@@ -1,0 +1,10 @@
+{
+  "id_destinatario": "1234567",
+
+  "itens": [
+    {
+      "id_prod": "4",
+      "quantidade": "23",
+      "valor_unidade": "23"
+    }
+  ]

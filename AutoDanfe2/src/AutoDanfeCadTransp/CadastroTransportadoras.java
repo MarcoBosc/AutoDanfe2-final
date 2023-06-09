@@ -20,7 +20,9 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     public CadastroTransportadoras() {
         initComponents();
-
+        btnAtualizarTransp.setEnabled(false);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
         populateTable();
         configureTable();
 
@@ -34,6 +36,15 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
+    }
+
+    private void limparCampos() {
+        tfCNPJ.setText("");
+        tfInscricaoEstadual.setText("");
+        tfLogradouroTransp.setText("");
+        tfMunicipio.setText("");
+        tfRazaoSocialTransp.setText("");
+        tfUF.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -60,6 +71,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new Components.table();
+        btnEdicao = new Components.btnRounded();
 
         setMinimumSize(new java.awt.Dimension(1000, 596));
         setPreferredSize(new java.awt.Dimension(1000, 596));
@@ -78,7 +90,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addContainerGap(724, Short.MAX_VALUE))
+                .addContainerGap(759, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +100,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        tfRazaoSocialTransp.setText("Aimê Uniformes e Cia Ltda");
+        tfRazaoSocialTransp.setText("Alto-Uruguai Transportadoras");
         tfRazaoSocialTransp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfRazaoSocialTranspFocusGained(evt);
@@ -103,7 +115,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfCNPJ.setText("10.628.776/0001-04");
+        tfCNPJ.setText("00.000.000/0000-00");
         tfCNPJ.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfCNPJFocusGained(evt);
@@ -118,7 +130,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfLogradouroTransp.setText("Rua Duque de Caxias");
+        tfLogradouroTransp.setText("Rua Das Capivaras");
         tfLogradouroTransp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfLogradouroTranspFocusGained(evt);
@@ -128,7 +140,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfMunicipio.setText("Erechim");
+        tfMunicipio.setText("Rio Branco");
         tfMunicipio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfMunicipioFocusGained(evt);
@@ -143,7 +155,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfInscricaoEstadual.setText("388.108.598.269");
+        tfInscricaoEstadual.setText("000.000.000.000");
         tfInscricaoEstadual.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfInscricaoEstadualFocusGained(evt);
@@ -153,7 +165,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
             }
         });
 
-        tfUF.setText("RS");
+        tfUF.setText("AC");
         tfUF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfUFFocusGained(evt);
@@ -236,6 +248,19 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(table1);
 
+        btnEdicao.setBackground(new java.awt.Color(191, 189, 189));
+        btnEdicao.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdicao.setText("Sair do modo de Edição");
+        btnEdicao.setBorderColor(new java.awt.Color(191, 189, 189));
+        btnEdicao.setColor(new java.awt.Color(191, 189, 189));
+        btnEdicao.setColorClick(new java.awt.Color(159, 159, 159));
+        btnEdicao.setColorOver(new java.awt.Color(180, 180, 180));
+        btnEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -276,7 +301,9 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                                                 .addComponent(jLabel7)
                                                 .addComponent(jLabel6))))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(210, 210, 210)
+                        .addComponent(btnEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,7 +343,8 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemoverTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAtualizarTransp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -337,7 +365,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfRazaoSocialTranspFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspFocusGained
-        if (tfRazaoSocialTransp.getText().equals("Aimê Uniformes e Cia Ltda")) {
+        if (tfRazaoSocialTransp.getText().equals("Alto-Uruguai Transportadoras")) {
             tfRazaoSocialTransp.setText("");
             tfRazaoSocialTransp.setForeground(Color.BLACK);
         }
@@ -345,13 +373,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfRazaoSocialTranspFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfRazaoSocialTranspFocusLost
         if (tfRazaoSocialTransp.getText().isEmpty()) {
-            tfRazaoSocialTransp.setText("Aimê Uniformes e Cia Ltda");
+            tfRazaoSocialTransp.setText("Alto-Uruguai Transportadoras");
             tfRazaoSocialTransp.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfRazaoSocialTranspFocusLost
 
     private void tfLogradouroTranspFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLogradouroTranspFocusGained
-        if (tfLogradouroTransp.getText().equals("Rua Duque de Caxias")) {
+        if (tfLogradouroTransp.getText().equals("Rua Das Capivaras")) {
             tfLogradouroTransp.setText("");
             tfLogradouroTransp.setForeground(Color.BLACK);
         }
@@ -359,13 +387,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfLogradouroTranspFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLogradouroTranspFocusLost
         if (tfLogradouroTransp.getText().isEmpty()) {
-            tfLogradouroTransp.setText("Rua Duque de Caxias");
+            tfLogradouroTransp.setText("Rua Das Capivaras");
             tfLogradouroTransp.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfLogradouroTranspFocusLost
 
     private void tfMunicipioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioFocusGained
-        if (tfMunicipio.getText().equals("Erechim")) {
+        if (tfMunicipio.getText().equals("Rio Branco")) {
             tfMunicipio.setText("");
             tfMunicipio.setForeground(Color.BLACK);
         }
@@ -373,13 +401,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfMunicipioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfMunicipioFocusLost
         if (tfMunicipio.getText().isEmpty()) {
-            tfMunicipio.setText("Erechim");
+            tfMunicipio.setText("Rio Branco");
             tfMunicipio.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfMunicipioFocusLost
 
     private void tfCNPJFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJFocusGained
-        if (tfCNPJ.getText().equals("10.628.776/0001-04")) {
+        if (tfCNPJ.getText().equals("00.000.000/0000-00")) {
             tfCNPJ.setText("");
             tfCNPJ.setForeground(Color.BLACK);
         }
@@ -387,13 +415,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfCNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCNPJFocusLost
         if (tfCNPJ.getText().isEmpty()) {
-            tfCNPJ.setText("10.628.776/0001-04");
+            tfCNPJ.setText("00.000.000/0000-00");
             tfCNPJ.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfCNPJFocusLost
 
     private void tfInscricaoEstadualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualFocusGained
-        if (tfInscricaoEstadual.getText().equals("388.108.598.269")) {
+        if (tfInscricaoEstadual.getText().equals("000.000.000.000")) {
             tfInscricaoEstadual.setText("");
             tfInscricaoEstadual.setForeground(Color.BLACK);
         }
@@ -401,13 +429,13 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfInscricaoEstadualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfInscricaoEstadualFocusLost
         if (tfInscricaoEstadual.getText().isEmpty()) {
-            tfInscricaoEstadual.setText("388.108.598.269");
+            tfInscricaoEstadual.setText("000.000.000.000");
             tfInscricaoEstadual.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfInscricaoEstadualFocusLost
 
     private void tfUFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUFFocusGained
-        if (tfUF.getText().equals("RS")) {
+        if (tfUF.getText().equals("AC")) {
             tfUF.setText("");
             tfUF.setForeground(Color.BLACK);
         }
@@ -415,7 +443,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
 
     private void tfUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUFFocusLost
         if (tfUF.getText().isEmpty()) {
-            tfUF.setText("RS");
+            tfUF.setText("AC");
             tfUF.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_tfUFFocusLost
@@ -429,30 +457,105 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfMunicipioActionPerformed
 
     private void btnAdicionarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarTranspActionPerformed
+        if (!verificarCamposCompletosTransp()) {
+            return;
+        }
         insertTransportadora();
         populateTable();
+        limparCampos();
     }//GEN-LAST:event_btnAdicionarTranspActionPerformed
 
     private void btnRemoverTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverTranspActionPerformed
         removeTransportadoraFromDB();
         removeTransportadoraFromTable();
+        limparCampos();
     }//GEN-LAST:event_btnRemoverTranspActionPerformed
 
     private void btnAtualizarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTranspActionPerformed
+
+        if (!verificarCamposCompletosTransp()) {
+            return;
+        }
         updateTransportadoraInDB();
         btnAdicionarTransp.setEnabled(true);
+        btnAtualizarTransp.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnEdicao.setEnabled(false);
+        btnAdicionarTransp.setBackground(new Color(0, 153, 153));
+        btnAtualizarTransp.setEnabled(false);
+        limparCampos();
     }//GEN-LAST:event_btnAtualizarTranspActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         populateFields();
+        btnEdicao.setVisible(true);
+        btnEdicao.setEnabled(true);
+        btnAdicionarTransp.setEnabled(false);
+        if(btnAdicionarTransp.isSelected()){
+            JOptionPane.showMessageDialog(null, "Atualize o produto atual ou saia do modo edição para prosseguir");
+        }
+        btnAdicionarTransp.setBackground(Color.gray);
+        btnAtualizarTransp.setBackground(Color.green);
+        btnAtualizarTransp.setEnabled(true);
     }//GEN-LAST:event_table1MouseClicked
 
     private void tfCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCNPJActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCNPJActionPerformed
 
+    private void btnEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoActionPerformed
+        limparCampos();
+        btnAdicionarTransp.setEnabled(true);
+        btnEdicao.setEnabled(false);
+        btnEdicao.setVisible(false);
+        btnAtualizarTransp.setBackground(new Color(0, 153, 153));
+        btnAtualizarTransp.setEnabled(false);
+    }//GEN-LAST:event_btnEdicaoActionPerformed
+
     private void configureTable() {
         table1.setDefaultEditor(Object.class, null);
+    }
+
+    private boolean verificarCamposCompletosTransp() {
+        boolean camposCompletos = true;
+        StringBuilder camposNaoPreenchidos = new StringBuilder();
+
+        if (tfCNPJ.getText().isEmpty() || tfCNPJ.getText().equals("00.000.000/0000-00")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'CNPJ' ");
+        }
+
+        if (tfInscricaoEstadual.getText().isEmpty() || tfInscricaoEstadual.getText().equals("000.000.000.000")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Inscrição Estadual' ");
+        }
+
+        if (tfLogradouroTransp.getText().isEmpty() || tfLogradouroTransp.getText().equals("Rua Das Capivaras")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Logradouro' ");
+        }
+
+        if (tfMunicipio.getText().isEmpty() || tfMunicipio.getText().equals("Rio Branco")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Município' ");
+        }
+
+        if (tfRazaoSocialTransp.getText().isEmpty() || tfRazaoSocialTransp.getText().equals("Alto-Uruguai Transportadoras")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'Razão Social' ");
+        }
+
+        if (tfUF.getText().isEmpty() || tfUF.getText().equals("AC")) {
+            camposCompletos = false;
+            camposNaoPreenchidos.append("'UF' ");
+        }
+
+        if (!camposCompletos) {
+            JOptionPane.showMessageDialog(this, "Os campos a seguir não foram preenchidos: " + camposNaoPreenchidos.toString());
+            return false;
+        }
+
+        return true;
     }
 
     private void removeTransportadoraFromTable() {
@@ -464,125 +567,125 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     }
 
     private void removeTransportadoraFromDB() {
-    int selectedRow = table1.getSelectedRow();
-    if (selectedRow >= 0) {
-        String cnpj = table1.getValueAt(selectedRow, 2).toString();
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM transportadoras WHERE CNPJ_transportador = ?")) {
-            ps.setString(1, cnpj);
+        int selectedRow = table1.getSelectedRow();
+        if (selectedRow >= 0) {
+            String cnpj = table1.getValueAt(selectedRow, 2).toString();
+            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM transportadoras WHERE CNPJ_transportador = ?")) {
+                ps.setString(1, cnpj);
+                ps.executeUpdate();
+
+                DefaultTableModel model = (DefaultTableModel) table1.getModel();
+                model.removeRow(selectedRow);
+
+                JOptionPane.showMessageDialog(null, "Transportadora removida com sucesso!");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao remover transportadora: " + e.getMessage());
+            }
+        }
+    }
+
+    private void updateTransportadoraInDB() {
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE transportadoras SET razao_social_transp = ?, logradouro_transportadora = ?, municipio_transportadora = ?, IE_transportadora = ?, UF_transportadora = ? WHERE CNPJ_transportador = ?")) {
+            ps.setString(1, tfRazaoSocialTransp.getText());
+            ps.setString(2, tfLogradouroTransp.getText());
+            ps.setString(3, tfMunicipio.getText());
+            ps.setString(4, tfInscricaoEstadual.getText());
+            ps.setString(5, tfUF.getText());
+            ps.setString(6, tfCNPJ.getText());
             ps.executeUpdate();
 
-            DefaultTableModel model = (DefaultTableModel) table1.getModel();
-            model.removeRow(selectedRow);
-
-            JOptionPane.showMessageDialog(null, "Transportadora removida com sucesso!");
+            JOptionPane.showMessageDialog(null, "Transportadora atualizada com sucesso!");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover transportadora: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar transportadora: " + e.getMessage());
         }
     }
-}
 
-   private void updateTransportadoraInDB() {
-    try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE transportadoras SET razao_social_transp = ?, logradouro_transportadora = ?, municipio_transportadora = ?, IE_transportadora = ?, UF_transportadora = ? WHERE CNPJ_transportador = ?")) {
-        ps.setString(1, tfRazaoSocialTransp.getText());
-        ps.setString(2, tfLogradouroTransp.getText());
-        ps.setString(3, tfMunicipio.getText());
-        ps.setString(4, tfInscricaoEstadual.getText());
-        ps.setString(5, tfUF.getText());
-        ps.setString(6, tfCNPJ.getText());
-        ps.executeUpdate();
+    private void populateFields() {
+        int row = table1.getSelectedRow();
+        if (row != -1) {
+            tfCNPJ.setText(table1.getValueAt(row, 0).toString());
+            tfInscricaoEstadual.setText(table1.getValueAt(row, 1).toString());
+            tfLogradouroTransp.setText(table1.getValueAt(row, 2).toString());
+            tfMunicipio.setText(table1.getValueAt(row, 3).toString());
+            tfRazaoSocialTransp.setText(table1.getValueAt(row, 4).toString());
+            tfUF.setText(table1.getValueAt(row, 5).toString());
 
-        JOptionPane.showMessageDialog(null, "Transportadora atualizada com sucesso!");
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Erro ao atualizar transportadora: " + e.getMessage());
+            tfCNPJ.setForeground(Color.BLACK);
+            tfInscricaoEstadual.setForeground(Color.BLACK);
+            tfLogradouroTransp.setForeground(Color.BLACK);
+            tfMunicipio.setForeground(Color.BLACK);
+            tfRazaoSocialTransp.setForeground(Color.BLACK);
+            tfUF.setForeground(Color.BLACK);
+
+            btnAdicionarTransp.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma transportadora na tabela");
+        }
     }
-}
-
-  private void populateFields() {
-    int row = table1.getSelectedRow();
-    if (row != -1) {
-        tfCNPJ.setText(table1.getValueAt(row, 0).toString());
-        tfInscricaoEstadual.setText(table1.getValueAt(row, 1).toString());
-        tfLogradouroTransp.setText(table1.getValueAt(row, 2).toString());
-        tfMunicipio.setText(table1.getValueAt(row, 3).toString());
-        tfRazaoSocialTransp.setText(table1.getValueAt(row, 4).toString());
-        tfUF.setText(table1.getValueAt(row, 5).toString());
-
-        tfCNPJ.setForeground(Color.BLACK);
-        tfInscricaoEstadual.setForeground(Color.BLACK);
-        tfLogradouroTransp.setForeground(Color.BLACK);
-        tfMunicipio.setForeground(Color.BLACK);
-        tfRazaoSocialTransp.setForeground(Color.BLACK);
-        tfUF.setForeground(Color.BLACK);
-        
-        btnAdicionarTransp.setEnabled(false);
-    } else {
-        JOptionPane.showMessageDialog(null, "Selecione uma transportadora na tabela");
-    }
-}
 
     public void insertTransportadora() {
-    try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO transportadoras (razao_social_transp, CNPJ_transportador, IE_transportadora, UF_transportadora, municipio_transportadora, logradouro_transportadora) VALUES (?, ?, ?, ?, ?, ?)")) {
-        ps.setString(1, tfRazaoSocialTransp.getText());
-        ps.setString(2, tfCNPJ.getText());
-        ps.setString(3, tfInscricaoEstadual.getText());
-        ps.setString(4, tfUF.getText());
-        ps.setString(5, tfMunicipio.getText());
-        ps.setString(6, tfLogradouroTransp.getText());
-        ps.executeUpdate();
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("INSERT INTO transportadoras (razao_social_transp, CNPJ_transportador, IE_transportadora, UF_transportadora, municipio_transportadora, logradouro_transportadora) VALUES (?, ?, ?, ?, ?, ?)")) {
+            ps.setString(1, tfRazaoSocialTransp.getText());
+            ps.setString(2, tfCNPJ.getText());
+            ps.setString(3, tfInscricaoEstadual.getText());
+            ps.setString(4, tfUF.getText());
+            ps.setString(5, tfMunicipio.getText());
+            ps.setString(6, tfLogradouroTransp.getText());
+            ps.executeUpdate();
 
-        JOptionPane.showMessageDialog(null, "Transportadora adicionada com sucesso!");
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Erro ao adicionar transportadora: " + e.getMessage());
-    }
-}
-
-   private void populateTable() {
-    try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras"); ResultSet rs = ps.executeQuery()) {
-        DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        model.setRowCount(0);
-
-        while (rs.next()) {
-            String cnpj = rs.getString("CNPJ_transportador");
-            String inscricaoEstadual = rs.getString("IE_transportadora");
-            String logradouro = rs.getString("logradouro_transportadora");
-            String municipio = rs.getString("municipio_transportadora");
-            String razaoSocial = rs.getString("razao_social_transp");
-            String uf = rs.getString("UF_transportadora");
-
-            Object[] row = {cnpj, inscricaoEstadual, logradouro, municipio, razaoSocial, uf};
-            model.addRow(row);
+            JOptionPane.showMessageDialog(null, "Transportadora adicionada com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar transportadora: " + e.getMessage());
         }
-
-        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-        cellRenderer.setForeground(Color.BLACK);
-        cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JTableHeader header = table1.getTableHeader();
-        header.setDefaultRenderer(cellRenderer);
-
-        TableColumnModel columnModel = table1.getColumnModel();
-        for (int i = 0; i < columnModel.getColumnCount(); i++) {
-            columnModel.getColumn(i).setCellRenderer(cellRenderer);
-        }
-
-        // Set column names
-        columnModel.getColumn(0).setHeaderValue("CNPJ");
-        columnModel.getColumn(1).setHeaderValue("Inscrição Estadual");
-        columnModel.getColumn(2).setHeaderValue("Logradouro");
-        columnModel.getColumn(3).setHeaderValue("Município");
-        columnModel.getColumn(4).setHeaderValue("Razão Social");
-        columnModel.getColumn(5).setHeaderValue("UF");
-        header.repaint();
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela transportadoras: " + e.getMessage());
     }
-}
 
+    private void populateTable() {
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras"); ResultSet rs = ps.executeQuery()) {
+            DefaultTableModel model = (DefaultTableModel) table1.getModel();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                String cnpj = rs.getString("CNPJ_transportador");
+                String inscricaoEstadual = rs.getString("IE_transportadora");
+                String logradouro = rs.getString("logradouro_transportadora");
+                String municipio = rs.getString("municipio_transportadora");
+                String razaoSocial = rs.getString("razao_social_transp");
+                String uf = rs.getString("UF_transportadora");
+
+                Object[] row = {cnpj, inscricaoEstadual, logradouro, municipio, razaoSocial, uf};
+                model.addRow(row);
+            }
+
+            DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+            cellRenderer.setForeground(Color.BLACK);
+            cellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JTableHeader header = table1.getTableHeader();
+            header.setDefaultRenderer(cellRenderer);
+
+            TableColumnModel columnModel = table1.getColumnModel();
+            for (int i = 0; i < columnModel.getColumnCount(); i++) {
+                columnModel.getColumn(i).setCellRenderer(cellRenderer);
+            }
+
+            // Set column names
+            columnModel.getColumn(0).setHeaderValue("CNPJ");
+            columnModel.getColumn(1).setHeaderValue("Inscrição Estadual");
+            columnModel.getColumn(2).setHeaderValue("Logradouro");
+            columnModel.getColumn(3).setHeaderValue("Município");
+            columnModel.getColumn(4).setHeaderValue("Razão Social");
+            columnModel.getColumn(5).setHeaderValue("UF");
+            header.repaint();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar dados da tabela transportadoras: " + e.getMessage());
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.btnRounded btnAdicionarTransp;
     private Components.btnRounded btnAtualizarTransp;
+    private Components.btnRounded btnEdicao;
     private Components.btnRounded btnRemoverTransp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

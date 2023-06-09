@@ -96,7 +96,9 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="btnEdicao" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnAtualizarTransp" min="-2" pref="139" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="btnRemoverTransp" min="-2" pref="139" max="-2" attributes="0"/>
@@ -147,6 +149,7 @@
                       <Component id="btnAdicionarTransp" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="btnRemoverTransp" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="btnAtualizarTransp" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="btnEdicao" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="212" max="-2" attributes="0"/>
@@ -169,7 +172,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="724" max="32767" attributes="0"/>
+                      <EmptySpace pref="759" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -196,7 +199,7 @@
         </Container>
         <Component class="test.RoundedTextField" name="tfRazaoSocialTransp">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Aim&#xea; Uniformes e Cia Ltda"/>
+            <Property name="text" type="java.lang.String" value="Alto-Uruguai Transportadoras"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfRazaoSocialTranspFocusGained"/>
@@ -206,7 +209,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfCNPJ">
           <Properties>
-            <Property name="text" type="java.lang.String" value="10.628.776/0001-04"/>
+            <Property name="text" type="java.lang.String" value="00.000.000/0000-00"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCNPJFocusGained"/>
@@ -216,7 +219,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfLogradouroTransp">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Rua Duque de Caxias"/>
+            <Property name="text" type="java.lang.String" value="Rua Das Capivaras"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfLogradouroTranspFocusGained"/>
@@ -225,7 +228,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfMunicipio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Erechim"/>
+            <Property name="text" type="java.lang.String" value="Rio Branco"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfMunicipioFocusGained"/>
@@ -235,7 +238,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfInscricaoEstadual">
           <Properties>
-            <Property name="text" type="java.lang.String" value="388.108.598.269"/>
+            <Property name="text" type="java.lang.String" value="000.000.000.000"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfInscricaoEstadualFocusGained"/>
@@ -244,7 +247,7 @@
         </Component>
         <Component class="test.RoundedTextField" name="tfUF">
           <Properties>
-            <Property name="text" type="java.lang.String" value="RS"/>
+            <Property name="text" type="java.lang.String" value="AC"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfUFFocusGained"/>
@@ -397,6 +400,32 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="Components.btnRounded" name="btnEdicao">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bd" green="bd" red="bf" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Sair do modo de Edi&#xe7;&#xe3;o"/>
+            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bd" green="bd" red="bf" type="rgb"/>
+            </Property>
+            <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bd" green="bd" red="bf" type="rgb"/>
+            </Property>
+            <Property name="colorClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="9f" green="9f" red="9f" type="rgb"/>
+            </Property>
+            <Property name="colorOver" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b4" green="b4" red="b4" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdicaoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

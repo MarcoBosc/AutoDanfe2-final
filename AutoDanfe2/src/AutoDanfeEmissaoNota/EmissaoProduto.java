@@ -407,6 +407,10 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextDefinitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextDefinitionsActionPerformed
+        if (verificarTabelaItensVazia()) {
+            JOptionPane.showMessageDialog(this, "A tabela de itens está vazia. Adicione pelo menos um item antes de prosseguir.");
+            return;
+        }
         writeJsonToFile();
         Program.getEmissaoProduto().setVisible(false);
         Program.getEmissaoDefinicoes().setVisible(true);
@@ -634,6 +638,10 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
         }
     }
 
+    private boolean verificarTabelaItensVazia() {
+        DefaultTableModel model = (DefaultTableModel) TabelaItens.getModel();
+        return model.getRowCount() == 0;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Components.table TabelaItens;
