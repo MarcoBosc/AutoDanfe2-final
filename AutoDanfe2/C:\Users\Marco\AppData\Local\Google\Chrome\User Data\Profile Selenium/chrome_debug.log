@@ -1,0 +1,9 @@
+[303047:303047:0610/153311.663990:WARNING:chrome_main_delegate.cc(593)] This is Chrome version 114.0.5735.106 (not a warning)
+[303047:303047:0610/153312.199036:INFO:chrome_browser_cloud_management_controller.cc(167)] Starting CBCM Controller Initialization
+[303047:303047:0610/153312.199091:INFO:chrome_browser_cloud_management_controller.cc(195)] No machine level policy manager exists.
+[303047:303047:0610/153312.393958:WARNING:bluez_dbus_manager.cc(247)] Floss manager not present, cannot set Floss enable/disable.
+[303091:303091:0610/153322.684101:WARNING:sandbox_linux.cc(393)] InitializeSandbox() called with multiple threads in process gpu-process.
+[303047:303047:0610/153324.365298:INFO:CONSOLE(0)] "[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o", source: https://www.sefaz.rs.gov.br/Receita/PortaleCAC.aspx (0)
+[303092:303109:0610/153328.979586:WARNING:sqlite_persistent_store_backend_base.cc(190)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:238 to client_task_runner_.
+[303092:303109:0610/153328.979746:WARNING:sqlite_persistent_store_backend_base.cc(190)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:238 to client_task_runner_.
+[303047:303047:0610/153329.124759:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

@@ -76,7 +76,7 @@ nome_cliente = get_nome_cliente(data["id_destinatario"])
 
 # Criando a string de especificações da nota
 especificacoes_nota = f"""
-ID Destinatário: {nome_cliente}
+Destinatário: {nome_cliente}
 
 Itens:
 {"-" * 100}
@@ -96,7 +96,7 @@ Ordem Compra: {data["definicoes"]["tbOrdemCompra"]}
 
 Transportadora:
 Meio de Transporte: {data["transportadora"]["meio_transporte"]}
-ID Transp: {data["transportadora"]["id_transp"]}
+Transportadora: {data["transportadora"]["id_transp"]}
 Razão Social: {get_nome_transportadora(data["transportadora"]["id_transp"])}
 Espécie: {data["transportadora"]["especie"]}
 Quantidade Volume: {data["transportadora"]["quantidadeVol"]}

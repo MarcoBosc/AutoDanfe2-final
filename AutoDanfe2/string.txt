@@ -1,22 +1,22 @@
 
-ID Destinatário: Tracado
+ID Destinatário: Jose
 
 Itens:
 ----------------------------------------------------------------------------------------------------
 Nome Prod      Quantidade     Valor Unidade  
 ----------------------------------------------------------------------------------------------------
-cocrante       1              1              
+Joao           13             21             
 
 Definições:
-Parcelas: ['11/11/1111', '11/11/1111']
+Parcelas: ['13/23/1231', '13/23/1231']
 Tipo de operação: estadual
-Ordem Compra: 1
+Ordem Compra: 312314
 
 Transportadora:
 Meio de Transporte: 0 - Contratação do Frete por conta do Remetente (CIF)
 ID Transp: 2
 Razão Social: Transportadora aratiba
-Espécie: 1
-Quantidade Volume: 1
-Peso Líquido: 1.0
-Peso Bruto: 1.0
+Espécie: Caixa
+Quantidade Volume: 12
+Peso Líquido: 15.0
+Peso Bruto: 6.0
