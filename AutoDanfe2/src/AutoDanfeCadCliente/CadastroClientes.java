@@ -575,7 +575,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         if (selectedRow >= 0) {
             String cnpj = table1.getValueAt(selectedRow, 0).toString();
 
-            try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM clientes WHERE CNPJ_cliente = ?")) {
+            try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE clientes SET status_cliente = FALSE WHERE CNPJ_cliente = ?")) {
                 ps.setString(1, cnpj);
                 int rowsAffected = ps.executeUpdate();
 
@@ -691,7 +691,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
 
         if (conn != null) {
             try {
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
+                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes WHERE status_cliente = TRUE");
                 ResultSet rs = ps.executeQuery();
 
                 DefaultTableModel model = (DefaultTableModel) table1.getModel();

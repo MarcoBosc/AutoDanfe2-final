@@ -32,8 +32,8 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
     }
-    
-    private void limparCampos(){
+
+    private void limparCampos() {
         tfCodProd.setText("");
         tfNCM.setText("");
         tfNomeProd.setText("");
@@ -367,7 +367,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         btnEdicao.setVisible(true);
         btnEdicao.setEnabled(true);
         btnAdicionarProd.setEnabled(false);
-        if(btnAdicionarProd.isSelected()){
+        if (btnAdicionarProd.isSelected()) {
             JOptionPane.showMessageDialog(null, "Atualize o produto atual ou saia do modo edição para prosseguir");
         }
         btnAdicionarProd.setBackground(Color.GRAY);
@@ -410,7 +410,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
             String idProduto = table1.getValueAt(selectedRow, 0).toString();
-            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM produtos WHERE id_produto = ?")) {
+            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE produtos SET status_produto = FALSE WHERE id_produto = ?")) {
                 ps.setInt(1, Integer.parseInt(idProduto));
                 ps.executeUpdate();
 
@@ -478,7 +478,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     }
 
     private void populateTable() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM produtos"); ResultSet rs = ps.executeQuery()) {
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM produtos WHERE status_produto = TRUE;"); ResultSet rs = ps.executeQuery()) {
 
             DefaultTableModel model = (DefaultTableModel) table1.getModel();
             model.setColumnCount(4);

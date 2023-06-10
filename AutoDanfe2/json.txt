@@ -3,24 +3,13 @@
 
   "itens": [
     {
-      "id_prod": "5",
-      "quantidade": "13",
-      "valor_unidade": "21"
+      "id_prod": "4",
+      "quantidade": "1",
+      "valor_unidade": "1"
     }
   ]
 ,"definicoes": {
-   "parcelas": ["13/23/1231", "13/23/1231"],
+   "parcelas": ["11/11/1111", "11/11/1111"],
     "tipo_op": "estadual",
-    "tbOrdemCompra": "312314"
+    "tbOrdemCompra": "123"
   },
-
-  "transportadora": {
-   "meio_transporte": "0 - Contratação do Frete por conta do Remetente (CIF)",
-    "id_transp": "2",
-    "razao_social": "Transportadora aratiba",
-    "especie": "Caixa",
-    "quantidadeVol": "12",
-    "peso_liquido": "15.0",
-    "peso_bruto": "6.0"
-  }
-}

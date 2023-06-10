@@ -570,7 +570,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
             String cnpj = table1.getValueAt(selectedRow, 2).toString();
-            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("DELETE FROM transportadoras WHERE CNPJ_transportador = ?")) {
+            try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE transportadoras SET status_transp = FALSE WHERE CNPJ_transportador = ?")) {
                 ps.setString(1, cnpj);
                 ps.executeUpdate();
 
@@ -640,7 +640,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     }
 
     private void populateTable() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras"); ResultSet rs = ps.executeQuery()) {
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras WHERE status_transp = TRUE"); ResultSet rs = ps.executeQuery()) {
             DefaultTableModel model = (DefaultTableModel) table1.getModel();
             model.setRowCount(0);
 
