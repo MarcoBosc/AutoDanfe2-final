@@ -1,5 +1,6 @@
 package AutoDanfeCancelamentoNota;
 
+import AutoDanfeCadCliente.ConexaoPG;
 import com.sun.jdi.connect.spi.Connection;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,6 +27,12 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import java.util.List;
 import java.util.ArrayList;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CancelamentoNota extends javax.swing.JInternalFrame {
 
@@ -230,17 +237,14 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
 
             List<String> parcelas = new ArrayList<>();
 
-// Iterando através do resultado e obtendo os valores da nota
+            // Iterando através do resultado e obtendo os valores das parcelas
+            rs.beforeFirst();
             while (rs.next()) {
-                //...
                 String dataParcela = rs.getString("data_parcela");
                 if (dataParcela != null && !parcelas.contains(dataParcela)) {
                     parcelas.add(dataParcela);
                 }
-                //...
             }
-            // Voltando para a primeira linha do conjunto de resultados
-            rs.beforeFirst();
 
             // Construindo os painéis com as informações da nota e as tabelas
             JPanel panel = new JPanel();
@@ -258,31 +262,20 @@ public class CancelamentoNota extends javax.swing.JInternalFrame {
             // Construindo a tabela de parcelas
             DefaultTableModel tableModelParcelas = new DefaultTableModel(new Object[]{"Parcela", "Valor"}, 0);
 
-            String sqlParcelas = "SELECT COUNT(*) FROM parcelas WHERE id_pedido = " + idPedido;
-            System.out.println(idPedido + "idPEDIDO");
-// Criando o objeto Statement com um conjunto de resultados rolável
-            java.sql.Statement stmtParcelas = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-
-// Executando a consulta SQL e obtendo o resultado
-            ResultSet rsParcelas = stmtParcelas.executeQuery(sqlParcelas);
-
-// Obtendo a quantidade de parcelas
-            int lenParcelas = 0;
-            if (rsParcelas.next()) {
-                lenParcelas = rsParcelas.getInt(1);
-            }
-            double valorParcela = valorTotalNota / lenParcelas;
-
+            // Adicionando os produtos à tabela
+            rs.beforeFirst();
             while (rs.next()) {
                 String nomeProduto = rs.getString("nome_produto");
                 int qtdProduto = rs.getInt("qtd_produto");
                 double valorProduto = rs.getDouble("valor_produto");
                 double totalProduto = rs.getDouble("total_produto");
                 tableModelProducts.addRow(new Object[]{nomeProduto, qtdProduto, String.format("%.2f", valorProduto), String.format("%.2f", totalProduto)});
+            }
 
-                String dataParcela = rs.getString("data_parcela");
+            // Adicionando as parcelas à tabela
+            double valorParcela = valorTotalNota / parcelas.size();
+            for (String dataParcela : parcelas) {
                 tableModelParcelas.addRow(new Object[]{dataParcela, String.format("%.2f", valorParcela)});
-
             }
 
             // Tabela de produtos
