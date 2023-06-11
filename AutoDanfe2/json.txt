@@ -1,15 +1,15 @@
 {
-  "id_destinatario": "123124",
+  "id_destinatario": "123123123412",
 
   "itens": [
     {
-      "id_prod": "4",
-      "quantidade": "1",
-      "valor_unidade": "1"
+      "id_prod": "3",
+      "quantidade": "12",
+      "valor_unidade": "12"
     }
   ]
 ,"definicoes": {
-   "parcelas": ["12/12/1221", "12/12/1221"],
+   "parcelas": ["12/12/1212", "12/12/1212", "23/23/2323", "23/23/2323"],
     "tipo_op": "estadual",
-    "tbOrdemCompra": "123123"
+    "tbOrdemCompra": "12"
   },

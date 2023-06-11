@@ -471,6 +471,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         removeTransportadoraFromDB();
         removeTransportadoraFromTable();
         limparCampos();
+        Program.getEmissaoTransp().populateComboBox();
     }//GEN-LAST:event_btnRemoverTranspActionPerformed
 
     private void btnAtualizarTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTranspActionPerformed
@@ -481,23 +482,38 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         updateTransportadoraInDB();
         btnAdicionarTransp.setEnabled(true);
         btnAtualizarTransp.setEnabled(false);
+        btnAtualizarTransp.setBorderColor(new Color(191,189,189));
+        btnAtualizarTransp.setColorOver(new Color(180,180,180));
+        btnAtualizarTransp.setColorClick(new Color(159,159,159));
         btnEdicao.setVisible(false);
         btnEdicao.setEnabled(false);
-        btnAdicionarTransp.setBackground(new Color(0, 153, 153));
+        btnAtualizarTransp.setBackground(new Color(191,189,189));
         btnAtualizarTransp.setEnabled(false);
+        btnAdicionarTransp.setBackground(new Color(0,153,153));
+        btnAdicionarTransp.setBorderColor(new Color(0,153,153));
+        btnAdicionarTransp.setColorOver(new Color(0,114,114));
+        btnAdicionarTransp.setColorClick(new Color(0,134,134));
         limparCampos();
+        populateTable();
+        Program.getEmissaoTransp().populateComboBox();
     }//GEN-LAST:event_btnAtualizarTranspActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         populateFields();
         btnEdicao.setVisible(true);
-        btnEdicao.setEnabled(true);
+        btnEdicao.setEnabled(true);  
         btnAdicionarTransp.setEnabled(false);
+        btnAdicionarTransp.setBackground(new Color(191,189,189));
+        btnAdicionarTransp.setBorderColor(new Color(191,189,189));
+        btnAdicionarTransp.setColorOver(new Color(180,180,180));
+        btnAdicionarTransp.setColorClick(new Color(159,159,159));
         if(btnAdicionarTransp.isSelected()){
             JOptionPane.showMessageDialog(null, "Atualize o produto atual ou saia do modo edição para prosseguir");
         }
-        btnAdicionarTransp.setBackground(Color.gray);
-        btnAtualizarTransp.setBackground(Color.green);
+        btnAtualizarTransp.setBackground(new Color(0,153,153));
+        btnAtualizarTransp.setBorderColor(new Color(0,153,153));
+        btnAtualizarTransp.setColorOver(new Color(0,114,114));
+        btnAtualizarTransp.setColorClick(new Color(0,134,134));
         btnAtualizarTransp.setEnabled(true);
     }//GEN-LAST:event_table1MouseClicked
 
@@ -510,7 +526,14 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         btnAdicionarTransp.setEnabled(true);
         btnEdicao.setEnabled(false);
         btnEdicao.setVisible(false);
-        btnAtualizarTransp.setBackground(new Color(0, 153, 153));
+        btnAdicionarTransp.setBorderColor(new Color(0,153,153));
+        btnAdicionarTransp.setBorderColor(new Color(191,189,189));
+        btnAdicionarTransp.setColorOver(new Color(180,180,180));
+        btnAdicionarTransp.setColorClick(new Color(159,159,159));
+        btnAtualizarTransp.setBackground(new Color(191,189,189));
+        btnAtualizarTransp.setBorderColor(new Color(191,189,189));
+        btnAtualizarTransp.setColorOver(new Color(180,180,180));
+        btnAtualizarTransp.setColorClick(new Color(159,159,159));
         btnAtualizarTransp.setEnabled(false);
     }//GEN-LAST:event_btnEdicaoActionPerformed
 
@@ -571,9 +594,10 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
     private void removeTransportadoraFromDB() {
         int selectedRow = table1.getSelectedRow();
         if (selectedRow >= 0) {
-            String cnpj = table1.getValueAt(selectedRow, 2).toString();
+            String cnpj = table1.getValueAt(selectedRow, 0).toString();
             try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE transportadoras SET status_transp = FALSE WHERE CNPJ_transportador = ?")) {
                 ps.setString(1, cnpj);
+                System.out.println(cnpj + "CNPJ AQUI");
                 ps.executeUpdate();
 
                 DefaultTableModel model = (DefaultTableModel) table1.getModel();

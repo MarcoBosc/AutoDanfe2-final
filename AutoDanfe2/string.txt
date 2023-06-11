@@ -1,22 +1,22 @@
 
-Destinatário: Jose
+Destinatário: Cliente que n paga
 
 Itens:
 ----------------------------------------------------------------------------------------------------
 Nome Prod      Quantidade     Valor Unidade  
 ----------------------------------------------------------------------------------------------------
-cocrante       2              2              
+Teste          1              1              
 
 Definições:
-Parcelas: ['22/22/2222', '22/22/2222']
+Parcelas: ['12/12/2343', '12/12/2343']
 Tipo de operação: estadual
-Ordem Compra: 2
+Ordem Compra: 12
 
 Transportadora:
-Meio de Transporte: 9 - Sem frete
-Transportadora: 2
-Razão Social: Transportadora aratiba
-Espécie: 
-Quantidade Volume: 0
-Peso Líquido: 0.0
-Peso Bruto: 0.0
+Meio de Transporte: 0 - Contratação do Frete por conta do Remetente (CIF)
+Transportadora: 1
+Razão Social: Transportadora Erechim
+Espécie: Caixa
+Quantidade Volume: 13
+Peso Líquido: 2.0
+Peso Bruto: 4.0

@@ -336,6 +336,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
     private void btnRemoverProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProdActionPerformed
         removeProdutoFromDB();
         limparCampos();
+        Program.getEmissaoProduto().populateComboBox();
     }//GEN-LAST:event_btnRemoverProdActionPerformed
 
     private void btnAdicionarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdActionPerformed
@@ -360,7 +361,15 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         btnEdicao.setEnabled(false);
         btnEdicao.setVisible(false);
         btnAdicionarProd.setBackground(new Color(0, 153, 153));
+        btnAdicionarProd.setBorderColor(new Color(0, 153, 153));
+        btnAdicionarProd.setColorClick(new Color(0, 134, 134));
+        btnAdicionarProd.setColorOver(new Color(0, 114, 114));
         btnAtualizarProd.setEnabled(false);
+        btnAtualizarProd.setBackground(new Color(191, 189, 189));
+        btnAtualizarProd.setBorderColor(new Color(191, 189, 189));
+        btnAtualizarProd.setColorClick(new Color(159, 159, 159));
+        btnAtualizarProd.setColorOver(new Color(180, 180, 180));
+        Program.getEmissaoProduto().populateComboBox();
     }//GEN-LAST:event_btnAtualizarProdActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
@@ -372,8 +381,14 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         if (btnAdicionarProd.isSelected()) {
             JOptionPane.showMessageDialog(null, "Atualize o produto atual ou saia do modo edição para prosseguir");
         }
-        btnAdicionarProd.setBackground(Color.GRAY);
-        btnAtualizarProd.setBackground(Color.green);
+        btnAtualizarProd.setBackground(new Color(0, 153, 153));
+        btnAtualizarProd.setBorderColor(new Color(0, 153, 153));
+        btnAtualizarProd.setColorClick(new Color(0, 134, 134));
+        btnAtualizarProd.setColorOver(new Color(0, 114, 114));
+        btnAdicionarProd.setBackground(new Color(191, 189, 189));
+        btnAdicionarProd.setBorderColor(new Color(191, 189, 189));
+        btnAdicionarProd.setColorClick(new Color(159, 159, 159));
+        btnAdicionarProd.setColorOver(new Color(180, 180, 180));
     }//GEN-LAST:event_table1MouseClicked
 
     private void btnEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoActionPerformed
@@ -382,7 +397,14 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         btnEdicao.setEnabled(false);
         btnEdicao.setVisible(false);
         btnAdicionarProd.setBackground(new Color(0, 153, 153));
+        btnAdicionarProd.setBorderColor(new Color(0, 153, 153));
+        btnAdicionarProd.setColorClick(new Color(0, 134, 134));
+        btnAdicionarProd.setColorOver(new Color(0, 114, 114));
         btnAtualizarProd.setEnabled(false);
+        btnAtualizarProd.setBackground(new Color(191, 189, 189));
+        btnAtualizarProd.setBorderColor(new Color(191, 189, 189));
+        btnAtualizarProd.setColorClick(new Color(159, 159, 159));
+        btnAtualizarProd.setColorOver(new Color(180, 180, 180));
     }//GEN-LAST:event_btnEdicaoActionPerformed
 
     private void configureTable() {
