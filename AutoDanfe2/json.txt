@@ -1,0 +1,31 @@
+{
+  "id_destinatario": "12123123123412",
+
+  "itens": [
+    {
+      "id_prod": "140",
+      "quantidade": "12",
+      "valor_unidade": "2"
+    },
+    {
+      "id_prod": "203",
+      "quantidade": "2",
+      "valor_unidade": "5"
+    }
+  ]
+,"definicoes": {
+   "parcelas": ["12/07/2023", "12/07/2023", "12/08/2023", "12/08/2023"],
+    "tipo_op": "estadual",
+    "tbOrdemCompra": "123"
+  },
+
+  "transportadora": {
+   "meio_transporte": "0 - Contratação do Frete por conta do Remetente (CIF)",
+    "id_transp": "1",
+    "razao_social": "EXPRESSO SAO MIGUEL S/A",
+    "especie": "caixa",
+    "quantidadeVol": "1",
+    "peso_liquido": "20.0",
+    "peso_bruto": "22.0"
+  }
+}
