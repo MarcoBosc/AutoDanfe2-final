@@ -1,6 +1,7 @@
 package AutoDanfeCadProd;
 
 import AutoDanfeCadCliente.ConexaoPG;
+import Controller.Program;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -345,6 +346,7 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         insertProduto();
         populateTable();
         limparCampos();
+        Program.getEmissaoProduto().populateComboBox();
     }//GEN-LAST:event_btnAdicionarProdActionPerformed
 
     private void btnAtualizarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarProdActionPerformed

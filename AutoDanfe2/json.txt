@@ -9,7 +9,7 @@
     }
   ]
 ,"definicoes": {
-   "parcelas": ["11/11/1111", "11/11/1111"],
+   "parcelas": ["12/12/1221", "12/12/1221"],
     "tipo_op": "estadual",
-    "tbOrdemCompra": "123"
+    "tbOrdemCompra": "123123"
   },

@@ -522,8 +522,8 @@ public class EmissaoProduto extends javax.swing.JInternalFrame {
 
     }
 
-    private void populateComboBox() {
-        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM produtos ORDER BY nome_produto ASC"); ResultSet rs = ps.executeQuery()) {
+    public void populateComboBox() {
+        try (java.sql.Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM produtos WHERE status_produto = TRUE ORDER BY nome_produto ASC"); ResultSet rs = ps.executeQuery()) {
 
             jComboBox1.removeAllItems();
 

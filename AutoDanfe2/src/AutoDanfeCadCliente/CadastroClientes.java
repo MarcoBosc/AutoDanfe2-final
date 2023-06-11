@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import AutoDanfeCadCliente.apiCEP;
+import Controller.Program;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -374,6 +375,7 @@ public class CadastroClientes extends javax.swing.JInternalFrame {
         insertCliente();
         populateTable();
         limparCampos();
+        Program.getEmissaoNota().populateTable();
         
     }//GEN-LAST:event_btnAdicionarCLientesActionPerformed
 

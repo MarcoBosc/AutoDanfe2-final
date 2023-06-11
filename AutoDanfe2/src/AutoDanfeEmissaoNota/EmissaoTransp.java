@@ -334,8 +334,8 @@ public class EmissaoTransp extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbPesoLiquidoActionPerformed
 
-    private void populateComboBox() {
-        try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras ORDER BY razao_social_transp ASC"); ResultSet rs = ps.executeQuery()) {
+    public void populateComboBox() {
+        try (Connection conn = ConexaoPG.getConnection(); PreparedStatement ps = conn.prepareStatement("SELECT * FROM transportadoras WHERE status_transp = TRUE ORDER BY razao_social_transp ASC"); ResultSet rs = ps.executeQuery()) {
 
             CbTransp.removeAllItems();
 

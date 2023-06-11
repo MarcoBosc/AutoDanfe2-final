@@ -1,22 +1,22 @@
 
-ID Destinatário: Jose
+Destinatário: Jose
 
 Itens:
 ----------------------------------------------------------------------------------------------------
 Nome Prod      Quantidade     Valor Unidade  
 ----------------------------------------------------------------------------------------------------
-Joao           13             21             
+cocrante       2              2              
 
 Definições:
-Parcelas: ['13/23/1231', '13/23/1231']
+Parcelas: ['22/22/2222', '22/22/2222']
 Tipo de operação: estadual
-Ordem Compra: 312314
+Ordem Compra: 2
 
 Transportadora:
-Meio de Transporte: 0 - Contratação do Frete por conta do Remetente (CIF)
-ID Transp: 2
+Meio de Transporte: 9 - Sem frete
+Transportadora: 2
 Razão Social: Transportadora aratiba
-Espécie: Caixa
-Quantidade Volume: 12
-Peso Líquido: 15.0
-Peso Bruto: 6.0
+Espécie: 
+Quantidade Volume: 0
+Peso Líquido: 0.0
+Peso Bruto: 0.0

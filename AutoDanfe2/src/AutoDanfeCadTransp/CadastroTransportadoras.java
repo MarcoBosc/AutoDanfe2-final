@@ -1,6 +1,7 @@
 package AutoDanfeCadTransp;
 
 import AutoDanfeCadCliente.ConexaoPG;
+import Controller.Program;
 import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -463,6 +464,7 @@ public class CadastroTransportadoras extends javax.swing.JInternalFrame {
         insertTransportadora();
         populateTable();
         limparCampos();
+        Program.getEmissaoTransp().populateComboBox();
     }//GEN-LAST:event_btnAdicionarTranspActionPerformed
 
     private void btnRemoverTranspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverTranspActionPerformed

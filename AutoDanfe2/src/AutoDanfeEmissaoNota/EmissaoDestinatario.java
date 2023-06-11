@@ -248,12 +248,12 @@ public class EmissaoDestinatario extends javax.swing.JInternalFrame {
         setSelectedRazaoSocial();
     }//GEN-LAST:event_table1MouseClicked
 
-    private void populateTable() {
+    public void populateTable() {
         Connection conn = ConexaoPG.getConnection();
 
         if (conn != null) {
             try {
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes ORDER BY razao_social_cliente");
+                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes WHERE status_cliente = TRUE ORDER BY razao_social_cliente");
                 ResultSet rs = ps.executeQuery();
 
                 DefaultTableModel model = (DefaultTableModel) table1.getModel();
