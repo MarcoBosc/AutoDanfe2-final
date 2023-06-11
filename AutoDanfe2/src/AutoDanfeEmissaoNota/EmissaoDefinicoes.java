@@ -18,6 +18,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  *
@@ -438,11 +440,18 @@ public class EmissaoDefinicoes extends javax.swing.JInternalFrame {
             // Adicionar as parcelas
             jsonContent.append("   \"parcelas\": [");
 
-            for (int i = 0; i < datesList.size(); i++) {
-                String parcela = "\"" + datesList.get(i) + "\"";
-                jsonContent.append(parcela);
+            Set<String> uniqueParcelas = new HashSet<>();
 
-                if (i < datesList.size() - 1) {
+            for (int i = 0; i < datesList.size(); i++) {
+                uniqueParcelas.add(datesList.get(i));
+            }
+
+            int count = 0;
+            for (String parcela : uniqueParcelas) {
+                jsonContent.append("\"").append(parcela).append("\"");
+                count++;
+
+                if (count < uniqueParcelas.size()) {
                     jsonContent.append(", ");
                 }
             }

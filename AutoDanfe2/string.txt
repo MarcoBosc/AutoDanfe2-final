@@ -5,18 +5,18 @@ Itens:
 ----------------------------------------------------------------------------------------------------
 Nome Prod      Quantidade     Valor Unidade  
 ----------------------------------------------------------------------------------------------------
-Teste          1              1              
+Camiseta listrada12             12             
 
 Definições:
-Parcelas: ['12/12/2343', '12/12/2343']
-Tipo de operação: estadual
-Ordem Compra: 12
+Parcelas: ['12/12/1212', '15/15/1515']
+Tipo de operação: Interestadual
+Ordem Compra: 22
 
 Transportadora:
 Meio de Transporte: 0 - Contratação do Frete por conta do Remetente (CIF)
-Transportadora: 1
-Razão Social: Transportadora Erechim
-Espécie: Caixa
-Quantidade Volume: 13
+Transportadora: 6
+Razão Social: Mario transportes e Cit ltda
+Espécie: 2
+Quantidade Volume: 2
 Peso Líquido: 2.0
-Peso Bruto: 4.0
+Peso Bruto: 2.0

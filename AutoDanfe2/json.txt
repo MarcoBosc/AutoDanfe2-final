@@ -3,13 +3,24 @@
 
   "itens": [
     {
-      "id_prod": "3",
+      "id_prod": "8",
       "quantidade": "12",
       "valor_unidade": "12"
     }
   ]
 ,"definicoes": {
-   "parcelas": ["12/12/1212", "12/12/1212", "23/23/2323", "23/23/2323"],
-    "tipo_op": "estadual",
-    "tbOrdemCompra": "12"
+   "parcelas": ["12/12/1212", "15/15/1515"],
+    "tipo_op": "Interestadual",
+    "tbOrdemCompra": "22"
   },
+
+  "transportadora": {
+   "meio_transporte": "0 - Contratação do Frete por conta do Remetente (CIF)",
+    "id_transp": "6",
+    "razao_social": "Mario transportes e Cit ltda",
+    "especie": "2",
+    "quantidadeVol": "2",
+    "peso_liquido": "2.0",
+    "peso_bruto": "2.0"
+  }
+}
