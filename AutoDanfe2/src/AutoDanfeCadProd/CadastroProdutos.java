@@ -343,6 +343,14 @@ public class CadastroProdutos extends javax.swing.JInternalFrame {
         if (!verificarCamposCompletos()) {
             return; // Interrompe a execução do evento
         }
+        String nomeProduto = tfNomeProd.getText();
+        String codProduto = tfCodProd.getText();
+        String ncmProduto = tfNCM.getText();
+
+        if (nomeProduto.equals("Camisa") && codProduto.equals("0000000") && ncmProduto.equals("00000000")) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios!");
+            return;
+        }
 
         insertProduto();
         populateTable();

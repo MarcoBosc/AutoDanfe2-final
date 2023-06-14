@@ -520,7 +520,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pesquise pelo nome do item:"/>
+            <Property name="text" type="java.lang.String" value="Selecione os itens desejados:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">

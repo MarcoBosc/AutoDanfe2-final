@@ -171,7 +171,7 @@ for item in data["itens"]:
     navegador.find_element(By.NAME, 'f_det_prod_uCom_combo').send_keys('pc')
     navegador.find_element(By.NAME, 'f_det_prod_qCom').send_keys(item["quantidade"])
     try:
-        valor_unidade = item["valor_unidade"].replace(',', '.')
+        valor_unidade = item["valor_unidade"].replace('.', ',')
     except:
         pass
     navegador.find_element(By.ID, 'f_det_prod_vUnCom').send_keys(valor_unidade)
